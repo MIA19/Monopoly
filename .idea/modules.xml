@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MonopolyProject.iml" filepath="$PROJECT_DIR$/MonopolyProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Monopoly.iml" filepath="$PROJECT_DIR$/Monopoly.iml" />
     </modules>
   </component>
 </project>
