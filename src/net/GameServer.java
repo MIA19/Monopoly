@@ -47,9 +47,6 @@ public class GameServer extends Thread
             }
             this.parsePacket(packet.getData(), packet.getAddress(), packet.getPort());
             System.out.println("CLIENT (" + packet.getAddress().getHostAddress() + ":" + packet.getPort() + ") > " + new String(packet.getData()));
-            if (new String(packet.getData()).trim().equalsIgnoreCase("test"))
-                sendData("received".getBytes(), packet.getAddress(), packet.getPort());
-
         }
     }
 

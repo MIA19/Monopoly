@@ -42,8 +42,7 @@ public class GameClient extends Thread
                 e.printStackTrace();
             }
             this.parsePacket(packet.getData(), packet.getAddress(), packet.getPort());
-
-            System.out.println("SERVER > " + new String(packet.getData()));
+            System.out.println("SERVER (" + packet.getAddress().getHostAddress() + ":" + packet.getPort() + ") > " + new String(packet.getData()));
         }
     }
 
@@ -51,7 +50,7 @@ public class GameClient extends Thread
     {
         String msg = new String(data).trim();
         Packet.PacketTypes packetType = Packet.getPacketType(msg.substring(0, 2));
-        Packet packet = null;
+        Packet packet;
         switch (packetType)
         {
             default:
@@ -65,7 +64,6 @@ public class GameClient extends Thread
             case DISCONNECT:
                 packet = new Packet01Disconnect(data);
                 System.out.println("[" + address.getHostAddress() + ":" + port + "] " + ((Packet01Disconnect) packet).getUsername() + " left.");
-
                 break;
         }
     }
