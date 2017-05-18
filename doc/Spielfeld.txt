@@ -5,18 +5,18 @@ ID 		Normal-Theme			Lette-Theme
 2		GM_Feld
 3		Turm_Strasse
 4		Einkommensteuer
-5		Südbahnhof
+5		SÃ¼dbahnhof
 6		Chaussee_Strasse
 7		ER_Feld
 8		Elisen_Strasse
 9		Post_Strasse
-10		Gefängnis			Mathe_Raum
+10		GefÃ¤ngnis			Mathe_Raum
 11		See_Strasse
-12		Elektrizitäts_Werk
+12		ElektrizitÃ¤ts_Werk
 13		Hafen_Strasse
 14		Neue_Strasse
 15		WestBahnhof
-16		Münchener_Strasse
+16		MÃ¼nchener_Strasse
 17		GM_Feld
 18		Wiener_Strasse
 19		Berliner_Strasse
@@ -30,7 +30,7 @@ ID 		Normal-Theme			Lette-Theme
 27		Schiller_Strasse
 28		Wasser_Werk
 29		Goethe_Strasse
-30		INS_GEFÄNGNIS			Herr_Bode
+30		INS_GEFÃ„NGNIS			Herr_Bode
 31		Rathaus_Platz
 32		Haupt_Strasse
 33		GM_Feld
