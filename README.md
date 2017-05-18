@@ -1,2 +1,4 @@
 # Monopoly
-MIA 19 School Project
+Lette Verein Berlin
+MIA19
+Project for Java lessons
