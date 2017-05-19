@@ -3,22 +3,21 @@ package net.packets;
 import net.GameClient;
 import net.GameServer;
 
-public class Packet00Login extends Packet
+public class Packet02Settings extends Packet
 {
+    private long start_money;
 
-    private String username;
-
-    public Packet00Login(byte[] data)
+    public Packet02Settings(byte[] data)
     {
-        super(00);
+        super(02);
         String[] dataArr = readData(data).split(",");
-        this.username = dataArr[0];
+        this.start_money = Integer.parseInt(dataArr[0]);
     }
 
-    public Packet00Login(String username)
+    public Packet02Settings(long start_money)
     {
-        super(00);
-        this.username = username;
+        super(02);
+        this.start_money = start_money;
     }
 
     @Override
@@ -36,12 +35,11 @@ public class Packet00Login extends Packet
     @Override
     public byte[] getData()
     {
-        return ("00" + this.username).getBytes();
+        return ("02" + start_money).getBytes();
     }
 
-    public String getUsername()
+    public long getStart_money()
     {
-        return username;
+        return start_money;
     }
-
 }

@@ -1,9 +1,11 @@
 package net;
 
+import game.Game;
 import game.PlayerMP;
 import net.packets.Packet;
 import net.packets.Packet00Login;
 import net.packets.Packet01Disconnect;
+import net.packets.Packet02Settings;
 
 import java.io.IOException;
 import java.net.*;
@@ -11,10 +13,14 @@ import java.net.*;
 public class GameClient extends Thread
 {
     private InetAddress ipAddress;
+    private int port;
     private DatagramSocket socket;
+    private Game game;
 
-    public GameClient(String ipAddress)
+    public GameClient(Game game, String ipAddress, int port)
     {
+        this.game = game;
+        this.port = port;
         try
         {
             this.socket = new DatagramSocket();
@@ -41,8 +47,8 @@ public class GameClient extends Thread
             {
                 e.printStackTrace();
             }
-            this.parsePacket(packet.getData(), packet.getAddress(), packet.getPort());
             System.out.println("SERVER (" + packet.getAddress().getHostAddress() + ":" + packet.getPort() + ") > " + new String(packet.getData()));
+            this.parsePacket(packet.getData(), packet.getAddress(), packet.getPort());
         }
     }
 
@@ -58,19 +64,23 @@ public class GameClient extends Thread
                 break;
             case LOGIN:
                 packet = new Packet00Login(data);
-                System.out.println("[" + address.getHostAddress() + ":" + port + "] " + ((Packet00Login) packet).getUsername() + " joined.");
-                PlayerMP player = new PlayerMP(((Packet00Login) packet).getUsername(), address, port);
+                handleLogin((Packet00Login) packet, address, port);
                 break;
             case DISCONNECT:
                 packet = new Packet01Disconnect(data);
                 System.out.println("[" + address.getHostAddress() + ":" + port + "] " + ((Packet01Disconnect) packet).getUsername() + " left.");
+                break;
+            case SETTINGS:
+                packet = new Packet02Settings(data);
+                game.START_MONEY = ((Packet02Settings) packet).getStart_money();
+                System.out.println("[" + address.getHostAddress() + ":" + port + "] Settings money: " + ((Packet02Settings) packet).getStart_money());
                 break;
         }
     }
 
     public void sendData(byte[] data)
     {
-        DatagramPacket packet = new DatagramPacket(data, data.length, ipAddress, 1333);
+        DatagramPacket packet = new DatagramPacket(data, data.length, ipAddress, port);
         try
         {
             socket.send(packet);
@@ -80,4 +90,12 @@ public class GameClient extends Thread
             e.printStackTrace();
         }
     }
+
+    private void handleLogin(Packet00Login packet, InetAddress address, int port)
+    {
+        System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getUsername() + " joined.");
+        //TODO Add player to game
+        PlayerMP player = new PlayerMP(packet.getUsername(), address, port);
+    }
+
 }

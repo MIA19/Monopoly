@@ -2,10 +2,14 @@ package game;
 
 import java.net.InetAddress;
 
+/**
+ * Multiplayer Spieler Klasse
+ */
 public class PlayerMP extends Player
 {
     public InetAddress ipAddress;
     public int port;
+
 
     public PlayerMP(String username, InetAddress ipAddress, int port)
     {
