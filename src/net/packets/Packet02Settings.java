@@ -5,19 +5,22 @@ import net.GameServer;
 
 public class Packet02Settings extends Packet
 {
-    private long start_money;
+    private boolean free_parking;
+    private boolean double_money;
 
     public Packet02Settings(byte[] data)
     {
         super(02);
         String[] dataArr = readData(data).split(",");
-        this.start_money = Integer.parseInt(dataArr[0]);
+        this.free_parking = Boolean.getBoolean(dataArr[0]);
+        this.double_money = Boolean.getBoolean(dataArr[1]);
     }
 
-    public Packet02Settings(long start_money)
+    public Packet02Settings(boolean free_parking, boolean double_money)
     {
         super(02);
-        this.start_money = start_money;
+        this.free_parking = free_parking;
+        this.double_money = double_money;
     }
 
     @Override
@@ -35,11 +38,16 @@ public class Packet02Settings extends Packet
     @Override
     public byte[] getData()
     {
-        return ("02" + start_money).getBytes();
+        return ("02" + free_parking + "," + double_money).getBytes();
     }
 
-    public long getStart_money()
+    public boolean isFree_parking()
     {
-        return start_money;
+        return free_parking;
+    }
+
+    public boolean isDouble_money()
+    {
+        return double_money;
     }
 }

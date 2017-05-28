@@ -21,8 +21,12 @@ public class Game
     public Player player;
     public GameClient client;
     public GameServer server;
+
     //DEFAULT VALUES
     public long START_MONEY = 400;
+    public boolean FREE_PARKING;
+    public boolean DOUBLE_MONEY;
+
     public int PORT = 1330;
     private Thread thread;
 

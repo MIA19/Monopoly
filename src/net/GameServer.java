@@ -160,7 +160,7 @@ public class GameServer extends Thread
         PlayerMP player = new PlayerMP(packet.getUsername(), address, port);
         this.addConnection(player, packet);
 
-        Packet02Settings packetSettings = new Packet02Settings(this.game.START_MONEY);
+        Packet02Settings packetSettings = new Packet02Settings(this.game.FREE_PARKING, this.game.DOUBLE_MONEY);
         sendData(packetSettings.getData(), address, port);
     }
 }
