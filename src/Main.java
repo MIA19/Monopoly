@@ -17,6 +17,8 @@ public class Main
 
         game.frame.setLocationRelativeTo(null);
         game.frame.setVisible(true);
+
+        System.out.println("Test Commit");
     }
 
 }
