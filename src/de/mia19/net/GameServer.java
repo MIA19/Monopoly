@@ -1,11 +1,11 @@
-package net;
+package de.mia19.net;
 
-import game.Game;
-import game.PlayerMP;
-import net.packets.Packet;
-import net.packets.Packet00Login;
-import net.packets.Packet01Disconnect;
-import net.packets.Packet02Settings;
+import de.mia19.game.Game;
+import de.mia19.game.PlayerMP;
+import de.mia19.net.packets.Packet00Login;
+import de.mia19.net.packets.Packet01Disconnect;
+import de.mia19.net.packets.Packet;
+import de.mia19.net.packets.Packet02Settings;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

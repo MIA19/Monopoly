@@ -1,8 +1,8 @@
-package game;
+package de.mia19.game;
 
-import net.GameClient;
-import net.GameServer;
-import net.packets.Packet00Login;
+import de.mia19.net.GameClient;
+import de.mia19.net.GameServer;
+import de.mia19.net.packets.Packet00Login;
 
 import javax.swing.*;
 

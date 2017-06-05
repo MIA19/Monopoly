@@ -1,4 +1,4 @@
-package game;
+package de.mia19.game;
 
 import java.net.InetAddress;
 

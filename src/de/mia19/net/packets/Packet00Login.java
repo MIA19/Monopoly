@@ -1,7 +1,7 @@
-package net.packets;
+package de.mia19.net.packets;
 
-import net.GameClient;
-import net.GameServer;
+import de.mia19.net.GameClient;
+import de.mia19.net.GameServer;
 
 public class Packet00Login extends Packet
 {

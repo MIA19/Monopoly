@@ -1,11 +1,11 @@
-package net;
+package de.mia19.net;
 
-import game.Game;
-import game.PlayerMP;
-import net.packets.Packet;
-import net.packets.Packet00Login;
-import net.packets.Packet01Disconnect;
-import net.packets.Packet02Settings;
+import de.mia19.game.Game;
+import de.mia19.game.PlayerMP;
+import de.mia19.net.packets.Packet;
+import de.mia19.net.packets.Packet00Login;
+import de.mia19.net.packets.Packet01Disconnect;
+import de.mia19.net.packets.Packet02Settings;
 
 import java.io.IOException;
 import java.net.*;
@@ -95,7 +95,7 @@ public class GameClient extends Thread
     private void handleLogin(Packet00Login packet, InetAddress address, int port)
     {
         System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getUsername() + " joined.");
-        //TODO Add player to game
+        //TODO Add player to mia19.lette.game
         PlayerMP player = new PlayerMP(packet.getUsername(), address, port);
     }
 

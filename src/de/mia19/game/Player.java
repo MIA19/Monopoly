@@ -1,4 +1,4 @@
-package game;
+package de.mia19.game;
 
 /**
  * Spieler Klasse
@@ -7,6 +7,7 @@ public class Player
 {
     private String username;
     private long money;
+    private int position;
 
     public Player(String username)
     {
@@ -36,5 +37,15 @@ public class Player
     public void removeMoney(long money)
     {
         this.money -= money;
+    }
+
+    public void setPosition(int position)
+    {
+        this.position = position;
+    }
+
+    public int getPosition()
+    {
+        return position;
     }
 }
