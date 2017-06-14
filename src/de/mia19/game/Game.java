@@ -12,25 +12,25 @@ import javax.swing.*;
 public class Game
 {
 
-    public static final String NAME = "Monopoly";
-    public static Game instance;
+    private static final String NAME = "Monopoly";
+    private static Game instance;
 
 
-    public JFrame frame;
-    public boolean running = false;
-    public Player player;
-    public GameClient client;
-    public GameServer server;
+    private JFrame frame;
+    private boolean running = false;
+    private Player player;
+    private GameClient client;
+    private GameServer server;
 
     //DEFAULT VALUES
-    public long START_MONEY = 400;
-    public boolean FREE_PARKING;
-    public boolean DOUBLE_MONEY;
+    private long START_MONEY = 400;
+    private boolean FREE_PARKING;
+    private boolean DOUBLE_MONEY;
 
-    public int PORT = 1330;
+    private int PORT = 1330;
     private Thread thread;
 
-    public void init()
+    private void init()
     {
         instance = this;
 
@@ -61,8 +61,8 @@ public class Game
             final JComponent[] inputs = new JComponent[]{
                     new JLabel("<html>Port (<i>1330</i>):</html>"),
                     port,
-                    new JLabel("<html>Startgeld (<i>400</i>):</html>"),
-                    startMoney
+                    //new JLabel("<html>Startgeld (<i>400</i>):</html>"),
+                    //startMoney
             };
 
             int result = JOptionPane.showConfirmDialog(null, inputs, "Spieleinstellungen", JOptionPane.OK_CANCEL_OPTION);
