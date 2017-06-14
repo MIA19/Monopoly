@@ -24,8 +24,8 @@ public class Game
 
     //DEFAULT VALUES
     private long START_MONEY = 400;
-    private boolean FREE_PARKING;
-    private boolean DOUBLE_MONEY;
+    public boolean FREE_PARKING;
+    public boolean DOUBLE_MONEY;
 
     private int PORT = 1330;
     private Thread thread;
