@@ -1,22 +1,23 @@
 package de.mia19.net.packets;
 
+import de.mia19.game.Color;
 import de.mia19.net.GameClient;
 import de.mia19.net.GameServer;
 
 public class Packet01Disconnect extends Packet
 {
-    private String username;
+    private Color color;
 
     public Packet01Disconnect(byte[] data)
     {
         super(01);
-        this.username = readData(data);
+        this.color = Color.parseString(readData(data));
     }
 
-    public Packet01Disconnect(String username)
+    public Packet01Disconnect(Color color)
     {
         super(01);
-        this.username = username;
+        this.color = color;
     }
 
     @Override
@@ -34,11 +35,11 @@ public class Packet01Disconnect extends Packet
     @Override
     public byte[] getData()
     {
-        return ("01" + this.username).getBytes();
+        return ("01" + this.color.name().toLowerCase()).getBytes();
     }
 
-    public String getUsername()
+    public Color getColor()
     {
-        return username;
+        return color;
     }
 }
