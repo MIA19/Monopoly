@@ -8,9 +8,10 @@ package de.mia19.game;
  */
 public enum FieldState {
     startField (false),
-    trainStation (false),
+    trainStation (true),
     prison (false),
     goToPrison (false),
+    workField (true),
     cardField (false),
     taxField (false),
     freeParking (false),
