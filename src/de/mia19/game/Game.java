@@ -6,9 +6,7 @@ import de.mia19.net.packets.Packet00Login;
 
 import javax.swing.*;
 
-/**
- * Test Klasse GUI
- */
+
 public class Game
 {
 
