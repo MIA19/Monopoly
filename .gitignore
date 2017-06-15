@@ -25,5 +25,7 @@ hs_err_pid*
 .idea/dictionaries
 .idea/vcs.xml
 .idea/jsLibraryMappings.xml
+.idea/copyright
+.idea/compiler.xml
 out/
 doc/
