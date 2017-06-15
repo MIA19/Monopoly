@@ -32,7 +32,7 @@ public class Game
     {
         instance = this;
 
-        //TODO Player color automatisch zuweisen
+        //TODO Player assign color automatically
         player = new PlayerMP(Color.RED, null, -1);
 
         Packet00Login loginPacket = new Packet00Login(player.getColor());
