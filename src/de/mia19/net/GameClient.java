@@ -68,13 +68,13 @@ public class GameClient extends Thread
                 break;
             case DISCONNECT:
                 packet = new Packet01Disconnect(data);
-                System.out.println("[" + address.getHostAddress() + ":" + port + "] " + ((Packet01Disconnect) packet).getUsername() + " left.");
+                System.out.println("[" + address.getHostAddress() + ":" + port + "] " + ((Packet01Disconnect) packet).getColor() + " left.");
                 break;
             case SETTINGS:
                 packet = new Packet02Settings(data);
-             /*   game.DOUBLE_MONEY = ((Packet02Settings) packet).isDouble_money();
+                game.DOUBLE_MONEY = ((Packet02Settings) packet).isDouble_money();
                 game.FREE_PARKING = ((Packet02Settings) packet).isFree_parking();
-             */   System.out.println("[" + address.getHostAddress() + ":" + port + "] Settings: " + ((Packet02Settings) packet).isDouble_money() + ";" + ((Packet02Settings) packet).isFree_parking());
+                System.out.println("[" + address.getHostAddress() + ":" + port + "] Settings: " + ((Packet02Settings) packet).isDouble_money() + ";" + ((Packet02Settings) packet).isFree_parking());
                 break;
         }
     }
@@ -94,9 +94,9 @@ public class GameClient extends Thread
 
     private void handleLogin(Packet00Login packet, InetAddress address, int port)
     {
-        System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getUsername() + " joined.");
+        System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getColor() + " joined.");
         //TODO Add player to mia19.lette.game
-        PlayerMP player = new PlayerMP(packet.getUsername(), address, port);
+        PlayerMP player = new PlayerMP(packet.getColor(), address, port);
     }
 
 }
