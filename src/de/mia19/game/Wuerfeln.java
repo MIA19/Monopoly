@@ -2,9 +2,7 @@ package de.mia19.game;
 
 import java.util.Random;
 
-/**
- * Created by Philipp S. on 15.06.2017.
- */
+
 public class Wuerfeln {
     private int wuerfelEins;
     private int wuerfelZwei;
