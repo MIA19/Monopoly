@@ -72,9 +72,9 @@ public class GameClient extends Thread
                 break;
             case SETTINGS:
                 packet = new Packet02Settings(data);
-                game.DOUBLE_MONEY = ((Packet02Settings) packet).isDouble_money();
+             /*   game.DOUBLE_MONEY = ((Packet02Settings) packet).isDouble_money();
                 game.FREE_PARKING = ((Packet02Settings) packet).isFree_parking();
-                System.out.println("[" + address.getHostAddress() + ":" + port + "] Settings: " + ((Packet02Settings) packet).isDouble_money() + ";" + ((Packet02Settings) packet).isFree_parking());
+             */   System.out.println("[" + address.getHostAddress() + ":" + port + "] Settings: " + ((Packet02Settings) packet).isDouble_money() + ";" + ((Packet02Settings) packet).isFree_parking());
                 break;
         }
     }
