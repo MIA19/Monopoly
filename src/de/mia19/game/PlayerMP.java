@@ -11,9 +11,9 @@ public class PlayerMP extends Player
     public int port;
 
 
-    public PlayerMP(String username, InetAddress ipAddress, int port)
+    public PlayerMP(Color color, InetAddress ipAddress, int port)
     {
-        super(username);
+        super(color);
         this.ipAddress = ipAddress;
         this.port = port;
     }

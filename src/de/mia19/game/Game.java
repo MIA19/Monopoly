@@ -24,8 +24,8 @@ public class Game
 
     //DEFAULT VALUES
     private long START_MONEY = 400;
-    private boolean FREE_PARKING;
-    private boolean DOUBLE_MONEY;
+    public boolean FREE_PARKING;
+    public boolean DOUBLE_MONEY;
 
     private int PORT = 1330;
     private Thread thread;
@@ -34,9 +34,10 @@ public class Game
     {
         instance = this;
 
-        player = new PlayerMP(JOptionPane.showInputDialog("Enter Username:"), null, -1);
+        //TODO Player color automatisch zuweisen
+        player = new PlayerMP(Color.RED, null, -1);
 
-        Packet00Login loginPacket = new Packet00Login(player.getUsername());
+        Packet00Login loginPacket = new Packet00Login(player.getColor());
 
         if (server != null)
             server.addConnection((PlayerMP) player, loginPacket);

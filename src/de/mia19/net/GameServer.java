@@ -1,5 +1,6 @@
 package de.mia19.net;
 
+import de.mia19.game.Color;
 import de.mia19.game.Game;
 import de.mia19.game.PlayerMP;
 import de.mia19.net.packets.Packet00Login;
@@ -70,7 +71,7 @@ public class GameServer extends Thread
                 break;
             case DISCONNECT:
                 packet = new Packet01Disconnect(data);
-                System.out.println("[" + address.getHostAddress() + ":" + port + "] " + ((Packet01Disconnect) packet).getUsername() + " disconnected.");
+                System.out.println("[" + address.getHostAddress() + ":" + port + "] " + ((Packet01Disconnect) packet).getColor() + " disconnected.");
                 this.removeConnection((Packet01Disconnect) packet);
                 break;
         }
@@ -81,7 +82,7 @@ public class GameServer extends Thread
         boolean alreadyConnected = false;
         for (PlayerMP p : this.connectedPlayers)
         {
-            if (player.getUsername().equalsIgnoreCase(p.getUsername()))
+            if (player.getColor().equals(p.getColor()))
             {
                 if (p.ipAddress == null)
                     p.ipAddress = player.ipAddress;
@@ -94,7 +95,7 @@ public class GameServer extends Thread
             else
             {
                 sendData(packet.getData(), p.ipAddress, p.port);
-                Packet00Login packet2 = new Packet00Login(p.getUsername());
+                Packet00Login packet2 = new Packet00Login(p.getColor());
                 sendData(packet2.getData(), player.ipAddress, player.port);
             }
         }
@@ -106,26 +107,26 @@ public class GameServer extends Thread
 
     public void removeConnection(Packet01Disconnect packet)
     {
-        this.connectedPlayers.remove(getPlayerMPIndex(packet.getUsername()));
+        this.connectedPlayers.remove(getPlayerMPIndex(packet.getColor()));
         packet.writeData(this);
     }
 
-    public PlayerMP getPlayerMP(String username)
+    public PlayerMP getPlayerMP(Color color)
     {
         for (PlayerMP player : this.connectedPlayers)
         {
-            if (player.getUsername().equals(username))
+            if (player.getColor().equals(color))
                 return player;
         }
         return null;
     }
 
-    public int getPlayerMPIndex(String username)
+    public int getPlayerMPIndex(Color color)
     {
         int index = 0;
         for (PlayerMP player : this.connectedPlayers)
         {
-            if (player.getUsername().equals(username))
+            if (player.getColor().equals(color))
                 break;
             index++;
         }
@@ -155,9 +156,9 @@ public class GameServer extends Thread
 
     private void handleLogin(Packet00Login packet, InetAddress address, int port)
     {
-        System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getUsername() + " connected.");
+        System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getColor() + " connected.");
 
-        PlayerMP player = new PlayerMP(packet.getUsername(), address, port);
+        PlayerMP player = new PlayerMP(packet.getColor(), address, port);
         this.addConnection(player, packet);
 
         Packet02Settings packetSettings = new Packet02Settings(this.game.FREE_PARKING, this.game.DOUBLE_MONEY);
