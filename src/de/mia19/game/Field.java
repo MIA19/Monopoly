@@ -13,9 +13,25 @@ public class Field extends JButton
     private int yCoord;
 
     private int price;
+    private int trainstation[] = new int[4];
     private int costPerHouse;
     private int withHouses[] = new int[5];
 
+
+    /**
+     * Constructor for all Streets
+      * @param name
+     * @param xCoord
+     * @param yCoord
+     * @param fieldState
+     * @param fieldPrice
+     * @param houseCost
+     * @param withOneHouse
+     * @param withTwoHouses
+     * @param withThreeHouses
+     * @param withFourHouses
+     * @param withVilla
+     */
     public Field(String name, int xCoord, int yCoord, FieldState fieldState, int fieldPrice, int houseCost, int withOneHouse, int withTwoHouses, int withThreeHouses, int withFourHouses, int withVilla)
     {
         this.name = name;
@@ -23,8 +39,8 @@ public class Field extends JButton
         this.xCoord = xCoord;
         this.yCoord = yCoord;
         this.fieldState = fieldState;
+        this.price = fieldPrice;
         if(fieldState.isBuyAble ()){
-            this.price = fieldPrice;
             this.costPerHouse = houseCost;
             this.withHouses[0] = withOneHouse;
             this.withHouses[1] = withTwoHouses;
@@ -34,13 +50,41 @@ public class Field extends JButton
         }
     }
 
+    /**
+     * Constructor for all normal fields
+     * @param name
+     * @param xCoord
+     * @param yCoord
+     * @param fieldState
+     */
     public Field (String name, int xCoord, int yCoord, FieldState fieldState) {
         this.name = name;
         this.fieldNumber = Field.fieldCount + 1;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
+        this.fieldState = fieldState;
     }
 
+    /**
+     * Constructor for all trainstations
+     * @param name
+     * @param xCoord
+     * @param yCoord
+     * @param fieldState
+     * @param fieldPrice
+     */
+    public Field (String name, int xCoord, int yCoord, FieldState fieldState, int fieldPrice, int oneStation, int twoStations, int threeStations, int allStations) {
+        this.name = name;
+        this.fieldNumber = Field.fieldCount + 1;
+        this.xCoord = xCoord;
+        this.yCoord = yCoord;
+        this.fieldState = fieldState;
+        this.price = fieldPrice;
+        this.trainstation[0] = oneStation;
+        this.trainstation[1] = twoStations;
+        this.trainstation[2] = threeStations;
+        this.trainstation[3] = allStations;
+    }
     /*Constructor ohne Kaufpreis
     public Field(int fieldNumber, String name) {
         this.fieldNumber = fieldNumber;
@@ -83,5 +127,25 @@ public class Field extends JButton
 
     public FieldState getFieldState () {
         return fieldState;
+    }
+
+    public static int getFieldCount () {
+        return fieldCount;
+    }
+
+    public int getPrice () {
+        return price;
+    }
+
+    public int[] getTrainstation () {
+        return trainstation;
+    }
+
+    public int getCostPerHouse () {
+        return costPerHouse;
+    }
+
+    public int[] getWithHouses () {
+        return withHouses;
     }
 }
