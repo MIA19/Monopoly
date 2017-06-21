@@ -5,17 +5,20 @@ import javax.swing.*;
 
 public class Field extends JButton
 {
+    private static String name;
     private static int fieldCount;
     private int fieldNumber; //Nummer des Feldes
-
+    private FieldState fieldState;
     private int xCoord;
     private int yCoord;
 
-    public Field(int xCoord, int yCoord)
+    public Field(String name, int xCoord, int yCoord, FieldState fieldState)
     {
+        this.name = name;
         this.fieldNumber = Field.fieldCount + 1;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
+        this.fieldState = fieldState;
     }
 
     /*Constructor ohne Kaufpreis
@@ -39,6 +42,9 @@ public class Field extends JButton
         this.yCoord = yKoord;
     }*/
 
+    public static String getFieldName () {
+        return name;
+    }
 
     public int getFieldNumber()
     {
@@ -53,5 +59,9 @@ public class Field extends JButton
     public int getyCoord()
     {
         return yCoord;
+    }
+
+    public FieldState getFieldState () {
+        return fieldState;
     }
 }

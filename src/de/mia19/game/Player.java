@@ -5,18 +5,19 @@ package de.mia19.game;
  */
 public class Player
 {
-    private String username;
+    private Color color;
     private long money;
     private int position;
+    private boolean inJail;
 
-    public Player(String username)
+    public Player(Color color)
     {
-        this.username = username;
+        this.color = color;
     }
 
-    public String getUsername()
+    public Color getColor()
     {
-        return username;
+        return color;
     }
 
     public long getMoney()
@@ -47,5 +48,15 @@ public class Player
     public int getPosition()
     {
         return position;
+    }
+
+    public void setInJail(boolean inJail)
+    {
+        this.inJail = inJail;
+    }
+
+    public boolean isInJail()
+    {
+        return inJail;
     }
 }
