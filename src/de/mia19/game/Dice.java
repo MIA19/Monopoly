@@ -1,14 +1,19 @@
 package de.mia19.game;
 
+
 import java.util.Random;
 
-
-public class Wuerfeln {
+public class Dice {
     private int wuerfelEins;
     private int wuerfelZwei;
+    private Player player;
 
-    public int wirdGewuerfelt(){
+    public Dice(Player player) {
+        this.player = player;
+    }
 
+    public int roll(){
+        //player.isInJail();
         Random wuEins = new Random();
         int wuerfelEins = wuEins.nextInt(6) + 1;
         setWuerfelEins(wuerfelEins);
@@ -17,10 +22,11 @@ public class Wuerfeln {
         int wuerfelZwei = wuZwei.nextInt(6) + 1;
         setWuerfelZwei(wuerfelZwei);
 
+        istPasch();
         return wuerfelEins + wuerfelZwei;
     }
 
-    public boolean istPasch(){
+    private boolean istPasch(){
         return wuerfelEins == wuerfelZwei;
     }
 

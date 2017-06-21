@@ -8,7 +8,7 @@ public class Player
     private Color color;
     private long money;
     private int position;
-    private boolean inPrison;
+    private boolean inJail;
 
     public Player(Color color)
     {
@@ -50,13 +50,13 @@ public class Player
         return position;
     }
 
-    public void setInPrison(boolean inPrison)
+    public void setInJail(boolean inJail)
     {
-        this.inPrison = inPrison;
+        this.inJail = inJail;
     }
 
-    public boolean isInPrison()
+    public boolean isInJail()
     {
-        return inPrison;
+        return inJail;
     }
 }
