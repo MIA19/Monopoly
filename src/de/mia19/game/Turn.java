@@ -3,7 +3,8 @@ package de.mia19.game;
 /**
  * Spielerzug
  */
-public class Turn {
+public class Turn
+{
 
     private boolean threeRoundsInPrison;
     private boolean rollOrBuyOut; //roll == true; BuyOut == false
@@ -12,46 +13,58 @@ public class Turn {
     private Dice dice;
 
 
-    public Turn(boolean threeRoundsInPrison, boolean rollOrBuyOut, boolean passedStart) {
+    public Turn(boolean threeRoundsInPrison, boolean rollOrBuyOut, boolean passedStart)
+    {
         this.threeRoundsInPrison = threeRoundsInPrison;
         this.rollOrBuyOut = rollOrBuyOut;
         this.passedStart = passedStart;
     }
 
 
-
-
-    public boolean isThreeRoundsInPrison(){
-        if(!threeRoundsInPrison) {
+    public boolean isThreeRoundsInPrison()
+    {
+        if (!threeRoundsInPrison)
+        {
             return false;
         }
-        else{
+        else
+        {
             return true;
         }
 
     }
 
-    public int move(){
-        //brauche die Koordinaten
-
-    }
-
     //Würfelknopf wird gedrückt
-    public void diceButton(){
-        dice.roll();
-        if(dice.istPasch()){
+    public void diceButton()
+    {
+        if(player.isInJail())
+        {
             dice.roll();
-            if(dice.istPasch()){
-                dice.roll();
-                if(dice.istPasch()){
-                    player.setInJail(true);
-                }
-            }
+
+            if(dice.isDouble())
+                player.setInJail(false);
         }
-        else{
-            player. //Move methode noch nicht fertig
+        else
+        {
+            int number = dice.roll();
+            if(dice.getDoubleInARow() <= 3)
+            {
+                player.move(number);
+                performAction(number);
+            }
+            else
+                player.setInJail(true);
+
         }
     }
 
+    /**
+     * Was passiert auf dem Feld
+     * @param number
+     */
+    private void performAction(int number)
+    {
+
+    }
 
 }

@@ -4,9 +4,9 @@ package de.mia19.game;
 import java.util.Random;
 
 public class Dice {
-    private int wuerfelEins;
-    private int wuerfelZwei;
-    private int paschInARow;
+    private int diceOne;
+    private int diceTwo;
+    private int doubleInARow;
     private Player player;
 
     /**
@@ -22,51 +22,33 @@ public class Dice {
      * @return gibt die Insgesamte Würfelzahl an.
      */
     public int roll(){
-        Random wuEins = new Random();
-        int wuerfelEins = wuEins.nextInt(6) + 1;
-        setWuerfelEins(wuerfelEins);
+        Random random = new Random();
+        this.diceOne = random.nextInt(6) + 1;
+        this.diceTwo = random.nextInt(6) + 1;
 
-        Random wuZwei = new Random();
-        int wuerfelZwei = wuZwei.nextInt(6) + 1;
-        setWuerfelZwei(wuerfelZwei);
+        if(isDouble())
+            doubleInARow += 1;
 
-        istPasch();
-        if(paschInARow == 3){
-            player.setInJail(true);
-            paschInARow = 0;
-        }
-        return wuerfelEins + wuerfelZwei;
+        return diceOne + diceTwo;
     }
 
     /**
      *
      * @return falls True ist es ein Pasch, falls False ist es kein Pasch.
      */
-    public boolean istPasch(){
-        paschInARow += 1;
-        return wuerfelEins == wuerfelZwei;
+    public boolean isDouble(){
+        return diceOne == diceTwo;
     }
 
     /**
      * Wenn ein Neuer Spieler am zug ist, werden die Eigenschaften zurückgesetzt.
      */
     public void newPlayer(){
-        paschInARow = 0;
+        doubleInARow = 0;
     }
 
-//    public int getWuerfelEins() {
-//        return wuerfelEins;
-//    }
-
-    private void setWuerfelEins(int wuerfelEins) {
-        this.wuerfelEins = wuerfelEins;
-    }
-
-//    public int getWuerfelZwei() {
-//        return wuerfelZwei;
-//    }
-
-    private void setWuerfelZwei(int wuerfelZwei) {
-        this.wuerfelZwei = wuerfelZwei;
+    public int getDoubleInARow()
+    {
+        return doubleInARow;
     }
 }
