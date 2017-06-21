@@ -5,28 +5,21 @@ package de.mia19.game;
  */
 public class Turn {
 
-    private boolean inPrison;
     private boolean threeRoundsInPrison;
     private boolean rollOrBuyOut; //roll == true; BuyOut == false
     private boolean passedStart; //ja == true; nein == false
+    private Player player;
+    private Dice dice;
 
 
-
-    public Turn(boolean inPrison, boolean threeRoundsInPrison, boolean rollOrBuyOut, boolean passedStart) {
-        this.inPrison = inPrison;
+    public Turn(boolean threeRoundsInPrison, boolean rollOrBuyOut, boolean passedStart) {
         this.threeRoundsInPrison = threeRoundsInPrison;
         this.rollOrBuyOut = rollOrBuyOut;
         this.passedStart = passedStart;
     }
 
-    public boolean isInPrison(){
-        if(!inPrison) {
-            return false;
-        }
-        else
-            return true;
 
-        }
+
 
     public boolean isThreeRoundsInPrison(){
         if(!threeRoundsInPrison) {
@@ -35,5 +28,30 @@ public class Turn {
         else{
             return true;
         }
+
     }
+
+    public int move(){
+        //brauche die Koordinaten
+
+    }
+
+    //Würfelknopf wird gedrückt
+    public void diceButton(){
+        dice.roll();
+        if(dice.istPasch()){
+            dice.roll();
+            if(dice.istPasch()){
+                dice.roll();
+                if(dice.istPasch()){
+                    player.setInJail(true);
+                }
+            }
+        }
+        else{
+            player. //Move methode noch nicht fertig
+        }
+    }
+
+
 }
