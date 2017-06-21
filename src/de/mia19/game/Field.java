@@ -12,13 +12,33 @@ public class Field extends JButton
     private int xCoord;
     private int yCoord;
 
-    public Field(String name, int xCoord, int yCoord, FieldState fieldState)
+    private int price;
+    private int costPerHouse;
+    private int withHouses[] = new int[5];
+
+    public Field(String name, int xCoord, int yCoord, FieldState fieldState, int fieldPrice, int houseCost, int withOneHouse, int withTwoHouses, int withThreeHouses, int withFourHouses, int withVilla)
     {
         this.name = name;
         this.fieldNumber = Field.fieldCount + 1;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
         this.fieldState = fieldState;
+        if(fieldState.isBuyAble ()){
+            this.price = fieldPrice;
+            this.costPerHouse = houseCost;
+            this.withHouses[0] = withOneHouse;
+            this.withHouses[1] = withTwoHouses;
+            this.withHouses[2] = withThreeHouses;
+            this.withHouses[3] = withFourHouses;
+            this.withHouses[4] = withVilla;
+        }
+    }
+
+    public Field (String name, int xCoord, int yCoord, FieldState fieldState) {
+        this.name = name;
+        this.fieldNumber = Field.fieldCount + 1;
+        this.xCoord = xCoord;
+        this.yCoord = yCoord;
     }
 
     /*Constructor ohne Kaufpreis
