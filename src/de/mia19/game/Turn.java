@@ -1,7 +1,7 @@
 package de.mia19.game;
 
 /**
- * Spielerzug
+ * Spielerzugg
  */
 public class Turn {
 
