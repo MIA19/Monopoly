@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class StartScreen extends JFrame
 {
-    private static Theme theme = Theme.original;
+    public static Theme theme = Theme.original;
 
     private Button startBtn;
     private Button configuration;
