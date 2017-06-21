@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class StartScreen extends JFrame
 {
-    public static Theme theme = Theme.original;
+    private static Theme theme = Theme.original;
 
     private Button startBtn;
     private Button configuration;
@@ -54,7 +54,7 @@ public class StartScreen extends JFrame
         });
 
         this.credits = new Button("Credits", theme);
-        this.credits.addActionListener(e -> JOptionPane.showMessageDialog(null, "Programmiert von: \n-Dakiber\n-Nyos\n-S4N1TZ\n-Tadomi\n-Taizai\n-Vitrex\n-zInvalid \n\n Hat Nichts gemacht: \n-Alpha-kevin", "Credits", 0, new ImageIcon(RessourceLoader.getImage("icon.jpg"))));
+        this.credits.addActionListener(e -> JOptionPane.showMessageDialog(null, "Programmiert von: \n-Daniel\n-Hubert\n-Lucas\n-Noah\n-Philipp\n-Robin\n-Sandra \n\n Hat Nichts gemacht: \n-Florian", "Credits", 0, new ImageIcon(RessourceLoader.getImage("icon.jpg"))));
         this.credits.setOpaque(true);
 
         //Fenster hinzufügen
