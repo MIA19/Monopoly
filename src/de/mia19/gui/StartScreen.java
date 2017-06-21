@@ -25,6 +25,7 @@ public class StartScreen extends JFrame
         this.setLayout(new GridLayout(4, 1, 2, 2));
         this.setBackground(theme.getFarbeHintergrund());
         this.repaint();
+        this.setAlwaysOnTop(true);
         this.setIconImage(RessourceLoader.getImage("icon.jpg"));
         //Text
         final JLabel launchScreen = new JLabel("MONOPOLY");
