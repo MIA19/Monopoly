@@ -128,4 +128,24 @@ public class Field extends JButton
     public FieldState getFieldState () {
         return fieldState;
     }
+
+    public static int getFieldCount () {
+        return fieldCount;
+    }
+
+    public int getPrice () {
+        return price;
+    }
+
+    public int[] getTrainstation () {
+        return trainstation;
+    }
+
+    public int getCostPerHouse () {
+        return costPerHouse;
+    }
+
+    public int[] getWithHouses () {
+        return withHouses;
+    }
 }
