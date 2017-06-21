@@ -21,6 +21,7 @@ public class StartScreen extends JFrame
         this.setSize(400, 400);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setAlwaysOnTop(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLayout(new GridLayout(4, 1, 2, 2));
         this.setBackground(theme.getFarbeHintergrund());
@@ -29,7 +30,8 @@ public class StartScreen extends JFrame
         //Text
         final JLabel launchScreen = new JLabel("MONOPOLY");
         launchScreen.setBackground(theme.getFarbeHintergrund());
-        launchScreen.setOpaque(true);
+
+        launchScreen.setOpaque(true); // BUG FIXED: Screen in Background, if theme changed
         launchScreen.setFont(new Font("Arial", Font.BOLD, 30));
         launchScreen.setForeground(theme.getFarbeText());
         launchScreen.setHorizontalAlignment(SwingConstants.CENTER);
@@ -54,7 +56,7 @@ public class StartScreen extends JFrame
         });
 
         this.credits = new Button("Credits", theme);
-        this.credits.addActionListener(e -> JOptionPane.showMessageDialog(null, "Programmiert von: \n-Dakiber\n-Nyos\n-S4N1TZ\n-Tadomi\n-Taizai\n-Vitrex\n-zInvalid \n\n Hat Nichts gemacht: \n-Alpha-kevin", "Credits", 0, new ImageIcon(RessourceLoader.getImage("icon.jpg"))));
+        this.credits.addActionListener(e -> JOptionPane.showMessageDialog(null, "Programmiert von: \n-Dakiber\n-Nyos\n-S4N1TZ\n-Tadomi\n-Taizai\n-Vitrex\n-zInvalid\n-floreich \n\n Hat Nichts gemacht: \n-Alpha-kevin", "Credits", 0, new ImageIcon(RessourceLoader.getImage("icon.jpg"))));
         this.credits.setOpaque(true);
 
         //Fenster hinzufügen
