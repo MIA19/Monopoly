@@ -54,7 +54,7 @@ public class StartScreen extends JFrame
         });
 
         this.credits = new Button("Credits", theme);
-        this.credits.addActionListener(e -> JOptionPane.showMessageDialog(null, "Programmiert von: \n-Daniel\n-Hubert\n-Lucas\n-Noah\n-Philipp\n-Robin\n-Sandra \n\n Hat Nichts gemacht: \n-Florian", "Credits", 0, new ImageIcon(RessourceLoader.getImage("icon.jpg"))));
+        this.credits.addActionListener(e -> JOptionPane.showMessageDialog(null, "Programmiert von: \n-Daniel\n-Hubert\n-Lucas\n-Noah\n-Philipp\n-Robin\n-Sandra\n-Florian \n\n-", "Credits", 0, new ImageIcon(RessourceLoader.getImage("icon.jpg"))));
         this.credits.setOpaque(true);
 
         //Fenster hinzufügen
