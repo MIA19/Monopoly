@@ -6,14 +6,22 @@ import java.util.Random;
 public class Dice {
     private int wuerfelEins;
     private int wuerfelZwei;
+    private int paschInARow;
     private Player player;
 
+    /**
+     * Verbindet den Spieler mit den Würfel.
+     * @param player
+     */
     public Dice(Player player) {
         this.player = player;
     }
 
+    /**
+     * Würfelt mit beiden Würfeln.
+     * @return gibt die Insgesamte Würfelzahl an.
+     */
     public int roll(){
-        //player.isInJail();
         Random wuEins = new Random();
         int wuerfelEins = wuEins.nextInt(6) + 1;
         setWuerfelEins(wuerfelEins);
@@ -23,11 +31,20 @@ public class Dice {
         setWuerfelZwei(wuerfelZwei);
 
         istPasch();
+        if(paschInARow == 3){
+            player.setInJail(true);
+            paschInARow = 0;
+        }
         return wuerfelEins + wuerfelZwei;
     }
 
-    private boolean istPasch(){
+    public boolean istPasch(){
+        paschInARow += 1;
         return wuerfelEins == wuerfelZwei;
+    }
+
+    public void newPlayer(){
+        paschInARow = 0;
     }
 
 //    public int getWuerfelEins() {
