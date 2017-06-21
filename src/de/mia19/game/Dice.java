@@ -11,7 +11,7 @@ public class Dice {
 
     /**
      * Verbindet den Spieler mit den Würfel.
-     * @param player
+     * @param player der Spieler
      */
     public Dice(Player player) {
         this.player = player;
@@ -38,11 +38,18 @@ public class Dice {
         return wuerfelEins + wuerfelZwei;
     }
 
+    /**
+     *
+     * @return falls True ist es ein Pasch, falls False ist es kein Pasch.
+     */
     public boolean istPasch(){
         paschInARow += 1;
         return wuerfelEins == wuerfelZwei;
     }
 
+    /**
+     * Wenn ein Neuer Spieler am zug ist, werden die Eigenschaften zurückgesetzt.
+     */
     public void newPlayer(){
         paschInARow = 0;
     }
