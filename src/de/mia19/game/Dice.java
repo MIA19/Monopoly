@@ -34,7 +34,7 @@ public class Dice {
 
     /**
      *
-     * @return falls True ist es ein Pasch, falls False ist es kein Pasch.
+     * @return falls True ist es ein Passch, falls False ist es kein Pasch.
      */
     public boolean isDouble(){
         return diceOne == diceTwo;
