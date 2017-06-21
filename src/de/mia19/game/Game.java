@@ -1,10 +1,8 @@
 package de.mia19.game;
 
-import de.mia19.net.GameClient;
-import de.mia19.net.GameServer;
-import de.mia19.net.packets.Packet00Login;
-
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Game
@@ -13,92 +11,41 @@ public class Game
     private static final String NAME = "Monopoly";
     private static Game instance;
 
-
-    private JFrame frame;
-    private boolean running = false;
-    private Player player;
-    private GameClient client;
-    private GameServer server;
-
+    private List<Player> players;
+    private Player activePlayer;
     //DEFAULT VALUES
+
     private long START_MONEY = 400;
     public boolean FREE_PARKING;
     public boolean DOUBLE_MONEY;
 
-    private int PORT = 1330;
     private Thread thread;
-
-    private void init()
-    {
-        instance = this;
-
-        //TODO Player assign color automatically
-        player = new PlayerMP(Color.RED, null, -1);
-
-        Packet00Login loginPacket = new Packet00Login(player.getColor());
-
-        if (server != null)
-            server.addConnection((PlayerMP) player, loginPacket);
-
-        loginPacket.writeData(client);
-
-        //SETTING GAME SETTINGS
-        player.setMoney(START_MONEY);
-    }
 
     public synchronized void start()
     {
-        running = true;
+        instance = this;
 
         thread = new Thread(NAME + "_main");
         thread.start();
 
-        if (JOptionPane.showConfirmDialog(null, "Spiel hosten?") == JOptionPane.YES_OPTION)
+
+        players = new ArrayList<>();
+        int playerCount = Integer.parseInt(JOptionPane.showInputDialog("Anzahl"));
+
+        //TODO Player assign color automatically
+        for(int i = 0;i < playerCount; i++)
         {
-            JTextField port = new JTextField();
-            JTextField startMoney = new JTextField();
-            final JComponent[] inputs = new JComponent[]{
-                    new JLabel("<html>Port (<i>1330</i>):</html>"),
-                    port,
-                    //new JLabel("<html>Startgeld (<i>400</i>):</html>"),
-                    //startMoney
-            };
+            players.add(new Player(Color.parseString(JOptionPane.showInputDialog("Farbe"))));
 
-            int result = JOptionPane.showConfirmDialog(null, inputs, "Spieleinstellungen", JOptionPane.OK_CANCEL_OPTION);
-
-            if (result == JOptionPane.YES_OPTION)
-            {
-                if (!port.getText().isEmpty())
-                    this.PORT = Integer.parseInt(port.getText());
-                else if (!startMoney.getText().isEmpty())
-                    this.START_MONEY = Long.parseLong(startMoney.getText());
-
-                System.out.println("Port" + this.PORT);
-                server = new GameServer(this, this.PORT);
-                server.start();
-
-                client = new GameClient(this, "localhost", this.PORT);
-                client.start();
-            }
-            else
-            {
-                System.exit(0);
-            }
-        }
-        else
-        {
-            String port = JOptionPane.showInputDialog("Port");
-            client = new GameClient(this, "localhost", Integer.parseInt(port));
-            client.start();
+            //SETTING GAME SETTINGS
+            players.get(i).setMoney(START_MONEY);
         }
 
-        init();
+        activePlayer = players.get(0);
     }
 
     public synchronized void stop()
     {
-        running = false;
-
         try
         {
             thread.join();
