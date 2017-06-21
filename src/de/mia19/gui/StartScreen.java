@@ -30,8 +30,6 @@ public class StartScreen extends JFrame
         //Text
         final JLabel launchScreen = new JLabel("MONOPOLY");
         launchScreen.setBackground(theme.getFarbeHintergrund());
-
-        launchScreen.setOpaque(true); // BUG FIXED: Screen in Background, if theme changed
         launchScreen.setFont(new Font("Arial", Font.BOLD, 30));
         launchScreen.setForeground(theme.getFarbeText());
         launchScreen.setHorizontalAlignment(SwingConstants.CENTER);
