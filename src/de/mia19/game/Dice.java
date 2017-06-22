@@ -6,15 +6,12 @@ import java.util.Random;
 public class Dice {
     private int diceOne;
     private int diceTwo;
-    private int doubleInARow;
-    private Player player;
 
     /**
      * Verbindet den Spieler mit den Würfel.
-     * @param player der Spieler
+     *
      */
-    public Dice(Player player) {
-        this.player = player;
+    public Dice() {
     }
 
     /**
@@ -25,9 +22,6 @@ public class Dice {
         Random random = new Random();
         this.diceOne = random.nextInt(6) + 1;
         this.diceTwo = random.nextInt(6) + 1;
-
-        if(isDouble())
-            doubleInARow += 1;
 
         return diceOne + diceTwo;
     }
@@ -43,12 +37,11 @@ public class Dice {
     /**
      * Wenn ein Neuer Spieler am zug ist, werden die Eigenschaften zurückgesetzt.
      */
-    public void newPlayer(){
-        doubleInARow = 0;
-    }
+//    public void newPlayer(){
+//    }
 
-    public int getDoubleInARow()
-    {
-        return doubleInARow;
-    }
+//    public int getDoubleInARow()
+//    {
+//        return doubleInARow;
+//    }
 }
