@@ -73,7 +73,14 @@ public class Turn
      */
     private void performAction(int number)
     {
-
+        switch (number)
+        {
+            case 1:
+            case 2:
+            case 3:
+                Field field = Field.getFromNumber(number);
+                field.getFieldState();
+        }
     }
 
 }
