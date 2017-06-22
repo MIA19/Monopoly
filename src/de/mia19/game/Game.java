@@ -63,12 +63,12 @@ public class Game
         if(gameTheme == Theme.original) {
             list.add (new Field ("Start", 0, 0, FieldState.startField));
             list.add (new Field ("Bad Straße", 0, 0, FieldState.normalStreets,60, 50, 10, 30,90,160,250));
-            list.add (new Field ("GemeinschaftsFeld", 0, 0, FieldState.cardField));
+            list.add (new Field ("Gemeinschaftsfeld", 0, 0, FieldState.cardField));
             list.add (new Field ("Turm Straße", 0, 0, FieldState.normalStreets, 60,50, 20,60,180,320,450));
             list.add (new Field ("Einkommensteuer", 0, 0, FieldState.taxField));
             list.add (new Field ("Süd Bahnhof", 0, 0, FieldState.trainStation, 200, 100,200,300,400));
             list.add (new Field ("Chaussee Straße", 0, 0, FieldState.normalStreets, 100, 50,30,90,270,400,550));
-            list.add (new Field ("EreignisFeld", 0, 0, FieldState.cardField));
+            list.add (new Field ("Ereignisfeld", 0, 0, FieldState.cardField));
             list.add (new Field ("Elisen Straße", 0, 0, FieldState.normalStreets, 100,50,30,90,270,400,550));
             list.add (new Field ("Post Straße", 0, 0, FieldState.normalStreets, 120,50,40,100,300,450,600));
             list.add (new Field ("Gefängnis", 0, 0, FieldState.prison));
@@ -94,7 +94,7 @@ public class Game
             list.add (new Field ("Gehe ins Gefängnis", 0, 0, FieldState.goToPrison));
             list.add (new Field ("Rathaus Platz", 0, 0, FieldState.normalStreets,300,200,130,390,900,1100,1275));
             list.add (new Field ("Haupt Straße", 0, 0, FieldState.normalStreets,300,200,130,390,900,1100,1275));
-            list.add (new Field ("GemeinschaftsFeld", 0, 0, FieldState.cardField));
+            list.add (new Field ("Gemeinschaftsfeld", 0, 0, FieldState.cardField));
             list.add (new Field ("Bahnhof Straße", 0, 0, FieldState.normalStreets, 320,200,150,450,1000,1200,1400));
             list.add (new Field ("Haupt Bahnhof", 0, 0, FieldState.trainStation,200,100,200,300,400));
             list.add (new Field ("Ereignisfeld", 0, 0, FieldState.cardField));
@@ -103,6 +103,37 @@ public class Game
             list.add (new Field ("Schloss Allee", 0, 0, FieldState.normalStreets,400,200,200,600,1400,1700,2000));
         }else if(gameTheme == Theme.lette){
             list.add (new Field ("Start", 0, 0, FieldState.startField));
+            list.add (new Field ("Bäcker", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Gemeinschaftsfeld", 0, 0, FieldState.cardField));
+            list.add (new Field ("Mensa", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Einkommensteuer", 0, 0, FieldState.taxField));
+            list.add (new Field ("Haupteingang", 0, 0, FieldState.trainStation));
+            list.add (new Field ("Animationstechnik", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Ereignisfeld", 0, 0, FieldState.cardField));
+            list.add (new Field ("Sensortechnik", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
+            list.add (new Field ("Mathe", 0, 0, FieldState.prison));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Elektrizitätsraum", 0, 0, FieldState.taxField));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Westeingang", 0, 0, FieldState.trainStation));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Gemeinschaftsfeld", 0, 0, FieldState.cardField));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Chillraum", 0, 0, FieldState.freeParking));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Ereignisfeld", 0, 0, FieldState.cardField));
+            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
+            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
+            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
+            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
+            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
+            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
+            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
+            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
+            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
         }
 
         return list;
