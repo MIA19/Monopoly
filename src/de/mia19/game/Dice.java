@@ -34,6 +34,8 @@ public class Dice {
         return diceOne == diceTwo;
     }
 
+
+
     /**
      * Wenn ein Neuer Spieler am zug ist, werden die Eigenschaften zurückgesetzt.
      */
