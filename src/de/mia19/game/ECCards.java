@@ -9,7 +9,7 @@ public class ECCards {
 
 
     /**
-     * ausführung der Metoden geselschaftskarten() und ereigniskarten()
+     * ausführung der Metoden geselschaftskarten() und ereigniskarten().
      */
     public ECCards() {
         gemeinschaftskarten();
@@ -17,7 +17,7 @@ public class ECCards {
     }
 
     /**
-     * Erstellung einer ArrayList "deck" mit 15 verschiedenen Gemeinschaftskarten
+     * Erstellung einer ArrayList "deck" mit 15 verschiedenen Gemeinschaftskarten.
      */
     public void gemeinschaftskarten(){
         ArrayList<Communitycard> deck = new ArrayList<>();
@@ -45,7 +45,7 @@ public class ECCards {
     }
 
     /**
-     * Erstellung einer ArrayList deck mit 16 verschiedenen Ereigbiskarten
+     * Erstellung einer ArrayList deck mit 16 verschiedenen Ereigbiskarten.
      */
     public void ereigniskarten(){
         ArrayList<Eventcard> deck = new ArrayList<>();

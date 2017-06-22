@@ -10,8 +10,8 @@ public class Eventcard {
 
     /**
      *
-     * @param money long,der dem Geld in dem Event entspricht. bei einer erforderlichen Zahlung ist dieser Wert negativ, bei erhalt von Geld positiv
-     * @param event String eine Umschreibung des Ereignisses
+     * @param money long,der dem Geld in dem Event entspricht. bei einer erforderlichen Zahlung ist dieser Wert negativ, bei erhalt von Geld positiv.
+     * @param event String eine Umschreibung des Ereignisses.
      */
     public Eventcard(int money, String event) {
         this.money = money;

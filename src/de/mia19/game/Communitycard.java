@@ -12,8 +12,8 @@ public class Communitycard {
 
     /**
      *
-     * @param money long,der dem Geld in dem Event entspricht. bei einer erforderlichen Zahlung ist dieser Wert negativ, bei erhalt von Geld positiv
-     * @param event String eine Umschreibung des Ereignisses
+     * @param money long,der dem Geld in dem Event entspricht. bei einer erforderlichen Zahlung ist dieser Wert negativ, bei erhalt von Geld positiv.
+     * @param event String eine Umschreibung des Ereignisses.
      */
     public Communitycard(long money, String event) {
         this.money = money;
