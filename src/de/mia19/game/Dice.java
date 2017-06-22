@@ -32,6 +32,14 @@ public class Dice {
         return diceOne + diceTwo;
     }
 
+    public int getDiceOne() {
+        return diceOne;
+    }
+
+    public int getDiceTwo() {
+        return diceTwo;
+    }
+
     /**
      *
      * @return falls True ist es ein Passch, falls False ist es kein Pasch.
@@ -39,6 +47,8 @@ public class Dice {
     public boolean isDouble(){
         return diceOne == diceTwo;
     }
+
+
 
     /**
      * Wenn ein Neuer Spieler am zug ist, werden die Eigenschaften zurückgesetzt.
