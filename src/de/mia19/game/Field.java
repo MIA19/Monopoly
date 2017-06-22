@@ -127,4 +127,15 @@ public class Field extends JButton
     public int[] getWithHouses () {
         return withHouses;
     }
+
+    public static Field getFromNumber(int fieldNumber)
+    {
+        for(Field field : Game.instance.fields)
+        {
+            if(field.getFieldNumber() == fieldNumber)
+                return field;
+        }
+
+        return null;
+    }
 }

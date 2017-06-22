@@ -26,6 +26,14 @@ public class Dice {
         return diceOne + diceTwo;
     }
 
+    public int getDiceOne() {
+        return diceOne;
+    }
+
+    public int getDiceTwo() {
+        return diceTwo;
+    }
+
     /**
      *
      * @return falls True ist es ein Pasch, falls False ist es kein Pasch.
