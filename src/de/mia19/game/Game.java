@@ -114,7 +114,7 @@ public class Game
             list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
             list.add (new Field ("Mathe", 0, 0, FieldState.prison));
             list.add (new Field ("", 0, 0, FieldState.normalStreets));
-            list.add (new Field ("Elektrizitätsraum", 0, 0, FieldState.taxField));
+            list.add (new Field ("Elektrizitätsraum", 0, 0, FieldState.workField));
             list.add (new Field ("", 0, 0, FieldState.normalStreets));
             list.add (new Field ("", 0, 0, FieldState.normalStreets));
             list.add (new Field ("Westeingang", 0, 0, FieldState.trainStation));
@@ -125,15 +125,21 @@ public class Game
             list.add (new Field ("Chillraum", 0, 0, FieldState.freeParking));
             list.add (new Field ("", 0, 0, FieldState.normalStreets));
             list.add (new Field ("Ereignisfeld", 0, 0, FieldState.cardField));
-            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
-            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
-            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
-            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
-            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
-            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
-            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
-            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
-            list.add (new Field ("Digitaltechnik", 0, 0, FieldState.taxField));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Nordeingang", 0, 0, FieldState.trainStation));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Toilette", 0, 0, FieldState.workField));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Herr Bode", 0, 0, FieldState.goToPrison));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("Osteingang", 0, 0, FieldState.trainStation));
+            list.add (new Field ("Ereignisfeld", 0, 0, FieldState.cardField));
+            list.add (new Field ("Mediengestaltung", 0, 0, FieldState.normalStreets));
+            list.add (new Field ("zusatzsteuer", 0, 0, FieldState.taxField));
+            list.add (new Field ("Programmiersprachen", 0, 0, FieldState.normalStreets));
         }
 
         return list;
