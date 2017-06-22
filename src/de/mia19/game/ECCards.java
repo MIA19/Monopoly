@@ -19,7 +19,7 @@ public class ECCards {
     /**
      * Erstellung einer ArrayList "deck" mit 15 verschiedenen Gemeinschaftskarten.
      */
-    public void gemeinschaftskarten(){
+    public ArrayList gemeinschaftskarten(){
         ArrayList<Communitycard> deck = new ArrayList<>();
 
         deck.add(new Communitycard(100, "Du erhälst 100."));
@@ -41,13 +41,14 @@ public class ECCards {
         deck.add(new Communitycard(30, "Du erhälst 30"));
         deck.add(new Communitycard(50, "Du erhälst 50"));
         deck.add(new Communitycard(-200, "Gehe in "+Field.getFieldName()+ ". Begib dich dierekt dort hin, gehe nicht über `Los` und ziehe keine 200 ein"));
-        //Lücke mit feld füllen....
+        //TODO Lücke mit feld füllen....
+        return deck;
     }
 
     /**
      * Erstellung einer ArrayList deck mit 16 verschiedenen Ereigbiskarten.
      */
-    public void ereigniskarten(){
+    public ArrayList ereigniskarten(){
         ArrayList<Eventcard> deck = new ArrayList<>();
         deck.add(new Eventcard(0, "Gehe 3 Felder zurück."));
         deck.add(new Eventcard(40, "Straßenausbesserungsarbeiten sind dringend nötig zahle 40."));
@@ -65,6 +66,6 @@ public class ECCards {
         deck.add(new Eventcard(0, "Mache einen Ausflug zum "+Field.getFieldName()+". Wenn du über `Los` kommst, ziehe 200 Gehalt ein."));
         deck.add(new Eventcard(0, "Gehe zur "+Field.getFieldName()+". Gehe nicht über `Los`und ziehe 200 ein"));
         deck.add(new Eventcard(0, "Rücke vor bis `Los`."));
-
+        return deck;
     }
 }
