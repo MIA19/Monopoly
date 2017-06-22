@@ -85,27 +85,6 @@ public class Field extends JButton
         this.trainstation[2] = threeStations;
         this.trainstation[3] = allStations;
     }
-    /*Constructor ohne Kaufpreis
-    public Field(int fieldNumber, String name) {
-        this.fieldNumber = fieldNumber;
-        this.name = name;
-        this.buyable = false;
-        this.alreadyBought = false;
-    }
-
-    //Constructor mit Kaufpreis
-    public Field(int fieldNumber, String name, int preis, int hausKosten, int xKoord, int yKoord) {
-        this.fieldNumber = fieldNumber;
-        this.name = name;
-        this.fieldPrice = preis;
-        this.buyable = true;
-        this.alreadyBought = false;
-        this.counterHouse = 0;
-        this.housePrice = hausKosten;
-        this.xCoord = xKoord;
-        this.yCoord = yKoord;
-    }*/
-
     public static String getFieldName () {
         return name;
     }
