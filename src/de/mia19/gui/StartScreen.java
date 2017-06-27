@@ -23,7 +23,7 @@ public class StartScreen extends JFrame
         this.setLayout(new GridLayout(4, 1, 2, 2));
         this.setBackground(game.theme.getFarbeHintergrund());
         this.repaint();
-        this.setAlwaysOnTop(true);
+        //this.setAlwaysOnTop(true);
         this.setIconImage(RessourceLoader.getImage("icon.jpg"));
         //Text
         final JLabel launchScreen = new JLabel("MONOPOLY");
@@ -53,7 +53,7 @@ public class StartScreen extends JFrame
         });
 
         this.credits = new Button("Credits", game.theme);
-        this.credits.addActionListener(e -> JOptionPane.showMessageDialog(null, "Programmiert von: \n-Daniel\n-Hubert\n-Lucas\n-Noah\n-Philipp\n-Robin\n-Sandra\n-Florian\n", "Credits", 0, new ImageIcon(RessourceLoader.getImage("icon.jpg"))));
+        this.credits.addActionListener(e -> JOptionPane.showMessageDialog(this, "Programmiert von: \n-Daniel\n-Hubert\n-Lucas\n-Noah\n-Philipp\n-Robin\n-Sandra\n-Florian\n", "Credits", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(RessourceLoader.getImage("icon.jpg"))));
         this.credits.setOpaque(true);
 
         //Fenster hinzufügen

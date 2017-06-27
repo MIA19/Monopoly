@@ -23,9 +23,13 @@ public class Game
 
     private Thread thread;
 
-    public synchronized void start()
+    public Game()
     {
         instance = this;
+    }
+
+    public synchronized void start()
+    {
 
         thread = new Thread(NAME + "_main");
         thread.start();
