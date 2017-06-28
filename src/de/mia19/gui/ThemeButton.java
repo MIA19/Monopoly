@@ -1,5 +1,7 @@
 package de.mia19.gui;
 
+import de.mia19.game.Game;
+
 import javax.swing.*;
 
 public class ThemeButton extends JRadioButton
@@ -10,7 +12,7 @@ public class ThemeButton extends JRadioButton
     {
         this.setText(text);
         this.theme = theme;
-        if(StartScreen.theme == theme)
+        if(Game.instance.theme == theme)
             this.setSelected(true);
     }
 

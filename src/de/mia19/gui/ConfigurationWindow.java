@@ -14,7 +14,7 @@ public class ConfigurationWindow extends JFrame
     {
         this.setTitle("Einstellungen");
         this.setSize(400,400);
-        this.setBackground(StartScreen.theme.getFarbeHintergrund());
+        this.setBackground(Game.instance.theme.getFarbeHintergrund());
         this.repaint();
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -25,8 +25,8 @@ public class ConfigurationWindow extends JFrame
         themaText.setFont(new Font("Arial", Font.BOLD, 20));
 
         final JPanel themePanel = new JPanel();
-        themePanel.setBackground(StartScreen.theme.getFarbeHintergrund());
-        themePanel.setForeground(StartScreen.theme.getFarbeText());
+        themePanel.setBackground(Game.instance.theme.getFarbeHintergrund());
+        themePanel.setForeground(Game.instance.theme.getFarbeText());
         themePanel.setLayout(new GridLayout(4,1,2,2));
         themePanel.add(themaText);
 
@@ -37,8 +37,8 @@ public class ConfigurationWindow extends JFrame
         final JPanel configurePanel = new JPanel();
         this.add(configurePanel);
         configurePanel.setLayout(new GridLayout(2,1,2,2));
-        configurePanel.setBackground(StartScreen.theme.getFarbeHintergrund());
-        configurePanel.setForeground(StartScreen.theme.getFarbeText());
+        configurePanel.setBackground(Game.instance.theme.getFarbeHintergrund());
+        configurePanel.setForeground(Game.instance.theme.getFarbeText());
         configurePanel.add(configureText);
         configurePanel.add(themePanel);
         configurePanel.setBorder(BorderFactory.createBevelBorder(3));
@@ -63,7 +63,7 @@ public class ConfigurationWindow extends JFrame
             {
                 if(btn.isSelected())
                 {
-                    StartScreen.theme = btn.getTheme();
+                    Game.instance.theme = btn.getTheme();
                     break;
                 }
 

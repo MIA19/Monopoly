@@ -6,12 +6,15 @@ import java.util.Random;
 public class Dice {
     private int diceOne;
     private int diceTwo;
+    private int doubleInARow;
+    private Player player;
 
     /**
      * Verbindet den Spieler mit den Würfel.
-     *
+     * @param player der Spieler
      */
-    public Dice() {
+    public Dice(Player player) {
+        this.player = player;
     }
 
     /**
@@ -23,12 +26,23 @@ public class Dice {
         this.diceOne = random.nextInt(6) + 1;
         this.diceTwo = random.nextInt(6) + 1;
 
+        if(isDouble())
+            doubleInARow += 1;
+
         return diceOne + diceTwo;
+    }
+
+    public int getDiceOne() {
+        return diceOne;
+    }
+
+    public int getDiceTwo() {
+        return diceTwo;
     }
 
     /**
      *
-     * @return falls True ist es ein Pasch, falls False ist es kein Pasch.
+     * @return falls True ist es ein Passch, falls False ist es kein Pasch.
      */
     public boolean isDouble(){
         return diceOne == diceTwo;
@@ -39,11 +53,12 @@ public class Dice {
     /**
      * Wenn ein Neuer Spieler am zug ist, werden die Eigenschaften zurückgesetzt.
      */
-//    public void newPlayer(){
-//    }
+    public void newPlayer(){
+        doubleInARow = 0;
+    }
 
-//    public int getDoubleInARow()
-//    {
-//        return doubleInARow;
-//    }
+    public int getDoubleInARow()
+    {
+        return doubleInARow;
+    }
 }
