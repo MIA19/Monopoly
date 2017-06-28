@@ -13,7 +13,7 @@ public class GameScreen extends JFrame
 {
     public GameScreen(String theme, Theme gameTheme)
     {
-        Game.instance.createFieldfields(gameTheme);
+        Game.instance.createFieldList(gameTheme);
 
 
         this.setSize(1000, 820);

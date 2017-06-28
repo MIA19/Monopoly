@@ -10,7 +10,8 @@ import java.util.List;
 public class Game {
 
     private static final String NAME = "Monopoly";
-    private static Game instance;
+    public static Game instance;
+    public ArrayList<Field> fields;
 
     private List<Player> players;
     private Player activePlayer;
@@ -21,6 +22,7 @@ public class Game {
     public boolean DOUBLE_MONEY;
 
     private Thread thread;
+    public Theme theme;
 
     public synchronized void start () {
         instance = this;
@@ -48,6 +50,22 @@ public class Game {
             thread.join ();
         } catch (InterruptedException e) {
             e.printStackTrace ();
+        }
+    }
+
+    public void nextPlayer()
+    {
+        for(int i = 0; i < players.size(); i++)
+        {
+            if(players.get(i).equals(activePlayer))
+            {
+                if(i == (players.size() -1))
+                    activePlayer = players.get(0);
+                else
+                    activePlayer = players.get(i);
+
+            }
+            i++;
         }
     }
 
