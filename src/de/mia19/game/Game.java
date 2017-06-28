@@ -54,7 +54,7 @@ public class Game {
     public ArrayList createFieldList (Theme gameTheme) {
         final ArrayList<Object> list = new ArrayList<> ();
         if (gameTheme == Theme.original) {
-            list.add (new Field ("Start", 0, 0, FieldState.startField));
+            list.add (new Field ("Los", 0, 0, FieldState.startField));
             list.add (new Field ("Bad Straße", 0, 0, FieldState.normalStreets, 60, 50, 10, 30, 90, 160, 250));
             list.add (new Field ("Gemeinschaftsfeld", 0, 0, FieldState.cardField));
             list.add (new Field ("Turm Straße", 0, 0, FieldState.normalStreets, 60, 50, 20, 60, 180, 320, 450));
@@ -95,7 +95,7 @@ public class Game {
             list.add (new Field ("Zusatzsteuer", 0, 0, FieldState.taxField));
             list.add (new Field ("Schloss Allee", 0, 0, FieldState.normalStreets, 400, 200, 200, 600, 1400, 1700, 2000));
         } else if (gameTheme == Theme.lette) {
-            list.add (new Field ("Start", 0, 0, FieldState.startField));
+            list.add (new Field ("Los", 0, 0, FieldState.startField));
             list.add (new Field ("Bäcker", 0, 0, FieldState.normalStreets, 60, 50, 10, 30, 90, 160, 250));
             list.add (new Field ("Gemeinschaftsfeld", 0, 0, FieldState.cardField));
             list.add (new Field ("Mensa", 0, 0, FieldState.normalStreets, 60, 50, 20, 60, 180, 320, 450));
