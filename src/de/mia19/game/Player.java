@@ -9,12 +9,11 @@ public class Player
     private long money;
     private int position;
     private boolean inJail;
-    private int fieldNumber;
 
     public Player(Color color)
     {
         this.color = color;
-        this.fieldNumber = 0;
+        this.position = 0;
     }
 
     public Color getColor()
@@ -62,9 +61,10 @@ public class Player
         return inJail;
     }
 
-    public void move(int fieldNumber)
+    public void move(int fields)
     {
-        this.fieldNumber = fieldNumber;
+        //TODO NEU ANFANG ÜBER LOS
+        this.position += fields;
     }
 
     public void pay(Player to, long amount)
