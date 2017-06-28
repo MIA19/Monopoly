@@ -43,14 +43,19 @@ public class Turn
         if (player.isInJail()) {
             if (!isThreeRoundsInPrison()) {
                 Object[] buttons = {"Freikaufen", "Wuerfeln"};
-                int entscheidung = JOptionPane.showOptionDialog(null, "Freikaufen oder Würfeln?", "ENTSCHEIDUNG", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, buttons, null);
+                int entscheidung = JOptionPane.showOptionDialog(null, "Freikaufen oder Würfeln?", "ENTSCHEIDUNG",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, buttons, null);
 
-                if (entscheidung == 0) {
+                if (entscheidung == 1) {
                     dice.roll();
 
                     if (dice.isDouble())
                         player.setInJail(false);
                     player.move(dice.getDiceOne() + dice.getDiceTwo());
+                }
+
+                else if(entscheidung == 0){
+
                 }
             }
 
