@@ -13,7 +13,7 @@ public class Turn
     private boolean passedStart; //ja == true; nein == false
     private Player player;
     private Dice dice;
-
+    public boolean imBesitz;
 
     public Turn(boolean threeRoundsInPrison, boolean rollOrBuyOut, boolean passedStart)
     {
@@ -52,10 +52,20 @@ public class Turn
                     if (dice.isDouble())
                         player.setInJail(false);
                     player.move(dice.getDiceOne() + dice.getDiceTwo());
+
                 }
 
                 else if(entscheidung == 0){
-
+                    player.removeMoney(50);
+                    player.setInJail(false);
+                    dice.roll();
+                    if (dice.isDouble()){
+                        player.move(dice.getDiceOne() + dice.getDiceTwo());
+                        player.getPosition();
+                    }
+                    else{
+                        player.move(dice.getDiceOne() + dice.getDiceTwo());
+                    }
                 }
             }
 
@@ -78,13 +88,19 @@ public class Turn
      */
     private void performAction(int number)
     {
-        switch (number)
+        Field field = Field.getFromNumber(number);
+        switch (field.getFieldState())
         {
-            case 1:
-            case 2:
-            case 3:
-                Field field = Field.getFromNumber(number);
-                field.getFieldState();
+            case startField:
+                Game game = new Game();
+                if(game.DOUBLE_MONEY){
+                    player.addMoney(400);
+                }
+                else {
+                    player.addMoney(200);
+                }
+            case trainStation:
+
         }
     }
 
