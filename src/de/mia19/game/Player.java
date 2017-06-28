@@ -66,4 +66,19 @@ public class Player
     {
         this.fieldNumber = fieldNumber;
     }
+
+    public void pay(Player to, long amount)
+    {
+        if ((money - amount) < 0)
+        {
+            to.addMoney(money);
+            removeMoney(amount);
+            //TODO LOST
+        }
+        else
+        {
+            to.addMoney(amount);
+            removeMoney(amount);
+        }
+    }
 }
