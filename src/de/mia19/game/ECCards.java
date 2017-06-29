@@ -21,9 +21,9 @@ public class ECCards {
      */
     public ArrayList gemeinschaftskarten(){
         ArrayList<Communitycard> deck = new ArrayList<>();
-
-        deck.add(new Communitycard(100, "Du erhälst 100."));
-        deck.add(new Communitycard(-500, "Zahle 500."));
+//TODO pfade einfügen
+        deck.add(new Communitycard(100, "Du erhälst 100.",""));
+        deck.add(new Communitycard(-500, "Zahle 500.",""));
         deck.add(new Communitycard(-200, "Zahle 200."));
         deck.add(new Communitycard(100, "Preisgeld: 100"));
         deck.add(new Communitycard(0, "Heute ist dein Geburtstag. Jeder Mitspieler schenkt Dir 10"));
