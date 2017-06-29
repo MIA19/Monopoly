@@ -6,7 +6,7 @@ import java.util.Random;
 public class Dice {
     private int diceOne;
     private int diceTwo;
-    private int doubleInARow;
+   // private int doubleInARow;
     private Player player;
 
     /**
@@ -26,8 +26,8 @@ public class Dice {
         this.diceOne = random.nextInt(6) + 1;
         this.diceTwo = random.nextInt(6) + 1;
 
-        if(isDouble())
-            doubleInARow += 1;
+        /*if(isDouble())
+            doubleInARow += 1;*/
 
         return diceOne + diceTwo;
     }
@@ -53,12 +53,12 @@ public class Dice {
     /**
      * Wenn ein Neuer Spieler am zug ist, werden die Eigenschaften zurückgesetzt.
      */
-    public void newPlayer(){
+   /* public void newPlayer(){
         doubleInARow = 0;
     }
 
     public int getDoubleInARow()
     {
         return doubleInARow;
-    }
+    }*/
 }
