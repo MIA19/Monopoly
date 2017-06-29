@@ -15,7 +15,7 @@ public class StartScreen extends JFrame
 
     public StartScreen(Game game)
     {
-        this.setTitle("MONOPOLY - " + game.theme.getName() + " Version");
+        this.setTitle("MONOPOLY - " + game.instance.theme.getName() + " Version");
         this.setSize(400, 400);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
