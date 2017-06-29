@@ -1,5 +1,7 @@
 package de.mia19.game;
 
+import javax.swing.*;
+
 /**
  * Created by e6_luczak on 29.06.2017.
  */
@@ -10,6 +12,9 @@ public class Teststart
     {
         Turn turn = new Turn(new Player(Color.BLUE));
 
-        turn.rollButton();
+        if(turn.rollButton() == 0)
+        {
+            System.out.println("0");
+        }
     }
 }

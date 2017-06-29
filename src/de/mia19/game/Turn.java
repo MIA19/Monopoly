@@ -42,7 +42,7 @@ public class Turn
 
 
     //
-    public void istSpielerImGefängnis()
+    public void Spielerzug()
     {
         if (player.isInJail())
         {
@@ -54,76 +54,71 @@ public class Turn
 
                 if (entscheidung == 1)
                 {
+
                     dice.roll();
 
-                    if (dice.isDouble())
-                        player.setInJail(false);
-                    player.move(dice.getDiceOne() + dice.getDiceTwo());
-                    isPassedStart();
-                    //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
-
+                    ifPaschTrue();
+                }
+                if (!dice.isDouble())
+                {
+                    JOptionPane.showMessageDialog(null, "Kein Pasch, versuchs nochmal!");
+                    rollButton();
+                    if (rollButton() == 0)
+                    {
+                        dice.roll();
+                        ifPaschTrue();
+                    }
                     if (!dice.isDouble())
                     {
-                        int i = rollButton();
-                        if (i == 0)
+                        JOptionPane.showMessageDialog(null, "Kein Pasch, versuchs nochmal!");
+                        rollButton();
+                        if (rollButton() == 0)
                         {
                             dice.roll();
-                        }
-
-                        if (dice.isDouble())
-                        {
-                            player.setInJail(false);
-                            player.move(dice.getDiceOne() + dice.getDiceTwo());
-                            isPassedStart();
-                            //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                            ifPaschTrue();
                         }
                         if (!dice.isDouble())
                         {
-                            dice.roll();
+                            JOptionPane.showMessageDialog(null, "Kein Pasch nach 3 versuchen, du bleibst im Gefängnis.");
+                            player.setInJail(true);
 
-                            if (dice.isDouble())
-                            {
-                                player.setInJail(false);
-                                player.move(dice.getDiceOne() + dice.getDiceTwo());
-                                isPassedStart();
-                                //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
-                            }
-                            if (!dice.isDouble())
-                            {
-                                player.setInJail(true);
-
-                                //TODO: END TURN UND NÄCHSTER SPIELER IST DRAN
-                            }
+                            //TODO: END TURN UND NÄCHSTER SPIELER IST DRAN
                         }
 
-                    } else if (entscheidung == 0)
+                    }
+
+                } else if (entscheidung == 0)
+                {
+                    player.removeMoney(50);
+                    player.setInJail(false);
+                    dice.roll();
+                    if (dice.isDouble())
                     {
-                        player.removeMoney(50);
-                        player.setInJail(false);
-                        dice.roll();
-                        if (dice.isDouble())
-                        {
-                            player.move(dice.getDiceOne() + dice.getDiceTwo());
-                            isPassedStart();
-                            player.getPosition();
-                        } else
-                        {
-                            player.move(dice.getDiceOne() + dice.getDiceTwo());
-                            isPassedStart();
-                        }
+                        player.move(dice.getDiceOne() + dice.getDiceTwo());
+                        isPassedStart();
+                        player.getPosition();
+                    } else
+                    {
+                        player.move(dice.getDiceOne() + dice.getDiceTwo());
+                        isPassedStart();
                     }
                 }
             }
             if (isThreeRoundsInPrison())
             {
+
                 wuerfeln();
             }
         }
+
         if (!player.isInJail())
         {
             wuerfeln();
         }
     }
+
+
+
 
 
     /**
@@ -153,20 +148,10 @@ public class Turn
 
     public void wuerfeln()
     {
-        dice.roll();
-        if (!dice.isDouble())
+        rollButton();
+        if(rollButton() == 0)
         {
-            player.move(dice.getDiceOne() + dice.getDiceTwo());
-            isPassedStart();
-            //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
-        }
-        if (dice.isDouble())
-        {
-            player.move(dice.getDiceOne() + dice.getDiceTwo());
-            isPassedStart();
-            //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN
             dice.roll();
-
             if (!dice.isDouble())
             {
                 player.move(dice.getDiceOne() + dice.getDiceTwo());
@@ -178,20 +163,41 @@ public class Turn
                 player.move(dice.getDiceOne() + dice.getDiceTwo());
                 isPassedStart();
                 //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN
-                dice.roll();
-                if (!dice.isDouble())
+                rollButton();
+                if(rollButton() == 0)
                 {
-                    player.move(dice.getDiceOne() + dice.getDiceTwo());
-                    isPassedStart();
-                    //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                    dice.roll();
+                    if (!dice.isDouble())
+                    {
+                        player.move(dice.getDiceOne() + dice.getDiceTwo());
+                        isPassedStart();
+                        //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                    }
+                    if (dice.isDouble())
+                    {
+                        player.move(dice.getDiceOne() + dice.getDiceTwo());
+                        isPassedStart();
+                        //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN
+                        rollButton();
+                        if(rollButton() == 0)
+                        {
+                            dice.roll();
+                            if (!dice.isDouble())
+                            {
+                                player.move(dice.getDiceOne() + dice.getDiceTwo());
+                                isPassedStart();
+                                //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                            }
+                            if (dice.isDouble())
+                            {
+                                player.setInJail(true);
+                                //TODO: SPIELER INS GEFÄNGNIS BEWEGEN, ZUG BEENDEN, NÄCHSTER SPIELER IST DRAN
+                            }
+                        }
+                    }
                 }
-                if (dice.isDouble())
-                {
-                    player.setInJail(true);
-                    //TODO: SPIELER INS GEFÄNGNIS BEWEGEN, ZUG BEENDEN, NÄCHSTER SPIELER IST DRAN
-                }
-            }
 
+            }
         }
     }
 
@@ -201,5 +207,18 @@ public class Turn
         return JOptionPane.showOptionDialog(null, player.getColor().getName() + " ist am Zug!", "",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, wuerfeln, null);
     }
+
+    public void ifPaschTrue(){
+        if (dice.isDouble())
+        {
+            JOptionPane.showMessageDialog(null, "Du hast einen Pasch gewürfelt und kommst aus dem Gefängnis.");
+            player.setInJail(false);
+            player.move(dice.getDiceOne() + dice.getDiceTwo());
+            isPassedStart();
+            //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+        }
+    }
+
 }
+
 
