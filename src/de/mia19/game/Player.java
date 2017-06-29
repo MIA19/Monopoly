@@ -82,7 +82,8 @@ public class Player
     }
 
     //TODO gehe zu für die ECCards
-    public void moveto()
+    public void moveto(int field)
     {
+        this.position=field;
     }
 }
