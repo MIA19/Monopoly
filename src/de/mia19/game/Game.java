@@ -81,6 +81,11 @@ public class Game {
         }
     }
 
+
+    public Player getActivePlayer() {
+        return activePlayer;
+    }
+
     public void nextPlayer()
     {
         for(int i = 0; i < players.size(); i++)

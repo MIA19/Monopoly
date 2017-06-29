@@ -36,7 +36,7 @@ public class ECCards {
         deck.add(new Communitycard(-100, "Zahle 100",""));
         deck.add(new Communitycard(30, "Du erhälst 30",""));
         deck.add(new Communitycard(50, "Du erhälst 50",""));
-        deck.add(new Communitycard(-200, "Gehe in "+Field.getFieldName()+ ". Begib dich dierekt dort hin, gehe nicht über `Los` und ziehe keine 200 ein",""));
+        deck.add(new Communitycard(-200, "Gehe in "+Field.getFromNumber(Game.instance.getActivePlayer().getPosition()).getFieldName()+ ". Begib dich dierekt dort hin, gehe nicht über `Los` und ziehe keine 200 ein",""));
         return deck;
     }
 
@@ -47,19 +47,19 @@ public class ECCards {
         ArrayList<Eventcard> deck = new ArrayList<>();
         deck.add(new Eventcard(0, "Gehe 3 Felder zurück.",""));
         deck.add(new Eventcard(40, "Straßenausbesserungsarbeiten sind dringend nötig zahle 40.",""));
-        deck.add(new Eventcard(0, "Rücke vor bis zu "+Field.getFieldName()+". Wenn du über los kommst ziehe 200 ein.",""));
-        deck.add(new Eventcard(-200, "Gehe in "+Field.getFieldName()+". Gehe nicht über `Los`und ziehe keine 200 ein",""));
+        deck.add(new Eventcard(0, "Rücke vor bis zu "+Field.getFromNumber(Game.instance.getActivePlayer().getPosition()).getFieldName()+". Wenn du über los kommst ziehe 200 ein.",""));
+        deck.add(new Eventcard(-200, "Gehe in "+Field.getFromNumber(Game.instance.getActivePlayer().getPosition()).getFieldName()+". Gehe nicht über `Los`und ziehe keine 200 ein",""));
         deck.add(new Eventcard(0, "Freifahrtsschein(Karte kann behalten werden)",""));
         deck.add(new Eventcard(-20, "Zahle 20 Strafe.",""));
         deck.add(new Eventcard(-20, "Zahle 20.",""));
-        deck.add(new Eventcard(0, "Gehe zur "+Field.getFieldName()+".",""));
+        deck.add(new Eventcard(0, "Gehe zur "+Field.getFromNumber(Game.instance.getActivePlayer().getPosition()).getFieldName()+".",""));
         deck.add(new Eventcard(-150, "Zahle 150.",""));
         deck.add(new Eventcard(100, "Aktion bringen dir 100.",""));
         deck.add(new Eventcard(200, "Die Versicherung zahlt dir 200.",""));
         deck.add(new Eventcard(500, "Du erhällst 500.",""));
         deck.add(new Eventcard(-250, "Gebühren für nicht eingehaltene Denkmalpflege. Zahle 250.",""));
-        deck.add(new Eventcard(0, "Mache einen Ausflug zum "+Field.getFieldName()+". Wenn du über `Los` kommst, ziehe 200 Gehalt ein.",""));
-        deck.add(new Eventcard(0, "Gehe zur "+Field.getFieldName()+". Gehe nicht über `Los`und ziehe 200 ein",""));
+        deck.add(new Eventcard(0, "Mache einen Ausflug zum "+Field.getFromNumber(Game.instance.getActivePlayer().getPosition()).getFieldName()+". Wenn du über `Los` kommst, ziehe 200 Gehalt ein.",""));
+        deck.add(new Eventcard(0, "Gehe zur "+Field.getFromNumber(Game.instance.getActivePlayer().getPosition()).getFieldName()+". Gehe nicht über `Los`und ziehe 200 ein",""));
         deck.add(new Eventcard(0, "Rücke vor bis `Los`.",""));
         return deck;
     }
