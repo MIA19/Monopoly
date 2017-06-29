@@ -175,4 +175,8 @@ public class Game {
 
         return list;
     }
+
+    public void setTheme(Theme theme){
+        this.theme = theme;
+    }
 }
