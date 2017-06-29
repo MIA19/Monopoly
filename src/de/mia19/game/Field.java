@@ -16,6 +16,7 @@ public class Field extends JButton
     private int trainstation[] = new int[4];
     private int costPerHouse;
     private int withHouses[] = new int[5];
+    private Player fieldOwner;
 
 
     /**
@@ -137,5 +138,22 @@ public class Field extends JButton
         }
 
         return null;
+    }
+
+    public boolean hasFieldOwner () {
+        if(this.fieldOwner ==null)
+        {
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public Player getFieldOwner () {
+        return fieldOwner;
+    }
+
+    public void setFieldOwner (Player fieldOwner) {
+        this.fieldOwner = fieldOwner;
     }
 }
