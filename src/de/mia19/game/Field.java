@@ -21,7 +21,8 @@ public class Field extends JButton
 
     /**
      * Constructor for all Streets
-      * @param name
+     *
+     * @param name
      * @param xCoord
      * @param yCoord
      * @param fieldState
@@ -35,13 +36,14 @@ public class Field extends JButton
      */
     public Field(String name, int xCoord, int yCoord, FieldState fieldState, int fieldPrice, int houseCost, int withOneHouse, int withTwoHouses, int withThreeHouses, int withFourHouses, int withVilla)
     {
-        this.name = name;
+        Field.name = name;
         this.fieldNumber = Field.fieldCount + 1;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
         this.fieldState = fieldState;
         this.price = fieldPrice;
-        if(fieldState.isBuyAble ()){
+        if (fieldState.isBuyAble())
+        {
             this.costPerHouse = houseCost;
             this.withHouses[0] = withOneHouse;
             this.withHouses[1] = withTwoHouses;
@@ -53,13 +55,15 @@ public class Field extends JButton
 
     /**
      * Constructor for all normal fields
+     *
      * @param name
      * @param xCoord
      * @param yCoord
      * @param fieldState
      */
-    public Field (String name, int xCoord, int yCoord, FieldState fieldState) {
-        this.name = name;
+    public Field(String name, int xCoord, int yCoord, FieldState fieldState)
+    {
+        Field.name = name;
         this.fieldNumber = Field.fieldCount + 1;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
@@ -68,14 +72,16 @@ public class Field extends JButton
 
     /**
      * Constructor for all trainstations
+     *
      * @param name
      * @param xCoord
      * @param yCoord
      * @param fieldState
      * @param fieldPrice
      */
-    public Field (String name, int xCoord, int yCoord, FieldState fieldState, int fieldPrice, int oneStation, int twoStations, int threeStations, int allStations) {
-        this.name = name;
+    public Field(String name, int xCoord, int yCoord, FieldState fieldState, int fieldPrice, int oneStation, int twoStations, int threeStations, int allStations)
+    {
+        Field.name = name;
         this.fieldNumber = Field.fieldCount + 1;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
@@ -86,7 +92,9 @@ public class Field extends JButton
         this.trainstation[2] = threeStations;
         this.trainstation[3] = allStations;
     }
-    public String getFieldName () {
+
+    public String getFieldName()
+    {
         return name;
     }
 
@@ -105,55 +113,59 @@ public class Field extends JButton
         return yCoord;
     }
 
-    public FieldState getFieldState () {
+    public FieldState getFieldState()
+    {
         return fieldState;
     }
 
-    public static int getFieldCount () {
+    public static int getFieldCount()
+    {
         return fieldCount;
     }
 
-    public int getPrice () {
+    public int getPrice()
+    {
         return price;
     }
 
-    public int[] getTrainstation () {
+    public int[] getTrainstation()
+    {
         return trainstation;
     }
 
-    public int getCostPerHouse () {
+    public int getCostPerHouse()
+    {
         return costPerHouse;
     }
 
-    public int[] getWithHouses () {
+    public int[] getWithHouses()
+    {
         return withHouses;
     }
 
     public static Field getFromNumber(int fieldNumber)
     {
-        for(Field field : Game.instance.fields)
+        for (Field field : Game.instance.fields)
         {
-            if(field.getFieldNumber() == fieldNumber)
+            if (field.getFieldNumber() == fieldNumber)
                 return field;
         }
 
         return null;
     }
 
-    public boolean hasFieldOwner () {
-        if(this.fieldOwner ==null)
-        {
-            return false;
-        }else {
-            return true;
-        }
+    public boolean hasFieldOwner()
+    {
+        return this.fieldOwner != null;
     }
 
-    public Player getFieldOwner () {
+    public Player getFieldOwner()
+    {
         return fieldOwner;
     }
 
-    public void setFieldOwner (Player fieldOwner) {
+    public void setFieldOwner(Player fieldOwner)
+    {
         this.fieldOwner = fieldOwner;
     }
 }

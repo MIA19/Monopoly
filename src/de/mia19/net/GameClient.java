@@ -25,8 +25,7 @@ public class GameClient extends Thread
         {
             this.socket = new DatagramSocket();
             this.ipAddress = InetAddress.getByName(ipAddress);
-        }
-        catch (SocketException | UnknownHostException e)
+        } catch (SocketException | UnknownHostException e)
         {
             e.printStackTrace();
         }
@@ -42,8 +41,7 @@ public class GameClient extends Thread
             try
             {
                 socket.receive(packet);
-            }
-            catch (IOException e)
+            } catch (IOException e)
             {
                 e.printStackTrace();
             }
@@ -85,8 +83,7 @@ public class GameClient extends Thread
         try
         {
             socket.send(packet);
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
             e.printStackTrace();
         }

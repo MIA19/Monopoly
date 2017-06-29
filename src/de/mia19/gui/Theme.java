@@ -4,8 +4,8 @@ import java.awt.*;
 
 public enum Theme
 {
-    original("Original",new Color (203, 250, 214),Color.BLACK, new Color (151, 214, 55), Color.BLACK),
-    lette("Lette",new Color(228,228,228), Color.BLACK, new Color (210, 159, 1), Color.BLACK);
+    original("Original", new Color(203, 250, 214), Color.BLACK, new Color(151, 214, 55), Color.BLACK),
+    lette("Lette", new Color(228, 228, 228), Color.BLACK, new Color(210, 159, 1), Color.BLACK);
 
     private Color farbeHintergrund;
     private Color farbeText;
@@ -13,7 +13,8 @@ public enum Theme
     private Color farbeTextKnopf;
     private String name;
 
-    Theme(String name, Color farbeHintergrund, Color farbeTextFarbe, Color farbeKnopf, Color farbeTextKnopf) {
+    Theme(String name, Color farbeHintergrund, Color farbeTextFarbe, Color farbeKnopf, Color farbeTextKnopf)
+    {
         this.farbeHintergrund = farbeHintergrund;
         this.farbeText = farbeTextFarbe;
         this.farbeKnopf = farbeKnopf;
@@ -21,11 +22,13 @@ public enum Theme
         this.name = name;
     }
 
-    public Color getFarbeHintergrund () {
+    public Color getFarbeHintergrund()
+    {
         return farbeHintergrund;
     }
 
-    public Color getFarbeKnopf () {
+    public Color getFarbeKnopf()
+    {
         return farbeKnopf;
     }
 
@@ -41,9 +44,11 @@ public enum Theme
 
     public String getName()
     {
-        if (this.name != null){
+        if (this.name != null)
+        {
             return name;
-        }else{
+        } else
+        {
             return "";
         }
     }

@@ -74,13 +74,15 @@ public class Player
             to.addMoney(money);
             removeMoney(amount);
             //TODO LOST
-        }
-        else
+        } else
         {
             to.addMoney(amount);
             removeMoney(amount);
         }
     }
+
     //TODO gehe zu für die ECCards
-    public void moveto(){}
+    public void moveto()
+    {
+    }
 }

@@ -6,24 +6,27 @@ package de.mia19.game;
  * Date: 15.06.2017
  * Time: 08:15
  */
-public enum FieldState {
-    startField (false),
-    trainStation (true),
-    prison (false),
-    goToPrison (false),
-    workField (true),
-    cardField (false),
-    taxField (false),
-    freeParking (false),
-    normalStreets (true);
+public enum FieldState
+{
+    startField(false),
+    trainStation(true),
+    prison(false),
+    goToPrison(false),
+    workField(true),
+    cardField(false),
+    taxField(false),
+    freeParking(false),
+    normalStreets(true);
 
     private boolean buyAble;
 
-    FieldState (boolean buyAble) {
+    FieldState(boolean buyAble)
+    {
         this.buyAble = buyAble;
     }
 
-    public boolean isBuyAble () {
+    public boolean isBuyAble()
+    {
         return buyAble;
     }
 }

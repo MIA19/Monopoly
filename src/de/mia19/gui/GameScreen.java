@@ -21,7 +21,7 @@ public class GameScreen extends JFrame
         this.setLocationRelativeTo(null);
         this.setTitle("Monopoly");
         final JLabel feld = new JLabel();
-        final ImageIcon spielFeld = new ImageIcon(RessourceLoader.getImage( theme + ".jpg"));
+        final ImageIcon spielFeld = new ImageIcon(RessourceLoader.getImage(theme + ".jpg"));
         feld.setIcon(spielFeld);
         this.add(feld);
         final JPanel eastSide = createRightSide();

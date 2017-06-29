@@ -3,51 +3,56 @@ package de.mia19.game;
 
 import java.util.Random;
 
-public class Dice {
+public class Dice
+{
     private int diceOne;
     private int diceTwo;
-   // private int doubleInARow;
+    // private int doubleInARow;
     private Player player;
 
     /**
      * Verbindet den Spieler mit den Würfel.
+     *
      * @param player der Spieler
      */
-    public Dice(Player player) {
+    public Dice(Player player)
+    {
         this.player = player;
     }
 
     /**
      * Würfelt mit beiden Würfeln.
+     *
      * @return gibt die Insgesamte Würfelzahl an.
      */
-    public int roll(){
+    public int roll()
+    {
         Random random = new Random();
         this.diceOne = random.nextInt(6) + 1;
         this.diceTwo = random.nextInt(6) + 1;
 
-        /*if(isDouble())
-            doubleInARow += 1;*/
+
 
         return diceOne + diceTwo;
     }
 
-    public int getDiceOne() {
+    public int getDiceOne()
+    {
         return diceOne;
     }
 
-    public int getDiceTwo() {
+    public int getDiceTwo()
+    {
         return diceTwo;
     }
 
     /**
-     *
      * @return falls True ist es ein Passch, falls False ist es kein Pasch.
      */
-    public boolean isDouble(){
+    public boolean isDouble()
+    {
         return diceOne == diceTwo;
     }
-
 
 
     /**

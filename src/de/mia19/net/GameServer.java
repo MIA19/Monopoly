@@ -28,8 +28,7 @@ public class GameServer extends Thread
         try
         {
             this.socket = new DatagramSocket(port);
-        }
-        catch (SocketException e)
+        } catch (SocketException e)
         {
             e.printStackTrace();
         }
@@ -45,8 +44,7 @@ public class GameServer extends Thread
             try
             {
                 socket.receive(packet);
-            }
-            catch (IOException e)
+            } catch (IOException e)
             {
                 e.printStackTrace();
             }
@@ -91,8 +89,7 @@ public class GameServer extends Thread
                     p.port = player.port;
 
                 alreadyConnected = true;
-            }
-            else
+            } else
             {
                 sendData(packet.getData(), p.ipAddress, p.port);
                 Packet00Login packet2 = new Packet00Login(p.getColor());
@@ -139,8 +136,7 @@ public class GameServer extends Thread
         try
         {
             socket.send(packet);
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
             e.printStackTrace();
         }

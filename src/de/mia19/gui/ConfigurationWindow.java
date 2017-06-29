@@ -10,10 +10,11 @@ public class ConfigurationWindow extends JFrame
 {
 
     private ArrayList<ThemeButton> buttonList = new ArrayList<>();
-    public ConfigurationWindow (Game game)
+
+    public ConfigurationWindow(Game game)
     {
         this.setTitle("Einstellungen");
-        this.setSize(400,400);
+        this.setSize(400, 400);
         this.setBackground(game.theme.getFarbeHintergrund());
         this.repaint();
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -27,7 +28,7 @@ public class ConfigurationWindow extends JFrame
         final JPanel themePanel = new JPanel();
         themePanel.setBackground(Game.instance.theme.getFarbeHintergrund());
         themePanel.setForeground(Game.instance.theme.getFarbeText());
-        themePanel.setLayout(new GridLayout(4,1,2,2));
+        themePanel.setLayout(new GridLayout(4, 1, 2, 2));
         themePanel.add(themaText);
 
         final JLabel configureText = new JLabel("Einstellungen");
@@ -36,7 +37,7 @@ public class ConfigurationWindow extends JFrame
 
         final JPanel configurePanel = new JPanel();
         this.add(configurePanel);
-        configurePanel.setLayout(new GridLayout(2,1,2,2));
+        configurePanel.setLayout(new GridLayout(2, 1, 2, 2));
         configurePanel.setBackground(Game.instance.theme.getFarbeHintergrund());
         configurePanel.setForeground(Game.instance.theme.getFarbeText());
         configurePanel.add(configureText);
@@ -59,9 +60,9 @@ public class ConfigurationWindow extends JFrame
         final JButton closeConfigWindow = new JButton("bestätigen");
         closeConfigWindow.addActionListener(e ->
         {
-            for(ThemeButton btn : buttonList)
+            for (ThemeButton btn : buttonList)
             {
-                if(btn.isSelected())
+                if (btn.isSelected())
                 {
                     Game.instance.theme = btn.getTheme();
                     break;

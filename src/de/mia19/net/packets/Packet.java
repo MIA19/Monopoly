@@ -17,8 +17,7 @@ public abstract class Packet
         try
         {
             return getPacketType((Integer.parseInt(id)));
-        }
-        catch (NumberFormatException e)
+        } catch (NumberFormatException e)
         {
             return PacketTypes.INVALID;
         }

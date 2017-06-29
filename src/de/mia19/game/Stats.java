@@ -14,24 +14,29 @@ import javax.xml.transform.stream.StreamResult;
 import org.xml.sax.*;
 import org.w3c.dom.*;
 
-public class Stats {
+public class Stats
+{
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         readXML();
         saveToXML();
     }
+
     private static String ueberlos = null;
     private static String aufstart = null;
     // private static int test2 = 1;
 
     private static ArrayList<String> statv;
 
-    public static void readXML() {
+    public static void readXML()
+    {
         statv = new ArrayList<String>();
         Document dom;
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        try {
+        try
+        {
 
             DocumentBuilder db = dbf.newDocumentBuilder();
 
@@ -40,46 +45,57 @@ public class Stats {
             Element doc = dom.getDocumentElement();
 
             ueberlos = getTextValue(ueberlos, doc, "ueberlos");
-            if (ueberlos != null) {
+            if (ueberlos != null)
+            {
                 if (!statv.isEmpty())
                     statv.add(ueberlos);
             }
 
 
             aufstart = getTextValue(aufstart, doc, "aufstart");
-            if (aufstart != null) {
+            if (aufstart != null)
+            {
                 if (!statv.isEmpty())
                     statv.add(aufstart);
             }
 
-            System.out.println("Ueber los gezogen: "+ueberlos);
-            System.out.println("Auf Start geklickt: "+aufstart);
+            System.out.println("Ueber los gezogen: " + ueberlos);
+            System.out.println("Auf Start geklickt: " + aufstart);
 
-        } catch (ParserConfigurationException pce) {
+        } catch (ParserConfigurationException pce)
+        {
             System.out.println(pce.getMessage());
 
-        } catch (SAXException e) {
+        } catch (SAXException e)
+        {
             e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
-        }}
-    private static String getTextValue(String def, Element doc, String tag) {
+        }
+    }
+
+    private static String getTextValue(String def, Element doc, String tag)
+    {
         String value = def;
         NodeList nl;
         nl = doc.getElementsByTagName(tag);
-        if (nl.getLength() > 0 && nl.item(0).hasChildNodes()) {
+        if (nl.getLength() > 0 && nl.item(0).hasChildNodes())
+        {
             value = nl.item(0).getFirstChild().getNodeValue();
         }
         return value;
     }
 
-    public static void saveToXML() {
+    public static void saveToXML()
+    {
         Document dom;
         Element e = null;
 
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        try {
+        try
+        {
             DocumentBuilder db = dbf.newDocumentBuilder();
             dom = db.newDocument();
             Element rootEle = dom.createElement("stats");
@@ -101,7 +117,8 @@ public class Stats {
             // System.out.println(resultend);
             dom.appendChild(rootEle);
 
-            try {
+            try
+            {
                 Transformer tr = TransformerFactory.newInstance().newTransformer();
                 tr.setOutputProperty(OutputKeys.INDENT, "yes");
                 tr.setOutputProperty(OutputKeys.METHOD, "xml");
@@ -112,12 +129,15 @@ public class Stats {
                 tr.transform(new DOMSource(dom),
                         new StreamResult(new FileOutputStream("stats.xml")));
 
-            } catch (TransformerException te) {
+            } catch (TransformerException te)
+            {
                 System.out.println(te.getMessage());
-            } catch (IOException ioe) {
+            } catch (IOException ioe)
+            {
                 System.out.println(ioe.getMessage());
             }
-        } catch (ParserConfigurationException pce) {
+        } catch (ParserConfigurationException pce)
+        {
             System.out.println("UsersXML: Error" + pce);
         }
     }

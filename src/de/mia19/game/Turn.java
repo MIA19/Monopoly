@@ -6,7 +6,8 @@ import java.lang.reflect.Array;
 /**
  * Spielerzug
  */
-public class Turn {
+public class Turn
+{
 
     private boolean threeRoundsInPrison;
     private boolean passedStart; //ja == true; nein == false
@@ -14,41 +15,45 @@ public class Turn {
     private Dice dice;
     public boolean imBesitz;
 
-    public Turn() {
-
+    public Turn(Player player)
+    {
+        this.player = player;
 
     }
 
-    private boolean isPassedStart(){
-        if(passedStart){
-           player.addMoney(200);
+    private boolean isPassedStart()
+    {
+        if (passedStart)
+        {
+            player.addMoney(200);
             return true;
 
-        }
-        else{
+        } else
+        {
             return false;
         }
     }
 
-    public boolean isThreeRoundsInPrison() {
-        if (!threeRoundsInPrison) {
-            return false;
-        } else {
-            return true;
-        }
+    public boolean isThreeRoundsInPrison()
+    {
+        return threeRoundsInPrison;
 
     }
 
 
     //
-    public void istSpielerImGefängnis() {
-        if (player.isInJail()) {
-            if (!isThreeRoundsInPrison()) {
+    public void istSpielerImGefängnis()
+    {
+        if (player.isInJail())
+        {
+            if (!isThreeRoundsInPrison())
+            {
                 Object[] buttons = {"Freikaufen", "Wuerfeln"};
                 int entscheidung = JOptionPane.showOptionDialog(null, "Freikaufen oder Würfeln?", "ENTSCHEIDUNG",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, buttons, null);
 
-                if (entscheidung == 1) {
+                if (entscheidung == 1)
+                {
                     dice.roll();
 
                     if (dice.isDouble())
@@ -57,63 +62,65 @@ public class Turn {
                     isPassedStart();
                     //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
 
-                    if (!dice.isDouble()) {
+                    if (!dice.isDouble())
+                    {
                         int i = rollButton();
-                        if(i == 0) {
+                        if (i == 0)
+                        {
                             dice.roll();
                         }
 
-                        if (dice.isDouble()) {
+                        if (dice.isDouble())
+                        {
                             player.setInJail(false);
                             player.move(dice.getDiceOne() + dice.getDiceTwo());
                             isPassedStart();
                             //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
                         }
-                        if (!dice.isDouble()) {
+                        if (!dice.isDouble())
+                        {
                             dice.roll();
 
-                            if (dice.isDouble()) {
+                            if (dice.isDouble())
+                            {
                                 player.setInJail(false);
                                 player.move(dice.getDiceOne() + dice.getDiceTwo());
                                 isPassedStart();
                                 //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
                             }
-                            if (!dice.isDouble()) {
+                            if (!dice.isDouble())
+                            {
                                 player.setInJail(true);
 
                                 //TODO: END TURN UND NÄCHSTER SPIELER IST DRAN
                             }
                         }
 
-                    } else if (entscheidung == 0) {
+                    } else if (entscheidung == 0)
+                    {
                         player.removeMoney(50);
                         player.setInJail(false);
                         dice.roll();
-                        if (dice.isDouble()) {
+                        if (dice.isDouble())
+                        {
                             player.move(dice.getDiceOne() + dice.getDiceTwo());
                             isPassedStart();
                             player.getPosition();
-                        } else {
+                        } else
+                        {
                             player.move(dice.getDiceOne() + dice.getDiceTwo());
                             isPassedStart();
                         }
                     }
                 }
-
-
-                /*int number = dice.roll();
-                if (dice.getDoubleInARow() < 3) {
-                    player.move(number);
-                    performAction(number);
-                } else
-                    player.setInJail(true);*/
-
             }
-            if (isThreeRoundsInPrison()) {
+            if (isThreeRoundsInPrison())
+            {
                 wuerfeln();
             }
         }
-        if (!player.isInJail()) {
+        if (!player.isInJail())
+        {
             wuerfeln();
         }
     }
@@ -124,14 +131,18 @@ public class Turn {
      *
      * @param number
      */
-    private void performAction(int number) {
+    private void performAction(int number)
+    {
         Field field = Field.getFromNumber(number);
-        switch (field.getFieldState()) {
+        switch (field.getFieldState())
+        {
             case startField:
                 Game game = new Game();
-                if (game.DOUBLE_MONEY) {
+                if (game.DOUBLE_MONEY)
+                {
                     player.addMoney(400);
-                } else {
+                } else
+                {
                     player.addMoney(200);
                 }
             case trainStation:
@@ -140,35 +151,42 @@ public class Turn {
     }
 
 
-    public void wuerfeln() {
+    public void wuerfeln()
+    {
         dice.roll();
-        if (!dice.isDouble()) {
+        if (!dice.isDouble())
+        {
             player.move(dice.getDiceOne() + dice.getDiceTwo());
             isPassedStart();
             //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
         }
-        if (dice.isDouble()) {
+        if (dice.isDouble())
+        {
             player.move(dice.getDiceOne() + dice.getDiceTwo());
             isPassedStart();
             //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN
             dice.roll();
 
-            if (!dice.isDouble()) {
+            if (!dice.isDouble())
+            {
                 player.move(dice.getDiceOne() + dice.getDiceTwo());
                 isPassedStart();
                 //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
             }
-            if (dice.isDouble()) {
+            if (dice.isDouble())
+            {
                 player.move(dice.getDiceOne() + dice.getDiceTwo());
                 isPassedStart();
                 //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN
                 dice.roll();
-                if (!dice.isDouble()) {
+                if (!dice.isDouble())
+                {
                     player.move(dice.getDiceOne() + dice.getDiceTwo());
                     isPassedStart();
                     //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
                 }
-                if (dice.isDouble()) {
+                if (dice.isDouble())
+                {
                     player.setInJail(true);
                     //TODO: SPIELER INS GEFÄNGNIS BEWEGEN, ZUG BEENDEN, NÄCHSTER SPIELER IST DRAN
                 }
@@ -176,9 +194,11 @@ public class Turn {
 
         }
     }
-    public int rollButton() {
+
+    public int rollButton()
+    {
         Object[] wuerfeln = {"Würfeln"};
-        return JOptionPane.showOptionDialog(null, player.getColor().name() + " ist am Zug!", "WÜRFELN",
+        return JOptionPane.showOptionDialog(null, player.getColor().getName() + " ist am Zug!", "",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, wuerfeln, null);
     }
 }

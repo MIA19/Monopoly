@@ -2,31 +2,32 @@ package de.mia19.game;
 
 public enum Color
 {
-    RED,
-    BLUE,
-    GREEN,
-    VIOLET,
-    YELLOW,
-    WHITE;
+    RED("Red"),
+    BLUE("Blue"),
+    GREEN("Green"),
+    VIOLET("Violet"),
+    YELLOW("Yellow"),
+    WHITE("White");
+
+    private String name;
+
+    Color(String s)
+    {
+        this.name = s;
+    }
 
     public static Color parseString(String s)
     {
-        switch (s)
+        for(Color c : Color.values())
         {
-            case "red":
-                return RED;
-            case "blue":
-                return BLUE;
-            case "green":
-                return GREEN;
-            case "violet":
-                return VIOLET;
-            case "yellow":
-                return YELLOW;
-            case "white":
-                return WHITE;
-            default:
-                return null;
+            if(c.getName().equalsIgnoreCase(s))
+                return c;
         }
+        return null;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 }
