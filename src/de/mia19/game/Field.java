@@ -86,7 +86,7 @@ public class Field extends JButton
         this.trainstation[2] = threeStations;
         this.trainstation[3] = allStations;
     }
-    public static String getFieldName () {
+    public String getFieldName () {
         return name;
     }
 
