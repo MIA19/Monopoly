@@ -26,10 +26,13 @@ public class Game {
     public boolean DOUBLE_MONEY;
 
     private Thread thread;
-    public Theme theme;
+    public Theme theme = Theme.original;
+
+    public Game() {
+        instance = this;
+    }
 
     public synchronized void start () {
-        instance = this;
 
         thread = new Thread (NAME + "_main");
         thread.start ();
@@ -180,9 +183,5 @@ public class Game {
         }
 
         return list;
-    }
-
-    public void setTheme(Theme theme){
-        this.theme = theme;
     }
 }
