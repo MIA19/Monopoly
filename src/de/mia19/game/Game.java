@@ -5,6 +5,7 @@ import de.mia19.gui.Theme;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,10 +54,15 @@ public class Game {
         JOptionPane.showConfirmDialog(null, inputs, "Game Settings", JOptionPane.OK_CANCEL_OPTION);
         int playerCount = (int) spielerAuswahl.getSelectedItem();
 
-        //TODO Player assign color automatically
+        String[] farben = new String[6];
+        farben[0] = "blue";
+        farben[1] = "red";
+        farben[2] = "green";
+        farben[3] = "yellow";
+        farben[4] = "black";
+        farben[5] = "white";
         for (int i = 0; i < playerCount; i++) {
-            players.add (new Player (Color.parseString (JOptionPane.showInputDialog ("Farbe"))));
-
+            players.add (new Player (Color.parseString (farben[i])));
             //SETTING GAME SETTINGS
             players.get (i).setMoney (START_MONEY);
         }
