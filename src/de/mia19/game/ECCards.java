@@ -39,7 +39,7 @@ public class ECCards
         deck.add(new Communitycard(-100, "Zahle 100", ""));
         deck.add(new Communitycard(30, "Du erhälst 30", ""));
         deck.add(new Communitycard(50, "Du erhälst 50", ""));
-        deck.add(new Communitycard(-200, "Gehe in " + Field.getFromNumber(Game.instance.getActivePlayer().getPosition()).getFieldName() + ". Begib dich dierekt dort hin, gehe nicht über `Los` und ziehe keine 200 ein", ""));
+        deck.add(new Communitycard(-200, "Gehe in " + Field.getFromNumber(12).getFieldName() + ". Begib dich dierekt dort hin, gehe nicht über `Los` und ziehe keine 200 ein", ""));
         return deck;
     }
 
@@ -51,8 +51,8 @@ public class ECCards
         ArrayList<Eventcard> deck = new ArrayList<>();
         deck.add(new Eventcard(0, "Gehe 3 Felder zurück.", ""));
         deck.add(new Eventcard(40, "Straßenausbesserungsarbeiten sind dringend nötig zahle 40.", ""));
-        deck.add(new Eventcard(0, "Rücke vor bis zu " + Field.getFromNumber(Game.instance.getActivePlayer().getPosition()).getFieldName() + ". Wenn du über los kommst ziehe 200 ein.", ""));
-        deck.add(new Eventcard(-200, "Gehe in " + Field.getFromNumber(Game.instance.getActivePlayer().getPosition()).getFieldName() + ". Gehe nicht über `Los`und ziehe keine 200 ein", ""));
+        deck.add(new Eventcard(0, "Rücke vor bis zu " + Field.getFromNumber(40).getFieldName() + ". Wenn du über los kommst ziehe 200 ein.", ""));
+        deck.add(new Eventcard(-200, "Gehe in " + Field.getFromNumber(24).getFieldName() + ". Gehe nicht über `Los`und ziehe keine 200 ein", ""));
         deck.add(new Eventcard(0, "Freifahrtsschein(Karte kann behalten werden)", ""));
         deck.add(new Eventcard(-20, "Zahle 20 Strafe.", ""));
         deck.add(new Eventcard(-20, "Zahle 20.", ""));
