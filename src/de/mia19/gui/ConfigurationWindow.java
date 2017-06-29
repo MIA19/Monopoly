@@ -14,7 +14,7 @@ public class ConfigurationWindow extends JFrame
     {
         this.setTitle("Einstellungen");
         this.setSize(400,400);
-        this.setBackground(Game.instance.theme.getFarbeHintergrund());
+        this.setBackground(game.theme.getFarbeHintergrund());
         this.repaint();
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);

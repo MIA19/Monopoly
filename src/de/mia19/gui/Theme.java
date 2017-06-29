@@ -41,6 +41,10 @@ public enum Theme
 
     public String getName()
     {
-        return name;
+        if (this.name != null){
+            return name;
+        }else{
+            return "";
+        }
     }
 }

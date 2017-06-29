@@ -3,6 +3,8 @@ package de.mia19.game;
 import de.mia19.gui.Theme;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class Game {
 
     private List<Player> players;
     private Player activePlayer;
+
     //DEFAULT VALUES
 
     private long START_MONEY = 400;
@@ -32,7 +35,23 @@ public class Game {
 
 
         players = new ArrayList<> ();
-        int playerCount = Integer.parseInt (JOptionPane.showInputDialog ("Anzahl"));
+
+        /**
+         * Die Combobox für die Anzahl der Spieler!
+                */
+        JLabel aussage = new JLabel("Wähle die Anzahl der Spieler!");
+
+        Integer[] comboBoxListe = {
+                1, 2, 3, 4, 5, 6};
+
+        JComboBox spielerAuswahl = new JComboBox(comboBoxListe);
+        final JComponent[] inputs = new JComponent[]{
+                aussage,
+                spielerAuswahl
+        };
+
+        JOptionPane.showConfirmDialog(null, inputs, "Game Settings", JOptionPane.OK_CANCEL_OPTION);
+        int playerCount = (int) spielerAuswahl.getSelectedItem();
 
         //TODO Player assign color automatically
         for (int i = 0; i < playerCount; i++) {
@@ -118,7 +137,7 @@ public class Game {
             list.add (new Field ("Gemeinschaftsfeld", 0, 0, FieldState.cardField));
             list.add (new Field ("Mensa", 0, 0, FieldState.normalStreets, 60, 50, 20, 60, 180, 320, 450));
             list.add (new Field ("Einkommensteuer", 0, 0, FieldState.taxField));
-            list.add (new Field ("Haupteingang", 0, 0, FieldState.trainStation, 200, 100, 200, 300, 400));
+            list.add (new Field ("Südeingang", 0, 0, FieldState.trainStation, 200, 100, 200, 300, 400));
             list.add (new Field ("Animationstechnik", 0, 0, FieldState.normalStreets, 100, 50, 30, 90, 270, 400, 550));
             list.add (new Field ("Ereignisfeld", 0, 0, FieldState.cardField));
             list.add (new Field ("Sensortechnik", 0, 0, FieldState.normalStreets, 100, 50, 30, 90, 270, 400, 550));
@@ -126,33 +145,38 @@ public class Game {
             list.add (new Field ("Mathe", 0, 0, FieldState.prison));
             list.add (new Field ("Sport", 0, 0, FieldState.normalStreets, 140, 100, 50, 150, 450, 625, 750));
             list.add (new Field ("Elektrizitätsraum", 0, 0, FieldState.workField));
-            list.add (new Field ("Fotographie", 0, 0, FieldState.normalStreets, 140, 100, 50, 150, 450, 625, 750));
-            list.add (new Field ("Nähen", 0, 0, FieldState.normalStreets, 160, 100, 60, 180, 500, 700, 900));
+            list.add (new Field ("Deutsch", 0, 0, FieldState.normalStreets, 140, 100, 50, 150, 450, 625, 750));
+            list.add (new Field ("Englisch", 0, 0, FieldState.normalStreets, 160, 100, 60, 180, 500, 700, 900));
             list.add (new Field ("Westeingang", 0, 0, FieldState.trainStation, 200, 100, 200, 300, 400));
-            list.add (new Field ("Modedesign", 0, 0, FieldState.normalStreets, 180, 100, 70, 200, 550, 750, 950));
-            list.add (new Field ("Gemeinschaftsfeld", 0, 0, FieldState.cardField));
+            list.add (new Field ("Physik", 0, 0, FieldState.normalStreets, 180, 100, 70, 200, 550, 750, 950));
             list.add (new Field ("Chemie", 0, 0, FieldState.normalStreets, 180, 100, 70, 200, 550, 750, 950));
-            list.add (new Field ("Physik", 0, 0, FieldState.normalStreets, 200, 100, 80, 220, 600, 800, 1000));
+            list.add (new Field ("Gemeinschaftsfeld", 0, 0, FieldState.cardField));
+            list.add (new Field ("Botanik", 0, 0, FieldState.normalStreets, 200, 100, 80, 220, 600, 800, 1000));
             list.add (new Field ("Chillraum", 0, 0, FieldState.freeParking));
-            list.add (new Field ("Botanik", 0, 0, FieldState.normalStreets, 220, 150, 90, 250, 700, 875, 1050));
+            list.add (new Field ("Biochemie", 0, 0, FieldState.normalStreets, 220, 150, 90, 250, 700, 875, 1050));
+            list.add (new Field ("EDV", 0, 0, FieldState.normalStreets, 220, 150, 90, 250, 700, 875, 1050));
             list.add (new Field ("Ereignisfeld", 0, 0, FieldState.cardField));
-            list.add (new Field ("Medizin", 0, 0, FieldState.normalStreets, 220, 150, 90, 250, 700, 875, 1050));
-            list.add (new Field ("Kommunikationslehre", 0, 0, FieldState.normalStreets, 240, 150, 100, 300, 750, 925, 1100));
+            list.add (new Field ("Anatomie", 0, 0, FieldState.normalStreets, 240, 150, 100, 300, 750, 925, 1100));
             list.add (new Field ("Nordeingang", 0, 0, FieldState.trainStation, 200, 100, 200, 300, 400));
-            list.add (new Field ("Mikrocontroller", 0, 0, FieldState.normalStreets, 260, 150, 110, 330, 800, 975, 1150));
-            list.add (new Field ("Metallographie", 0, 0, FieldState.normalStreets, 260, 150, 120, 360, 850, 1025, 1200));
+            list.add (new Field ("Bildgestaltung", 0, 0, FieldState.normalStreets, 260, 150, 110, 330, 800, 975, 1150));
+            list.add (new Field ("Virtuelle Kultur", 0, 0, FieldState.normalStreets, 260, 150, 120, 360, 850, 1025, 1200));
             list.add (new Field ("Toilette", 0, 0, FieldState.workField));
-            list.add (new Field ("Werkstoffkunde", 0, 0, FieldState.normalStreets, 280, 150, 110, 330, 800, 975, 1150));
+            list.add (new Field ("Digitalmedien", 0, 0, FieldState.normalStreets, 280, 150, 110, 330, 800, 975, 1150));
             list.add (new Field ("Herr Bode", 0, 0, FieldState.goToPrison));
-            list.add (new Field ("Englisch", 0, 0, FieldState.normalStreets, 300, 200, 130, 390, 900, 1100, 1275));
-            list.add (new Field ("Viktoria-Luise Platz", 0, 0, FieldState.normalStreets, 320, 200, 150, 450, 1000, 1200, 1400));
-            list.add (new Field ("Osteingang", 0, 0, FieldState.trainStation, 200, 100, 200, 300, 400));
-            list.add (new Field ("Ereignisfeld", 0, 0, FieldState.cardField));
-            list.add (new Field ("Mediengestaltung", 0, 0, FieldState.normalStreets, 350, 200, 175, 500, 1100, 1300, 1500));
+            list.add (new Field ("Ernährungskunde", 0, 0, FieldState.normalStreets, 300, 200, 130, 390, 900, 1100, 1275));
+            list.add (new Field ("Körperpflegekunde", 0, 0, FieldState.normalStreets, 320, 200, 150, 450, 1000, 1200, 1400));
+            list.add (new Field ("Gemeinschaftsfeld", 0, 0, FieldState.cardField));
+            list.add (new Field ("Medizin", 0, 0, FieldState.normalStreets, 320, 200, 150, 450, 1000, 1200, 1400));
+            list.add (new Field ("Haupteingang", 0, 0, FieldState.trainStation, 200, 100, 200, 300, 400));
+            list.add (new Field ("Illustrator", 0, 0, FieldState.normalStreets, 350, 200, 175, 500, 1100, 1300, 1500));
             list.add (new Field ("zusatzsteuer", 0, 0, FieldState.taxField));
-            list.add (new Field ("Programmiersprachen", 0, 0, FieldState.normalStreets, 400, 200, 200, 600, 1400, 1700, 2000));
+            list.add (new Field ("Typographie", 0, 0, FieldState.normalStreets, 400, 200, 200, 600, 1400, 1700, 2000));
         }
 
         return list;
+    }
+
+    public void setTheme(Theme theme){
+        this.theme = theme;
     }
 }
