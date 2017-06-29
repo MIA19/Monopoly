@@ -3,6 +3,8 @@ package de.mia19.game;
 import de.mia19.gui.Theme;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class Game {
 
     private List<Player> players;
     private Player activePlayer;
+
     //DEFAULT VALUES
 
     private long START_MONEY = 400;
@@ -32,7 +35,23 @@ public class Game {
 
 
         players = new ArrayList<> ();
-        int playerCount = Integer.parseInt (JOptionPane.showInputDialog ("Anzahl"));
+
+        /**
+         * Die Combobox für die Anzahl der Spieler!
+                */
+        JLabel aussage = new JLabel("Wähle die Anzahl der Spieler!");
+
+        Integer[] comboBoxListe = {
+                1, 2, 3, 4, 5, 6};
+
+        JComboBox spielerAuswahl = new JComboBox(comboBoxListe);
+        final JComponent[] inputs = new JComponent[]{
+                aussage,
+                spielerAuswahl
+        };
+
+        JOptionPane.showConfirmDialog(null, inputs, "Game Settings", JOptionPane.OK_CANCEL_OPTION);
+        int playerCount = (int) spielerAuswahl.getSelectedItem();
 
         //TODO Player assign color automatically
         for (int i = 0; i < playerCount; i++) {
