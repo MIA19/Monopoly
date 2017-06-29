@@ -81,4 +81,6 @@ public class Player
             removeMoney(amount);
         }
     }
+    //TODO gehe zu für die ECCards
+    public void moveto(){}
 }
