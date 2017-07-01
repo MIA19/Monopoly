@@ -16,11 +16,11 @@ public class Eventcard
      * @param money long,der dem Geld in dem Event entspricht. bei einer erforderlichen Zahlung ist dieser Wert negativ, bei erhalt von Geld positiv.
      * @param event String eine Umschreibung des Ereignisses.
      */
-    public Eventcard(int money, String event, String pfad)
+    public Eventcard(int money, String event)
     {
         this.money = money;
         this.event = event;
-        this.icon = new ImageIcon(this.getClass().getResource(pfad));
+        this.icon = new ImageIcon(this.getClass().getResource("images/Karten_png.Karten_png/Ereigniskarte_Field.png"));
     }
 
     public long getMoney()
