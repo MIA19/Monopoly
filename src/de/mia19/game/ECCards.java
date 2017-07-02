@@ -37,7 +37,7 @@ public class ECCards
         communitycards.add(new Communitycard(-100, "Zahle 100"));
         communitycards.add(new Communitycard(30, "Du erhälst 30"));
         communitycards.add(new Communitycard(50, "Du erhälst 50"));
-        communitycards.add(new Communitycard(-200, "Gehe zu " + Field.getFromNumber(12).getFieldName() + ". Begib dich dierekt dort hin, gehe nicht über `Los` und ziehe keine 200 ein"));
+        communitycards.add(new Communitycard(-200, "Gehe zu " + Field.getFromNumber(10).getFieldName() + ". Begib dich dierekt dort hin, gehe nicht über `Los` und ziehe keine 200 ein"));
 
     }
 
@@ -47,22 +47,22 @@ public class ECCards
     public void createEventcards()
     {
         eventcards= new ArrayList<>();
-        eventcards.add(new Eventcard(0, "Gehe 3 Felder zurück."));
-        eventcards.add(new Eventcard(40, "Straßenausbesserungsarbeiten sind dringend nötig zahle 40."));
-        eventcards.add(new Eventcard(0, "Rücke vor bis zu " + Field.getFromNumber(40).getFieldName() + ". Wenn du über los kommst ziehe 200 ein."));
-        eventcards.add(new Eventcard(-200, "Gehe in " + Field.getFromNumber(24).getFieldName() + ". Gehe nicht über `Los`und ziehe keine 200 ein"));
-        eventcards.add(new Eventcard(0, "Freifahrtsschein(Karte kann behalten werden)"));
-        eventcards.add(new Eventcard(-20, "Zahle 20 Strafe."));
-        eventcards.add(new Eventcard(-20, "Zahle 20."));
-        eventcards.add(new Eventcard(0, "Gehe zur " + Field.getFromNumber(Game.instance.getActivePlayer().getPosition()).getFieldName() + "."));
-        eventcards.add(new Eventcard(-150, "Zahle 150."));
-        eventcards.add(new Eventcard(100, "Aktion bringen dir 100."));
-        eventcards.add(new Eventcard(200, "Die Versicherung zahlt dir 200."));
-        eventcards.add(new Eventcard(500, "Du erhällst 500."));
-        eventcards.add(new Eventcard(-250, "Gebühren für nicht eingehaltene Denkmalpflege. Zahle 250."));
-        eventcards.add(new Eventcard(0, "Mache einen Ausflug zum " + Field.getFromNumber(Game.instance.getActivePlayer().getPosition()).getFieldName() + ". Wenn du über `Los` kommst, ziehe 200 Gehalt ein."));
-        eventcards.add(new Eventcard(0, "Gehe zur " + Field.getFromNumber(Game.instance.getActivePlayer().getPosition()).getFieldName() + ". Gehe nicht über `Los`und ziehe 200 ein"));
-        eventcards.add(new Eventcard(0, "Rücke vor bis `Los`."));
+        eventcards.add(new Eventcard(-1,0, "Gehe 3 Felder zurück."));
+        eventcards.add(new Eventcard(-1,40, "Straßenausbesserungsarbeiten sind dringend nötig zahle 40."));
+        eventcards.add(new Eventcard(40,0, "Rücke vor bis zu " + Field.getFromNumber(40).getFieldName() + ". Wenn du über los kommst ziehe 200 ein."));
+        eventcards.add(new Eventcard(10, -200, "Gehe in " + Field.getFromNumber(10).getFieldName() + ". Gehe nicht über `Los`und ziehe keine 200 ein"));
+        eventcards.add(new Eventcard(-1, 0, "Freifahrtsschein(Karte kann behalten werden)"));
+        eventcards.add(new Eventcard(-1,-20, "Zahle 20 Strafe."));
+        eventcards.add(new Eventcard(-1,-20, "Zahle 20."));
+        eventcards.add(new Eventcard(12, 0, "Gehe zur " + Field.getFromNumber(12).getFieldName() + "."));
+        eventcards.add(new Eventcard(-1, -150, "Zahle 150."));
+        eventcards.add(new Eventcard(-1, 100, "Aktion bringen dir 100."));
+        eventcards.add(new Eventcard(-1, 200, "Die Versicherung zahlt dir 200."));
+        eventcards.add(new Eventcard(-1, 500, "Du erhällst 500."));
+        eventcards.add(new Eventcard(-1, -250, "Gebühren für nicht eingehaltene Denkmalpflege. Zahle 250."));
+        eventcards.add(new Eventcard(24, 0, "Mache einen Ausflug zum " + Field.getFromNumber(24).getFieldName() + ". Wenn du über `Los` kommst, ziehe 200 Gehalt ein."));
+        eventcards.add(new Eventcard(1, 0, "Gehe zur " + Field.getFromNumber(1).getFieldName() + ". Gehe nicht über `Los`und ziehe keine 200 ein"));
+        eventcards.add(new Eventcard(0, 0, "Rücke vor bis `Los`."));
 
     }
 
@@ -75,7 +75,7 @@ public class ECCards
     }
 
     public Communitycard getCommunitycard(){
-        Communitycard card = communitycards.get(new Random().nextInt(15));
+        Communitycard card = communitycards.get(new Random().nextInt(14));
         return card;
     }
 
