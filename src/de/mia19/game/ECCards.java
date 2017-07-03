@@ -1,5 +1,6 @@
 package de.mia19.game;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -74,14 +75,18 @@ public class ECCards
         return eventcards;
     }
 
-    public Communitycard getCommunitycard(){
+    public void getCommunitycard(){
         Communitycard card = communitycards.get(new Random().nextInt(14));
-        return card;
+
     }
 
-    public Eventcard getEventcard(){
+    public void getEventcard(Player player){
         Eventcard card = eventcards.get(new Random().nextInt(15));
-        return card;
+        player.addMoney(card.getMoney());
+        if(card.getPosition()!=-1){
+            player.setPosition(card.getPosition());
+        }
+        JOptionPane.showConfirmDialog(null, card.getEvent());
     }
 
 
