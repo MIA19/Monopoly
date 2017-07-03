@@ -24,7 +24,7 @@ public class Stats
     }
 
     private static String ueberlos = null;
-    private static String aufstart = null;
+    private static String startgeklickt = null;
     // private static int test2 = 1;
 
     private static ArrayList<String> statv;
@@ -37,7 +37,6 @@ public class Stats
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try
         {
-
             DocumentBuilder db = dbf.newDocumentBuilder();
 
             dom = db.parse("stats.xml");
@@ -52,15 +51,15 @@ public class Stats
             }
 
 
-            aufstart = getTextValue(aufstart, doc, "aufstart");
-            if (aufstart != null)
+            startgeklickt = getTextValue(startgeklickt, doc, "startgeklickt");
+            if (startgeklickt != null)
             {
                 if (!statv.isEmpty())
-                    statv.add(aufstart);
+                    statv.add(startgeklickt);
             }
 
             System.out.println("Ueber los gezogen: " + ueberlos);
-            System.out.println("Auf Start geklickt: " + aufstart);
+            System.out.println("Auf Start geklickt: " + startgeklickt);
 
         } catch (ParserConfigurationException pce)
         {
@@ -111,7 +110,7 @@ public class Stats
             rootEle.appendChild(e);
 
             e = dom.createElement("aufstart");
-            e.appendChild(dom.createTextNode(aufstart));
+            e.appendChild(dom.createTextNode(startgeklickt));
             rootEle.appendChild(e);
 
             // System.out.println(resultend);
