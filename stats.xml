@@ -2,5 +2,5 @@
 <!DOCTYPE stats SYSTEM "stats.dtd">
 <stats>
     <ueberlos>20</ueberlos>
-    <aufstart>15</aufstart>
+    <startgeklickt>15</startgeklickt>
 </stats>

@@ -7,25 +7,34 @@ import de.mia19.game.Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.ArrayList;
 
-public class GameScreen extends JFrame
+public class GameScreen extends JFrame implements ComponentListener
 {
-    public GameScreen(String theme, Theme gameTheme)
+    private ImageIcon spielFeld;
+    public GameScreen(String theme)
+
     {
-        Game.instance.createFieldList(gameTheme);
 
 
-        this.setSize(1000, 820);
+        //Game.instance.createFieldList(gameTheme);
+
+
+        this.isOpaque();
+
+        this.setSize(950, 800);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Monopoly");
         final JLabel feld = new JLabel();
-        final ImageIcon spielFeld = new ImageIcon(RessourceLoader.getImage(theme + ".jpg"));
+        spielFeld = new ImageIcon(RessourceLoader.getImage(theme + ".jpg"));
         feld.setIcon(spielFeld);
         this.add(feld);
+        this.setVisible(true);
         final JPanel eastSide = createRightSide();
-        this.add(eastSide, BorderLayout.EAST);
+       // this.getContentPane().add(eastSide, BorderLayout.EAST);
     }
 
     public JPanel createRightSide()
@@ -48,4 +57,24 @@ public class GameScreen extends JFrame
     }
 
 
+    @Override
+    public void componentResized(ComponentEvent componentEvent) {
+
+
+    }
+
+    @Override
+    public void componentMoved(ComponentEvent componentEvent) {
+
+    }
+
+    @Override
+    public void componentShown(ComponentEvent componentEvent) {
+
+    }
+
+    @Override
+    public void componentHidden(ComponentEvent componentEvent) {
+
+    }
 }
