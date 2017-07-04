@@ -19,6 +19,7 @@ public class Game
 
     private List<Player> players;
     private Player activePlayer;
+    public JButton buyButton;
 
     //DEFAULT VALUES
 
@@ -42,6 +43,8 @@ public class Game
 
 
         players = new ArrayList<>();
+        buyButton = new JButton ();
+        buyButton.setEnabled (false);
 
         /**
          * Die Combobox für die Anzahl der Spieler!

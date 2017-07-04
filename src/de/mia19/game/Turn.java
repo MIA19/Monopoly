@@ -129,10 +129,10 @@ public class Turn
     private void performAction(int number)
     {
         Field field = Field.getFromNumber(number);
+        Game game = new Game();
         switch (field.getFieldState())
         {
             case startField:
-                Game game = new Game();
                 if (game.DOUBLE_MONEY)
                 {
                     player.addMoney(400);
@@ -140,7 +140,43 @@ public class Turn
                 {
                     player.addMoney(200);
                 }
+                break;
             case trainStation:
+                if(!field.hasFieldOwner ())
+                {
+                    game.buyButton.setEnabled (true);
+                }else
+                {
+                    game.buyButton.setEnabled (false);
+                }
+                break;
+            case normalStreets:
+                if (!field.hasFieldOwner ())
+                {
+                    game.buyButton.setEnabled (true);
+                }else
+                {
+                    field.getFieldOwner ().addMoney (field.getPrice ());
+                    player.removeMoney (field.getPrice ());
+                    game.buyButton.setEnabled (false);
+                }
+                break;
+            case goToPrison:
+                //Geh ins Gefängnis
+                player.move (10);
+                player.setInJail (true);
+                break;
+            case prison:
+                if (player.isInJail ())
+                {
+
+                }else
+                {
+
+                }
+                break;
+            case cardField:
+
 
         }
     }
