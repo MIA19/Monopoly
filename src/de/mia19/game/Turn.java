@@ -166,15 +166,6 @@ public class Turn
                 player.move (10);
                 player.setInJail (true);
                 break;
-            case prison:
-                if (player.isInJail ())
-                {
-
-                }else
-                {
-
-                }
-                break;
             case cardField:
 
 
