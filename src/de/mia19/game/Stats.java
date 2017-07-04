@@ -109,7 +109,7 @@ public class Stats
             e.appendChild(dom.createTextNode(resultend));
             rootEle.appendChild(e);
 
-            e = dom.createElement("aufstart");
+            e = dom.createElement("startgeklickt");
             e.appendChild(dom.createTextNode(startgeklickt));
             rootEle.appendChild(e);
 

@@ -18,13 +18,27 @@ public class GameScreen extends JFrame implements ComponentListener
 
     {
 
-
         //Game.instance.createFieldList(gameTheme);
+        //this.setLayout(new GridBagLayout());
 
+        // Jlabel fuer Namen
 
-        this.isOpaque();
+        // Jlabel Name1
+        JLabel jln1 = new JLabel("Hubert", SwingConstants.CENTER);
+        jln1.setSize(96,17);
+        jln1.setBackground(Color.WHITE);
+        jln1.setLocation(1005,6);
+        jln1.setOpaque(true);
 
-        this.setSize(950, 800);
+        JLabel jln2 = new JLabel("Noah", SwingConstants.CENTER);
+        jln2.setSize(96,17);
+        jln2.setBackground(Color.WHITE);
+        jln2.setLocation(1005,36);
+        jln2.setOpaque(true);
+
+        this.add(jln2);
+        this.add(jln1);
+        this.setSize(1200, 806);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Monopoly");
@@ -33,11 +47,11 @@ public class GameScreen extends JFrame implements ComponentListener
         feld.setIcon(spielFeld);
         this.add(feld);
         this.setVisible(true);
-        final JPanel eastSide = createRightSide();
+       // final JPanel eastSide = createRightSide();
        // this.getContentPane().add(eastSide, BorderLayout.EAST);
     }
 
-    public JPanel createRightSide()
+   /* public JPanel createRightSide()
     {
         final JPanel panel = new JPanel();
 
@@ -54,7 +68,7 @@ public class GameScreen extends JFrame implements ComponentListener
         panel.add(buttonsDown, BorderLayout.SOUTH);
 
         return panel;
-    }
+    }*/
 
 
     @Override
