@@ -10,15 +10,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class GameScreen extends JFrame implements ComponentListener
+public class GameScreen extends JFrame
 {
+    private final Game game;
     private ImageIcon spielFeld;
-    public GameScreen(String theme)
+
+    public GameScreen(Game game, String theme)
 
     {
 
+        this.game = game;
         //Game.instance.createFieldList(gameTheme);
         //this.setLayout(new GridBagLayout());
 
@@ -34,7 +39,10 @@ public class GameScreen extends JFrame implements ComponentListener
         this.setVisible(true);
        // final JPanel eastSide = createRightSide();
        // this.getContentPane().add(eastSide, BorderLayout.EAST);
+
+
     }
+
 
 
    public void createRightSide() {
@@ -126,25 +134,9 @@ public class GameScreen extends JFrame implements ComponentListener
        this.add(jlm6);
 
    }
-
-    @Override
-    public void componentResized(ComponentEvent componentEvent) {
+    public void gameFrame(){
 
 
     }
 
-    @Override
-    public void componentMoved(ComponentEvent componentEvent) {
-
-    }
-
-    @Override
-    public void componentShown(ComponentEvent componentEvent) {
-
-    }
-
-    @Override
-    public void componentHidden(ComponentEvent componentEvent) {
-
-    }
 }
