@@ -89,7 +89,6 @@ public class Game
             alleTextFelder.add(field);
         }
         playerFrame.add(playerPanel);
-//        String name = JOptionPane.showInputDialog(playerFrame, "Spieler Name");
            playerFrame.setVisible(true);
 
 
