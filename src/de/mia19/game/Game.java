@@ -1,8 +1,10 @@
 package de.mia19.game;
 
+import com.sun.jmx.remote.security.JMXPluggableAuthenticator;
 import de.mia19.gui.Theme;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
@@ -16,6 +18,7 @@ public class Game
     private static final String NAME = "Monopoly";
     public static Game instance;
     public ArrayList<Field> fields;
+
 
     private List<Player> players;
     private Player activePlayer;
@@ -63,6 +66,35 @@ public class Game
         JOptionPane.showConfirmDialog(null, inputs, "Game Settings", JOptionPane.OK_CANCEL_OPTION);
         int playerCount = (int) spielerAuswahl.getSelectedItem();
 
+
+
+          JFrame playerFrame = new JFrame("Monopoly");
+        playerFrame.setSize(500, 50 +50* playerCount);
+
+        JPanel playerPanel = new JPanel(new GridLayout(1 +playerCount, 2));
+        JLabel playerName = new JLabel("Geben Sie die Spielernamen ein!");
+        playerPanel.add(playerName);
+        playerPanel.add(new JLabel());
+        String[] spielerNamen = {
+          "Spieler 1", "Spieler 2", "Spieler 3", "Spieler 4", "Spieler 5", "Spieler 6"
+        };
+
+        ArrayList<JTextField> alleTextFelder = new ArrayList<>();
+
+        for (int i = 0; i < playerCount; i++)
+        {
+           playerPanel.add(new JLabel(spielerNamen[i]));
+            JTextField field = new JTextField();
+            playerPanel.add(field);
+            alleTextFelder.add(field);
+        }
+        playerFrame.add(playerPanel);
+           playerFrame.setVisible(true);
+
+
+
+
+
         String[] farben = new String[6];
         farben[0] = "blue";
         farben[1] = "red";
@@ -72,7 +104,8 @@ public class Game
         farben[5] = "white";
         for (int i = 0; i < playerCount; i++)
         {
-            players.add(new Player(Color.parseString(farben[i])));
+            String name = alleTextFelder.get(i).getText();
+            players.add(new Player(Color.parseString(farben[i]), name));
             //SETTING GAME SETTINGS
             players.get(i).setMoney(START_MONEY);
         }

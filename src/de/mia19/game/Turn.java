@@ -91,17 +91,7 @@ public class Turn
                 {
                     player.removeMoney(50);
                     player.setInJail(false);
-                    dice.roll();
-                    if (dice.isDouble())
-                    {
-                        player.move(dice.getDiceOne() + dice.getDiceTwo());
-                        isPassedStart();
-                        player.getPosition();
-                    } else
-                    {
-                        player.move(dice.getDiceOne() + dice.getDiceTwo());
-                        isPassedStart();
-                    }
+                    wuerfeln();
                 }
             }
             if (isThreeRoundsInPrison())
@@ -167,6 +157,7 @@ public class Turn
                 player.setInJail (true);
                 break;
             case cardField:
+                game.
 
 
         }
