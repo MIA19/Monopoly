@@ -9,13 +9,12 @@ import de.mia19.gui.Theme;
 
 public class Main
 {
-
-   private static Game game = new Game();
+    private static Game game = new Game();
 
     public static void main(String[] args)
     {
+     //   new GameScreen("spielfeld-beta");
         new StartScreen(game);
-         //new GameScreen("spielfeld-beta");
       //  Stats.increaseStarted();
     }
 
