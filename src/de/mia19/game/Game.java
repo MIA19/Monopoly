@@ -87,12 +87,12 @@ public class Game
         for (int i = 0; i < playerCount; i++)
         {
            playerPanel.add(new JLabel(spielerNamen[i]));
-            JTextField field = new JTextField();
-            playerPanel.add(field);
-            alleTextFelder.add(field);
+            JTextField textfield = new JTextField();
+            playerPanel.add(textfield);
+            alleTextFelder.add(textfield);
         }
         playerFrame.add(playerPanel);
-           playerFrame.setVisible(true);
+        playerFrame.setVisible(true);
 
 
 
