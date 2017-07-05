@@ -57,25 +57,25 @@ public class GameScreen extends JFrame {
        jln2.setLocation(1005,36);
        jln2.setOpaque(true);
 
-       JLabel jln3 = new JLabel("Name", SwingConstants.CENTER);
+       JLabel jln3 = new JLabel(Game.getAlleTextFelder().get(2).getText(), SwingConstants.CENTER);
        jln3.setSize(96,17);
        jln3.setBackground(Color.WHITE);
        jln3.setLocation(1005,63);
        jln3.setOpaque(true);
 
-       JLabel jln4 = new JLabel("Name", SwingConstants.CENTER);
+       JLabel jln4 = new JLabel(Game.getAlleTextFelder().get(3).getText(), SwingConstants.CENTER);
        jln4.setSize(96,17);
        jln4.setBackground(Color.WHITE);
        jln4.setLocation(1005,93);
        jln4.setOpaque(true);
 
-       JLabel jln5 = new JLabel("Name", SwingConstants.CENTER);
+       JLabel jln5 = new JLabel(Game.getAlleTextFelder().get(4).getText(), SwingConstants.CENTER);
        jln5.setSize(96,17);
        jln5.setBackground(Color.WHITE);
        jln5.setLocation(1005,123);
        jln5.setOpaque(true);
 
-       JLabel jln6 = new JLabel("Name", SwingConstants.CENTER);
+       JLabel jln6 = new JLabel(Game.getAlleTextFelder().get(5).getText(), SwingConstants.CENTER);
        jln6.setSize(96,17);
        jln6.setBackground(Color.WHITE);
        jln6.setLocation(1005,153);
