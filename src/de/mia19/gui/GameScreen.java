@@ -45,13 +45,13 @@ public class GameScreen extends JFrame {
 
    public void createRightSide() {
 
-       JLabel jln1 = new JLabel(Game.getPlayers().get(0)+"", SwingConstants.CENTER);
+       JLabel jln1 = new JLabel(Game.getAlleTextFelder().get(0).getText(), SwingConstants.CENTER);
        jln1.setSize(96,17);
        jln1.setBackground(Color.WHITE);
        jln1.setLocation(1005,6);
        jln1.setOpaque(true);
 
-       JLabel jln2 = new JLabel(Game.getPlayers().get(1)+"", SwingConstants.CENTER);
+       JLabel jln2 = new JLabel(Game.getAlleTextFelder().get(1).getText(), SwingConstants.CENTER);
        jln2.setSize(96,17);
        jln2.setBackground(Color.WHITE);
        jln2.setLocation(1005,36);

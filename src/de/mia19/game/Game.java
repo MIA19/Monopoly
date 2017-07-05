@@ -23,6 +23,7 @@ public class Game
 
 
     public static List<Player> players;
+    private static ArrayList<JTextField> alleTextFelder = new ArrayList<>();
     private Player activePlayer;
     public JButton buyButton;
 
@@ -84,7 +85,6 @@ public class Game
           "Spieler 1", "Spieler 2", "Spieler 3", "Spieler 4", "Spieler 5", "Spieler 6"
         };
 
-        ArrayList<JTextField> alleTextFelder = new ArrayList<>();
 
         for (int i = 0; i < playerCount; i++)
         {
@@ -252,5 +252,9 @@ public class Game
 
     public static List<Player> getPlayers() {
         return players;
+    }
+
+    public static ArrayList<JTextField> getAlleTextFelder() {
+        return alleTextFelder;
     }
 }
