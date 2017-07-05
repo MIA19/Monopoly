@@ -100,7 +100,7 @@ public class ECCards
 
     /**
      * sucht eine zufallgenerierte Eventcard, addiert genannte Summe und
-     *  ändert die position es Spielers wie im Event genannt
+     *  ändert die position des Spielers wie im Event genannt
      * @param player
      */
     public void getEventcard(Player player){
