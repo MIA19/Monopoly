@@ -2,5 +2,7 @@
 <!DOCTYPE stats SYSTEM "stats.dtd">
 <stats>
     <ueberlos>0</ueberlos>
-    <startgeklickt>8</startgeklickt>
+    <started>2</started>
+    <moneyspent>0</moneyspent>
+    <themechanged>0</themechanged>
 </stats>

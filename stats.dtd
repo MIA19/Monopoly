@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!ELEMENT stats (ueberlos,startgeklickt)>
+        <!ELEMENT stats (ueberlos,started,moneyspent,themechanged)>
         <!ELEMENT ueberlos (#PCDATA)>
-        <!ELEMENT startgeklickt (#PCDATA)>
+        <!ELEMENT started (#PCDATA)>
+        <!ELEMENT moneyspent (#PCDATA)>
+        <!ELEMENT themechanged (#PCDATA)>
+
