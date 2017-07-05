@@ -5,15 +5,21 @@ package de.mia19.game;
  */
 public class Player
 {
+    private final String name;
     private Color color;
     private long money;
     private int position;
     private boolean inJail;
 
-    public Player(Color color)
+    public Player(Color color, String name)
     {
         this.color = color;
         this.position = 0;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Color getColor()

@@ -13,7 +13,7 @@ public class PlayerMP extends Player
 
     public PlayerMP(Color color, InetAddress ipAddress, int port)
     {
-        super(color);
+        super(color, "");
         this.ipAddress = ipAddress;
         this.port = port;
     }
