@@ -16,6 +16,8 @@ public class ECCards
 
     public ECCards()
     {
+        createCommunitycards ();
+        createEventcards ();
     }
 
     /**
