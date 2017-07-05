@@ -120,7 +120,7 @@ public class Turn
     {
         ECCards ecCards = new ECCards();
         Field field = Field.getFromNumber(number);
-        Game game = new Game();
+        Game game = Game.instance;
         switch (field.getFieldState())
         {
             case startField:
