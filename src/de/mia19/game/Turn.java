@@ -141,17 +141,32 @@ public class Turn
 
                 if (player != field.getFieldOwner() && !field.getFieldOwner().isInJail())
                 {
-                    //if(field.getFieldOwner().)
+                    field.getFieldOwner().addMoney(field.getPrice());
+                    player.removeMoney(field.getPrice());
                 }
                 break;
             case trainStation:
                 if(!field.hasFieldOwner()){
                     game.buyButton.setEnabled(true);
                 }
-                if(game.list.get(5).getFieldOwner() == game.list.get(15).getFieldOwner())
-                    field.getFieldOwner ().addMoney (field.getPrice ());
-                player.removeMoney (field.getPrice ());
-                game.buyButton.setEnabled (false);
+                if (player != field.getFieldOwner() && !field.getFieldOwner().isInJail()) {
+                    if (game.getTrainstationCount(field.getFieldOwner()) == 1) {
+                        field.getFieldOwner().addMoney(field.getPrice());
+                        player.removeMoney(field.getPrice());
+                    }
+                    if (game.getTrainstationCount(field.getFieldOwner()) == 2) {
+                        field.getFieldOwner().addMoney(field.getPrice() * 2);
+                        player.removeMoney(field.getPrice() * 2);
+                    }
+                    if (game.getTrainstationCount(field.getFieldOwner()) == 3) {
+                        field.getFieldOwner().addMoney(field.getPrice() * 3);
+                        player.removeMoney(field.getPrice() * 3);
+                    }
+                    if (game.getTrainstationCount(field.getFieldOwner()) == 4) {
+                        field.getFieldOwner().addMoney(field.getPrice() * 4);
+                        player.removeMoney(field.getPrice() * 4);
+                    }
+                }
                 break;
             case workField:
                 if (!field.hasFieldOwner ())
@@ -212,13 +227,14 @@ public class Turn
             {
                 player.move(dice.getDiceOne() + dice.getDiceTwo());
                 isPassedStart();
-                //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                performAction(player.getPosition());
+                //TODO:ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
             }
             if (dice.isDouble())
             {
                 player.move(dice.getDiceOne() + dice.getDiceTwo());
                 isPassedStart();
-                //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN
+                performAction(player.getPosition());
                 rollButton();
                 if(rollButton() == 0)
                 {
@@ -227,13 +243,14 @@ public class Turn
                     {
                         player.move(dice.getDiceOne() + dice.getDiceTwo());
                         isPassedStart();
-                        //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                        performAction(player.getPosition());
+                        //TODO: ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
                     }
                     if (dice.isDouble())
                     {
                         player.move(dice.getDiceOne() + dice.getDiceTwo());
                         isPassedStart();
-                        //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN
+                        performAction(player.getPosition());
                         rollButton();
                         if(rollButton() == 0)
                         {
@@ -242,12 +259,14 @@ public class Turn
                             {
                                 player.move(dice.getDiceOne() + dice.getDiceTwo());
                                 isPassedStart();
-                                //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                                performAction(player.getPosition());
+                                //TODO:ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
                             }
                             if (dice.isDouble())
                             {
                                 player.setInJail(true);
-                                //TODO: SPIELER INS GEFÄNGNIS BEWEGEN, ZUG BEENDEN, NÄCHSTER SPIELER IST DRAN
+                                player.move(10);
+                                //TODO: ZUG BEENDEN, NÄCHSTER SPIELER IST DRAN
                             }
                         }
                     }
@@ -271,7 +290,8 @@ public class Turn
             player.setInJail(false);
             player.move(dice.getDiceOne() + dice.getDiceTwo());
             isPassedStart();
-            //TODO: SCHAUEN AUF WELCHEN FELD, AKTION AUSFÜHREN, ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+            performAction(player.getPosition());
+            //TODO: ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
         }
     }
 
