@@ -20,7 +20,6 @@ public class Game
     private Player activePlayer;
     public JButton buyButton;
 
-    ECCards ecCards = new ECCards();
     //DEFAULT VALUES
 
     private long START_MONEY = 400;
@@ -87,11 +86,16 @@ public class Game
             playerPanel.add(textfield);
             alleTextFelder.add(textfield);
         }
+        playerPanel.add(readyButton);
         playerFrame.add(playerPanel);
         playerFrame.setVisible(true);
 
 
 
+
+    readyButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
 
 
         String[] farben = new String[6];
@@ -110,6 +114,8 @@ public class Game
         }
 
         activePlayer = players.get(0);
+        }
+    });
     }
 
     public synchronized void stop()
