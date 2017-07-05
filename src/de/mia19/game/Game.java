@@ -74,7 +74,7 @@ public class Game
         JFrame playerFrame = new JFrame("Monopoly");
         playerFrame.setSize(500, 50 +50* playerCount);
 
-        JPanel playerPanel = new JPanel(new GridLayout(1 +playerCount, 2));
+        JPanel playerPanel = new JPanel(new GridLayout(2 +playerCount, 2));
         JButton readyButton = new JButton("Starten");
         JLabel playerName = new JLabel("Geben Sie die Spielernamen ein!");
         playerPanel.add(playerName);
@@ -103,7 +103,7 @@ public class Game
         @Override
         public void actionPerformed(ActionEvent e) {
 
-
+        playerFrame.setVisible(false);
         String[] farben = new String[6];
         farben[0] = "blue";
         farben[1] = "red";
