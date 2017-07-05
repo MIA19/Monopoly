@@ -10,7 +10,7 @@ public class Teststart
 
     public static void main(String[] args)
     {
-        Turn turn = new Turn(new Player(Color.BLUE));
+        Turn turn = new Turn(new Player(Color.BLUE, "huhu"));
 
         if(turn.rollButton() == 0)
         {
