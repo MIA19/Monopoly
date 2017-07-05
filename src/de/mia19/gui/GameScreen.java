@@ -4,6 +4,7 @@ import de.mia19.RessourceLoader;
 import de.mia19.game.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 
@@ -30,13 +31,7 @@ public class GameScreen extends JFrame {
         feld.setIcon(spielFeld);
         this.add(feld);
         this.setVisible(true);
-       // final JPanel eastSide = createRightSide();
-       // this.getContentPane().add(eastSide, BorderLayout.EAST);
-
-
     }
-
-
 
    private void createRightSide() {
 
@@ -125,14 +120,23 @@ public class GameScreen extends JFrame {
        jlm6.setLocation(1127,153);
        jlm6.setOpaque(true);
 
+       ImageIcon card;
+      // card = new ImageIcon(RessourceLoader.getImage("specimen.png"));
+       JLabel cardbox = new JLabel("SPECIMEN|PLACEHOLDER", SwingConstants.CENTER);
+       cardbox.setSize(226,340);
+       cardbox.setBackground(Color.RED);
+       cardbox.setLocation(901,413);
+       cardbox.setOpaque(true);
+       cardbox.setVisible(true);
 
 
        JButton buybtn = new JButton("Kaufen");
        buybtn.setLocation(938,780);
        buybtn.setSize(150,30);
        buybtn.setOpaque(true);
-       buybtn.setEnabled(false);
-
+       if(!cardbox.isVisible()){
+           buybtn.setEnabled(false);
+       }
        JButton wuerfelbtn = new JButton("Wuerfeln");
        wuerfelbtn.setLocation(938,340);
        wuerfelbtn.setSize(150,30);
@@ -148,6 +152,7 @@ public class GameScreen extends JFrame {
        this.add(jlm6);
        this.add(buybtn);
        this.add(wuerfelbtn);
+       this.add(cardbox);
 
    }
 
