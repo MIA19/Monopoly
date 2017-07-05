@@ -26,7 +26,7 @@ public class GameScreen extends JFrame {
         //this.setLayout(new GridBagLayout());
 
         createRightSide();
-        this.setSize(1200, 806);
+        this.setSize(1200, 830);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Monopoly");
