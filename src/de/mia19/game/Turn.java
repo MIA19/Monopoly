@@ -255,8 +255,3 @@ public class Turn
     }
 
 }
-
-
-    ECCards ecCards = new ECCards();
-    public ArrayList<Field> list;
-list = new ArrayList<>();
