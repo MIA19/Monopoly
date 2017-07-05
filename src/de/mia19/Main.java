@@ -14,8 +14,8 @@ public class Main
 
     public static void main(String[] args)
     {
-        new StartScreen(game);
-      //new GameScreen("spielfeld-beta");
+        //new StartScreen(game);
+      new GameScreen("spielfeld-beta");
         Stats.increaseStarted();
     }
 
