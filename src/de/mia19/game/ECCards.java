@@ -43,7 +43,6 @@ public class ECCards
         communitycards.add(new Communitycard(10,-200, "Gehe zu " + Field.getFromNumber(10).getFieldName() + ". Begib dich dierekt dort hin, gehe nicht über `Los` und ziehe keine 200 ein"));
 
     }
-
     /**
      * Erstellung einer ArrayList deck mit 16 verschiedenen Ereigbiskarten.
      */
