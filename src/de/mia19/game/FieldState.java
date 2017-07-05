@@ -13,7 +13,8 @@ public enum FieldState
     prison(false),
     goToPrison(false),
     workField(true),
-    cardField(false),
+    cardFieldE(false),
+    cardFieldG(false),
     taxField(false),
     freeParking(false),
     normalStreets(true);
