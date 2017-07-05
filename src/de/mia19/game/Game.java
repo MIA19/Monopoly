@@ -2,6 +2,7 @@ package de.mia19.game;
 
 import com.sun.jmx.remote.security.JMXPluggableAuthenticator;
 import com.sun.xml.internal.bind.v2.TODO;
+import de.mia19.gui.GameScreen;
 import de.mia19.gui.Theme;
 
 import javax.swing.*;
@@ -21,7 +22,7 @@ public class Game
     public ArrayList<Field> fields;
 
 
-    private List<Player> players;
+    public static List<Player> players;
     private Player activePlayer;
     public JButton buyButton;
 
@@ -74,7 +75,7 @@ public class Game
         JFrame playerFrame = new JFrame("Monopoly");
         playerFrame.setSize(500, 50 +50* playerCount);
 
-        JPanel playerPanel = new JPanel(new GridLayout(1 +playerCount, 2));
+        JPanel playerPanel = new JPanel(new GridLayout(2 +playerCount, 2));
         JButton readyButton = new JButton("Starten");
         JLabel playerName = new JLabel("Geben Sie die Spielernamen ein!");
         playerPanel.add(playerName);
@@ -103,7 +104,7 @@ public class Game
         @Override
         public void actionPerformed(ActionEvent e) {
 
-
+        playerFrame.setVisible(false);
         String[] farben = new String[6];
         farben[0] = "blue";
         farben[1] = "red";
@@ -118,6 +119,7 @@ public class Game
             //SETTING GAME SETTINGS
             players.get(i).setMoney(START_MONEY);
         }
+        GameScreen gameScreen = new GameScreen("spielfeld-beta");
 
         activePlayer = players.get(0);
         }
@@ -246,5 +248,9 @@ public class Game
         }
 
         return list;
+    }
+
+    public static List<Player> getPlayers() {
+        return players;
     }
 }

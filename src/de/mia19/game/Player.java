@@ -5,7 +5,7 @@ package de.mia19.game;
  */
 public class Player
 {
-    private final String name;
+    private static String name;
     private Color color;
     private long money;
     private int position;
@@ -18,7 +18,7 @@ public class Player
         this.name = name;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
