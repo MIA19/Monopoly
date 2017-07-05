@@ -31,7 +31,7 @@ public class GameScreen extends JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("Monopoly");
         final JLabel feld = new JLabel();
-        spielFeld = new ImageIcon(RessourceLoader.getImage(theme + ".jpg"));
+        spielFeld = new ImageIcon(RessourceLoader.getImage(theme + ".png"));
         feld.setIcon(spielFeld);
         this.add(feld);
         this.setVisible(true);
@@ -45,6 +45,7 @@ public class GameScreen extends JFrame {
 
    public void createRightSide() {
 
+        /*
        JLabel jln1 = new JLabel(Game.getAlleTextFelder().get(0).getText(), SwingConstants.CENTER);
        jln1.setSize(96,17);
        jln1.setBackground(Color.WHITE);
@@ -81,6 +82,7 @@ public class GameScreen extends JFrame {
        jln6.setLocation(1005,153);
        jln6.setOpaque(true);
 
+*/
 
        JLabel jlm1 = new JLabel("Money", SwingConstants.CENTER);
        jlm1.setSize(65,17);
@@ -118,12 +120,13 @@ public class GameScreen extends JFrame {
        jlm6.setLocation(1127,153);
        jlm6.setOpaque(true);
 
-       this.add(jln1);
+   /*    this.add(jln1);
        this.add(jln2);
        this.add(jln3);
        this.add(jln4);
        this.add(jln5);
        this.add(jln6);
+       */
        this.add(jlm1);
        this.add(jlm2);
        this.add(jlm3);

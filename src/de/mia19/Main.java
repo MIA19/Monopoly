@@ -13,9 +13,9 @@ public class Main
 
     public static void main(String[] args)
     {
-     //   new GameScreen("spielfeld-beta");
-        new StartScreen(game);
-      //  Stats.increaseStarted();
+      new GameScreen("originaltheme");
+    //    new StartScreen(game);
+      Stats.increaseStarted();
     }
 
 }
