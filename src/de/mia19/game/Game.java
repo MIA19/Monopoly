@@ -249,4 +249,8 @@ public class Game
 
         return list;
     }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
 }
