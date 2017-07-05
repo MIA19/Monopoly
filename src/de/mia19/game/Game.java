@@ -2,6 +2,7 @@ package de.mia19.game;
 
 import com.sun.jmx.remote.security.JMXPluggableAuthenticator;
 import com.sun.xml.internal.bind.v2.TODO;
+import de.mia19.gui.GameScreen;
 import de.mia19.gui.Theme;
 
 import javax.swing.*;
@@ -118,6 +119,7 @@ public class Game
             //SETTING GAME SETTINGS
             players.get(i).setMoney(START_MONEY);
         }
+        GameScreen gameScreen = new GameScreen("spielfeld-beta");
 
         activePlayer = players.get(0);
         }
