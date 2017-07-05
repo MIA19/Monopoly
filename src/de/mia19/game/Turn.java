@@ -118,7 +118,7 @@ public class Turn
      */
     private void performAction(int number)
     {
-
+        ECCards ecCards = new ECCards();
         Field field = Field.getFromNumber(number);
         Game game = new Game();
         switch (field.getFieldState())
@@ -166,10 +166,10 @@ public class Turn
                 player.setInJail (true);
                 break;
             case cardFieldE:
-                game.ecCards.getEventcard(player);
+                ecCards.getEventcard(player);
                 break;
             case cardFieldG:
-                game.ecCards.getCommunitycard(player);
+                ecCards.getCommunitycard(player);
                 break;
             case freeParking:
                 break;
