@@ -141,16 +141,17 @@ public class Turn
 
                 if (player != field.getFieldOwner() && !field.getFieldOwner().isInJail())
                 {
-                    /*if(game.list.get(5).getFieldOwner() == game.list.get(15).getFieldOwner())
-                    field.getFieldOwner ().addMoney (field.getPrice ());
-                    player.removeMoney (field.getPrice ());
-                    game.buyButton.setEnabled (false);*/
+                    //if(field.getFieldOwner().)
                 }
                 break;
             case trainStation:
                 if(!field.hasFieldOwner()){
                     game.buyButton.setEnabled(true);
                 }
+                if(game.list.get(5).getFieldOwner() == game.list.get(15).getFieldOwner())
+                    field.getFieldOwner ().addMoney (field.getPrice ());
+                player.removeMoney (field.getPrice ());
+                game.buyButton.setEnabled (false);
                 break;
             case workField:
                 if (!field.hasFieldOwner ())
