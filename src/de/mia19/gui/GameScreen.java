@@ -14,16 +14,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-public class GameScreen extends JFrame
-{
-    private final Game game;
+public class GameScreen extends JFrame {
+
+
     private ImageIcon spielFeld;
 
-    public GameScreen(Game game, String theme)
+    public GameScreen(String theme)
 
     {
 
-        this.game = game;
+       // this.game = game;
         //Game.instance.createFieldList(gameTheme);
         //this.setLayout(new GridBagLayout());
 
@@ -114,7 +114,7 @@ public class GameScreen extends JFrame
        jlm5.setLocation(1127,123);
        jlm5.setOpaque(true);
 
-       JLabel jlm6 = new JLabel("Money", SwingConstants.CENTER);
+       JLabel jlm6 = new JLabel("", SwingConstants.CENTER);
        jlm6.setSize(65,17);
        jlm6.setBackground(Color.WHITE);
        jlm6.setLocation(1127,153);
@@ -134,9 +134,5 @@ public class GameScreen extends JFrame
        this.add(jlm6);
 
    }
-    public void gameFrame(){
-
-
-    }
 
 }
