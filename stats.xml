@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE stats SYSTEM "stats.dtd">
 <stats>
-    <ueberlos>0</ueberlos>
-    <started>48</started>
+    <ueberlos>8</ueberlos>
+    <started>60</started>
     <moneyspent>0</moneyspent>
     <themechanged>0</themechanged>
 </stats>

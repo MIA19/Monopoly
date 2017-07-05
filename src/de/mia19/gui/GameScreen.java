@@ -4,18 +4,11 @@ import de.mia19.RessourceLoader;
 import de.mia19.game.*;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.Color;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+import java.awt.event.ActionListener;
 
 public class GameScreen extends JFrame {
-
-
-    private ImageIcon spielFeld;
+    private Dice dice;
 
     public GameScreen(String theme)
 
@@ -26,11 +19,13 @@ public class GameScreen extends JFrame {
         //this.setLayout(new GridBagLayout());
 
         createRightSide();
+      //  this.setUndecorated(true);
         this.setSize(1200, 830);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Monopoly");
         final JLabel feld = new JLabel();
+        ImageIcon spielFeld;
         spielFeld = new ImageIcon(RessourceLoader.getImage(theme + ".png"));
         feld.setIcon(spielFeld);
         this.add(feld);
@@ -43,9 +38,12 @@ public class GameScreen extends JFrame {
 
 
 
-   public void createRightSide() {
+   private void createRightSide() {
 
-        /*
+
+        if(!Game.getAlleTextFelder().isEmpty()){
+
+
        JLabel jln1 = new JLabel(Game.getAlleTextFelder().get(0).getText(), SwingConstants.CENTER);
        jln1.setSize(96,17);
        jln1.setBackground(Color.WHITE);
@@ -82,7 +80,14 @@ public class GameScreen extends JFrame {
        jln6.setLocation(1005,153);
        jln6.setOpaque(true);
 
-*/
+            this.add(jln1);
+            this.add(jln2);
+            this.add(jln3);
+            this.add(jln4);
+            this.add(jln5);
+            this.add(jln6);
+        }
+
 
        JLabel jlm1 = new JLabel("Money", SwingConstants.CENTER);
        jlm1.setSize(65,17);
@@ -120,19 +125,29 @@ public class GameScreen extends JFrame {
        jlm6.setLocation(1127,153);
        jlm6.setOpaque(true);
 
-   /*    this.add(jln1);
-       this.add(jln2);
-       this.add(jln3);
-       this.add(jln4);
-       this.add(jln5);
-       this.add(jln6);
-       */
+
+
+       JButton buybtn = new JButton("Kaufen");
+       buybtn.setLocation(938,780);
+       buybtn.setSize(150,30);
+       buybtn.setOpaque(true);
+       buybtn.setEnabled(false);
+
+       JButton wuerfelbtn = new JButton("Wuerfeln");
+       wuerfelbtn.setLocation(938,340);
+       wuerfelbtn.setSize(150,30);
+       wuerfelbtn.setOpaque(true);
+
+       //wuerfelbtn.addActionListener(e ->
+
        this.add(jlm1);
        this.add(jlm2);
        this.add(jlm3);
        this.add(jlm4);
        this.add(jlm5);
        this.add(jlm6);
+       this.add(buybtn);
+       this.add(wuerfelbtn);
 
    }
 

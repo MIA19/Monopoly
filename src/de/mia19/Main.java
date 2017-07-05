@@ -14,8 +14,8 @@ public class Main
     public static void main(String[] args)
     {
       new GameScreen("originaltheme");
-    //    new StartScreen(game);
-      Stats.increaseStarted();
+     // new StartScreen(game);
+      //Stats.increaseStarted();
     }
 
 }
