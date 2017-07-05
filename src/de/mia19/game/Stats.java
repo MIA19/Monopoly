@@ -25,7 +25,7 @@ public class Stats {
     private static int intstarted;
     private static int intueberlos;
     private static int intthemechanged;
-    private static int intmoneyspent;
+    private static double doublemoneyspent;
 
     private static boolean startalreadypressed = false;
     private static boolean ueberlosalready = false;
@@ -116,11 +116,11 @@ public class Stats {
         ueberlosalready = false;
     }
 
-    public static void increaseCreditsviewed(){
+    public static void increaseMoneyspent(){
         creditsalreadyviewed = true;
         readXML();
-        intmoneyspent = Integer.parseInt(moneyspent);
-        intmoneyspent++;
+        doublemoneyspent = Double.parseDouble(moneyspent);
+
         saveToXML();
         creditsalreadyviewed = false;
     }
@@ -173,7 +173,7 @@ public class Stats {
                 rootEle.appendChild(e);
             } else {
                 e = dom.createElement("moneyspent");
-                e.appendChild(dom.createTextNode(Integer.toString(intmoneyspent)));
+                e.appendChild(dom.createTextNode(Double.toString(doublemoneyspent)));
                 rootEle.appendChild(e);
             }
             if(ueberlosalready || creditsalreadyviewed || startalreadypressed) {
@@ -207,7 +207,7 @@ public class Stats {
 
     public static String getStarted() {
         readXML();
-        System.out.println(started);
+       // System.out.println(started);
         return started;
     }
 

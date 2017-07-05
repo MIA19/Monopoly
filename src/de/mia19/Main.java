@@ -17,7 +17,7 @@ public class Main
         new StartScreen(game);
       //  new GameScreen("spielfeld-beta");
         Stats.increaseStarted();
-
+        Stats.increaseMoneyspent();
     }
 
 }
