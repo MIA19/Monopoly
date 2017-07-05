@@ -1,6 +1,7 @@
 package de.mia19.game;
 
 import com.sun.jmx.remote.security.JMXPluggableAuthenticator;
+import com.sun.xml.internal.bind.v2.TODO;
 import de.mia19.gui.Theme;
 
 import javax.swing.*;
@@ -70,11 +71,12 @@ public class Game
         int playerCount = (int) spielerAuswahl.getSelectedItem();
 
 
-
-          JFrame playerFrame = new JFrame("Monopoly");
+        //TODO: JButton und actionListener die Farben reinmachen dies das du weißt amina flikflak!
+        JFrame playerFrame = new JFrame("Monopoly");
         playerFrame.setSize(500, 50 +50* playerCount);
 
         JPanel playerPanel = new JPanel(new GridLayout(1 +playerCount, 2));
+        JButton readyButton = new JButton("Starten");
         JLabel playerName = new JLabel("Geben Sie die Spielernamen ein!");
         playerPanel.add(playerName);
         playerPanel.add(new JLabel());
