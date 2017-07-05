@@ -22,7 +22,7 @@ public class Game
     public ArrayList<Field> fields;
 
 
-    private List<Player> players;
+    public static List<Player> players;
     private Player activePlayer;
     public JButton buyButton;
 
@@ -250,7 +250,7 @@ public class Game
         return list;
     }
 
-    public List<Player> getPlayers() {
+    public static List<Player> getPlayers() {
         return players;
     }
 }
