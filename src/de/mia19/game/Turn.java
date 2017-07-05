@@ -118,6 +118,7 @@ public class Turn
      */
     private void performAction(int number)
     {
+
         Field field = Field.getFromNumber(number);
         Game game = new Game();
         switch (field.getFieldState())
@@ -131,21 +132,29 @@ public class Turn
                     player.addMoney(200);
                 }
                 break;
-            case trainStation:
-                if(!field.hasFieldOwner ())
-                {
-                    game.buyButton.setEnabled (true);
-                }else
-                {
-                    game.buyButton.setEnabled (false);
-                }
-                break;
             case normalStreets:
                 if (!field.hasFieldOwner ())
                 {
                     game.buyButton.setEnabled (true);
-                }else
+                }
+
+                if (player != field.getFieldOwner())
                 {
+                    field.getFieldOwner ().addMoney (field.getPrice ());
+                    player.removeMoney (field.getPrice ());
+                    game.buyButton.setEnabled (false);
+                }
+                break;
+            case trainStation:
+            case workField:
+                if (!field.hasFieldOwner ())
+                {
+                    game.buyButton.setEnabled (true);
+                }
+
+                if (player != field.getFieldOwner() && !field.getFieldOwner().isInJail())
+                {
+                    //if()
                     field.getFieldOwner ().addMoney (field.getPrice ());
                     player.removeMoney (field.getPrice ());
                     game.buyButton.setEnabled (false);
@@ -156,13 +165,21 @@ public class Turn
                 player.move (10);
                 player.setInJail (true);
                 break;
-            case cardField:
-                game.
-
+            case cardFieldE:
+                game.ecCards.getEventcard(player);
+                break;
+            case cardFieldG:
+                game.ecCards.getCommunitycard(player);
+                break;
+            case freeParking:
+                break;
+            case prison:
+                break;
+            case taxField:
+                player.removeMoney(200);
 
         }
     }
-
 
     public void wuerfeln()
     {
@@ -240,3 +257,6 @@ public class Turn
 }
 
 
+    ECCards ecCards = new ECCards();
+    public ArrayList<Field> list;
+list = new ArrayList<>();
