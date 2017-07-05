@@ -14,7 +14,7 @@ public class Teststart
 
         if(turn.rollButton() == 0)
         {
-            System.out.println("0");
+            System.out.println(turn.rollButton());
         }
     }
 }

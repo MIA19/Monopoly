@@ -14,7 +14,7 @@ public class ConfigurationWindow extends JFrame
     public ConfigurationWindow(Game game)
     {
         this.setTitle("Einstellungen");
-        this.setSize(400, 400);
+        this.setSize(500, 500);
         this.setBackground(game.theme.getFarbeHintergrund());
         this.repaint();
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -32,8 +32,12 @@ public class ConfigurationWindow extends JFrame
         themePanel.add(themaText);
 
         final JLabel configureText = new JLabel("Einstellungen");
-        configureText.setHorizontalAlignment(SwingConstants.CENTER);
+        configureText.setBackground(game.theme.getFarbeHintergrund());
+        configureText.setOpaque(true);
         configureText.setFont(new Font("Arial", Font.BOLD, 30));
+        configureText.setForeground(game.theme.getFarbeText());
+        configureText.setHorizontalAlignment(SwingConstants.CENTER);
+        configureText.setOpaque(true);
 
         final JPanel configurePanel = new JPanel();
         this.add(configurePanel);
