@@ -2,6 +2,7 @@ package de.mia19.game;
 
 import com.sun.jmx.remote.security.JMXPluggableAuthenticator;
 import com.sun.xml.internal.bind.v2.TODO;
+import de.mia19.gui.GameScreen;
 import de.mia19.gui.Theme;
 
 import javax.swing.*;
@@ -21,7 +22,8 @@ public class Game
     public ArrayList<Field> fields;
 
 
-    private List<Player> players;
+    public static List<Player> players;
+    private static ArrayList<JTextField> alleTextFelder = new ArrayList<>();
     private Player activePlayer;
     public JButton buyButton;
 
@@ -83,7 +85,6 @@ public class Game
           "Spieler 1", "Spieler 2", "Spieler 3", "Spieler 4", "Spieler 5", "Spieler 6"
         };
 
-        ArrayList<JTextField> alleTextFelder = new ArrayList<>();
 
         for (int i = 0; i < playerCount; i++)
         {
@@ -118,6 +119,7 @@ public class Game
             //SETTING GAME SETTINGS
             players.get(i).setMoney(START_MONEY);
         }
+        GameScreen gameScreen = new GameScreen("spielfeld-beta");
 
         activePlayer = players.get(0);
         }
@@ -246,5 +248,13 @@ public class Game
         }
 
         return list;
+    }
+
+    public static List<Player> getPlayers() {
+        return players;
+    }
+
+    public static ArrayList<JTextField> getAlleTextFelder() {
+        return alleTextFelder;
     }
 }

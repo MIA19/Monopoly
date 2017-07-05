@@ -1,13 +1,11 @@
 package de.mia19.gui;
 
 import de.mia19.RessourceLoader;
-import de.mia19.game.Field;
-import de.mia19.game.FieldState;
-import de.mia19.game.Game;
-import de.mia19.game.Stats;
+import de.mia19.game.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Color;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.MouseAdapter;
@@ -47,37 +45,37 @@ public class GameScreen extends JFrame {
 
    public void createRightSide() {
 
-       JLabel jln1 = new JLabel("Name", SwingConstants.CENTER);
+       JLabel jln1 = new JLabel(Game.getAlleTextFelder().get(0).getText(), SwingConstants.CENTER);
        jln1.setSize(96,17);
        jln1.setBackground(Color.WHITE);
        jln1.setLocation(1005,6);
        jln1.setOpaque(true);
 
-       JLabel jln2 = new JLabel("Name", SwingConstants.CENTER);
+       JLabel jln2 = new JLabel(Game.getAlleTextFelder().get(1).getText(), SwingConstants.CENTER);
        jln2.setSize(96,17);
        jln2.setBackground(Color.WHITE);
        jln2.setLocation(1005,36);
        jln2.setOpaque(true);
 
-       JLabel jln3 = new JLabel("Name", SwingConstants.CENTER);
+       JLabel jln3 = new JLabel(Game.getAlleTextFelder().get(2).getText(), SwingConstants.CENTER);
        jln3.setSize(96,17);
        jln3.setBackground(Color.WHITE);
        jln3.setLocation(1005,63);
        jln3.setOpaque(true);
 
-       JLabel jln4 = new JLabel("Name", SwingConstants.CENTER);
+       JLabel jln4 = new JLabel(Game.getAlleTextFelder().get(3).getText(), SwingConstants.CENTER);
        jln4.setSize(96,17);
        jln4.setBackground(Color.WHITE);
        jln4.setLocation(1005,93);
        jln4.setOpaque(true);
 
-       JLabel jln5 = new JLabel("Name", SwingConstants.CENTER);
+       JLabel jln5 = new JLabel(Game.getAlleTextFelder().get(4).getText(), SwingConstants.CENTER);
        jln5.setSize(96,17);
        jln5.setBackground(Color.WHITE);
        jln5.setLocation(1005,123);
        jln5.setOpaque(true);
 
-       JLabel jln6 = new JLabel("Name", SwingConstants.CENTER);
+       JLabel jln6 = new JLabel(Game.getAlleTextFelder().get(5).getText(), SwingConstants.CENTER);
        jln6.setSize(96,17);
        jln6.setBackground(Color.WHITE);
        jln6.setLocation(1005,153);
