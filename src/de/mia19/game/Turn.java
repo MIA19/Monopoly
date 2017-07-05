@@ -121,6 +121,7 @@ public class Turn
         ECCards ecCards = new ECCards();
         Field field = Field.getFromNumber(number);
         Game game = Game.instance;
+        game.buyButton.setEnabled(false);
         switch (field.getFieldState())
         {
             case startField:
@@ -138,14 +139,19 @@ public class Turn
                     game.buyButton.setEnabled (true);
                 }
 
-                if (player != field.getFieldOwner())
+                if (player != field.getFieldOwner() && !field.getFieldOwner().isInJail())
                 {
+                    /*if(game.list.get(5).getFieldOwner() == game.list.get(15).getFieldOwner())
                     field.getFieldOwner ().addMoney (field.getPrice ());
                     player.removeMoney (field.getPrice ());
-                    game.buyButton.setEnabled (false);
+                    game.buyButton.setEnabled (false);*/
                 }
                 break;
             case trainStation:
+                if(!field.hasFieldOwner()){
+                    game.buyButton.setEnabled(true);
+                }
+                break;
             case workField:
                 if (!field.hasFieldOwner ())
                 {
@@ -154,10 +160,24 @@ public class Turn
 
                 if (player != field.getFieldOwner() && !field.getFieldOwner().isInJail())
                 {
-                    //if()
-                    field.getFieldOwner ().addMoney (field.getPrice ());
-                    player.removeMoney (field.getPrice ());
-                    game.buyButton.setEnabled (false);
+                    if(game.list.get(12).getFieldOwner() == game.list.get(28).getFieldOwner()) {
+                        rollButton();
+                        if(rollButton() == 0){
+                            dice.roll();
+                            field.getFieldOwner().addMoney((dice.getDiceOne() + dice.getDiceTwo()) * 10);
+                            player.removeMoney((dice.getDiceOne() + dice.getDiceTwo()) * 10);
+                        }
+
+                    }
+                    else {
+                        rollButton();
+                        if (rollButton() == 0) {
+                            dice.roll();
+                            field.getFieldOwner().addMoney((dice.getDiceOne() + dice.getDiceTwo()) * 4);
+                            player.removeMoney((dice.getDiceOne() + dice.getDiceTwo()) * 4);
+
+                        }
+                    }
                 }
                 break;
             case goToPrison:
