@@ -10,11 +10,13 @@ public class Teststart
 
     public static void main(String[] args)
     {
-        Turn turn = new Turn(new Player(Color.BLUE, "huhu"));
 
-        if(turn.rollButton() == 0)
+        Turn turn = new Turn();
+
+        int result = turn.rollButton();
+        if(result == 0)
         {
-            System.out.println(turn.rollButton());
+            System.out.println(result);
         }
     }
 }

@@ -10,28 +10,21 @@ public class Turn
 {
 
     private boolean threeRoundsInPrison;
-    private boolean passedStart; //ja == true; nein == false
-    private Player player;
     private Dice dice;
-    public boolean imBesitz;
 
-    public Turn(Player player)
+    public Turn()
     {
-        this.player = player;
 
     }
 
     private boolean isPassedStart()
     {
-        if (passedStart)
-        {
-            player.addMoney(200);
-            return true;
+        if(isPassedStart())
 
-        } else
-        {
-            return false;
-        }
+        Game.getInstance().getActivePlayer().addMoney(200);
+            Stats.increaseUeberlos();
+        return true;
+
     }
 
     public boolean isThreeRoundsInPrison()
@@ -42,9 +35,9 @@ public class Turn
 
 
     //
-    public void Spielerzug()
+    public void spielerzug()
     {
-        if (player.isInJail())
+        if (Game.getInstance().getActivePlayer().isInJail())
         {
             if (!isThreeRoundsInPrison())
             {
@@ -80,7 +73,7 @@ public class Turn
                         if (!dice.isDouble())
                         {
                             JOptionPane.showMessageDialog(null, "Kein Pasch nach 3 versuchen, du bleibst im Gefängnis.");
-                            player.setInJail(true);
+                            Game.getInstance().getActivePlayer().setInJail(true);
 
                             //TODO: END TURN UND NÄCHSTER SPIELER IST DRAN
                         }
@@ -89,8 +82,8 @@ public class Turn
 
                 } else if (entscheidung == 0)
                 {
-                    player.removeMoney(50);
-                    player.setInJail(false);
+                    Game.getInstance().getActivePlayer().removeMoney(50);
+                    Game.getInstance().getActivePlayer().setInJail(false);
                     wuerfeln();
                 }
             }
@@ -101,7 +94,7 @@ public class Turn
             }
         }
 
-        if (!player.isInJail())
+        if (!Game.getInstance().getActivePlayer().isInJail())
         {
             wuerfeln();
         }
@@ -120,68 +113,67 @@ public class Turn
     {
         ECCards ecCards = new ECCards();
         Field field = Field.getFromNumber(number);
-        Game game = Game.instance;
-        game.buyButton.setEnabled(false);
+        Game.getInstance().buyButton.setEnabled(false);
         switch (field.getFieldState())
         {
             case startField:
-                if (game.DOUBLE_MONEY)
+                if (Game.getInstance().DOUBLE_MONEY)
                 {
-                    player.addMoney(400);
+                    Game.getInstance().getActivePlayer().addMoney(400);
                 } else
                 {
-                    player.addMoney(200);
+                    Game.getInstance().getActivePlayer().addMoney(200);
                 }
                 break;
             case normalStreets:
                 if (!field.hasFieldOwner ())
                 {
-                    game.buyButton.setEnabled (true);
+                    Game.getInstance().buyButton.setEnabled (true);
                 }
 
-                if (player != field.getFieldOwner() && !field.getFieldOwner().isInJail())
+                if (Game.getInstance().getActivePlayer() != field.getFieldOwner() && !field.getFieldOwner().isInJail())
                 {
                     field.getFieldOwner().addMoney(field.getPrice());
-                    player.removeMoney(field.getPrice());
+                    Game.getInstance().getActivePlayer().removeMoney(field.getPrice());
                 }
                 break;
             case trainStation:
                 if(!field.hasFieldOwner()){
-                    game.buyButton.setEnabled(true);
+                    Game.getInstance().buyButton.setEnabled(true);
                 }
-                if (player != field.getFieldOwner() && !field.getFieldOwner().isInJail()) {
-                    if (game.getTrainstationCount(field.getFieldOwner()) == 1) {
+                if (Game.getInstance().getActivePlayer() != field.getFieldOwner() && !field.getFieldOwner().isInJail()) {
+                    if (Game.getInstance().getTrainstationCount(field.getFieldOwner()) == 1) {
                         field.getFieldOwner().addMoney(field.getPrice());
-                        player.removeMoney(field.getPrice());
+                        Game.getInstance().getActivePlayer().removeMoney(field.getPrice());
                     }
-                    if (game.getTrainstationCount(field.getFieldOwner()) == 2) {
+                    if (Game.getInstance().getTrainstationCount(field.getFieldOwner()) == 2) {
                         field.getFieldOwner().addMoney(field.getPrice() * 2);
-                        player.removeMoney(field.getPrice() * 2);
+                        Game.getInstance().getActivePlayer().removeMoney(field.getPrice() * 2);
                     }
-                    if (game.getTrainstationCount(field.getFieldOwner()) == 3) {
+                    if (Game.getInstance().getTrainstationCount(field.getFieldOwner()) == 3) {
                         field.getFieldOwner().addMoney(field.getPrice() * 3);
-                        player.removeMoney(field.getPrice() * 3);
+                        Game.getInstance().getActivePlayer().removeMoney(field.getPrice() * 3);
                     }
-                    if (game.getTrainstationCount(field.getFieldOwner()) == 4) {
+                    if (Game.getInstance().getTrainstationCount(field.getFieldOwner()) == 4) {
                         field.getFieldOwner().addMoney(field.getPrice() * 4);
-                        player.removeMoney(field.getPrice() * 4);
+                        Game.getInstance().getActivePlayer().removeMoney(field.getPrice() * 4);
                     }
                 }
                 break;
             case workField:
                 if (!field.hasFieldOwner ())
                 {
-                    game.buyButton.setEnabled (true);
+                    Game.getInstance().buyButton.setEnabled (true);
                 }
 
-                if (player != field.getFieldOwner() && !field.getFieldOwner().isInJail())
+                if (Game.getInstance().getActivePlayer() != field.getFieldOwner() && !field.getFieldOwner().isInJail())
                 {
-                    if(game.list.get(12).getFieldOwner() == game.list.get(28).getFieldOwner()) {
+                    if(Game.getInstance().list.get(12).getFieldOwner() == Game.getInstance().list.get(28).getFieldOwner()) {
                         rollButton();
                         if(rollButton() == 0){
                             dice.roll();
                             field.getFieldOwner().addMoney((dice.getDiceOne() + dice.getDiceTwo()) * 10);
-                            player.removeMoney((dice.getDiceOne() + dice.getDiceTwo()) * 10);
+                            Game.getInstance().getActivePlayer().removeMoney((dice.getDiceOne() + dice.getDiceTwo()) * 10);
                         }
 
                     }
@@ -190,7 +182,7 @@ public class Turn
                         if (rollButton() == 0) {
                             dice.roll();
                             field.getFieldOwner().addMoney((dice.getDiceOne() + dice.getDiceTwo()) * 4);
-                            player.removeMoney((dice.getDiceOne() + dice.getDiceTwo()) * 4);
+                            Game.getInstance().getActivePlayer().removeMoney((dice.getDiceOne() + dice.getDiceTwo()) * 4);
 
                         }
                     }
@@ -198,74 +190,74 @@ public class Turn
                 break;
             case goToPrison:
                 //Geh ins Gefängnis
-                player.move (10);
-                player.setInJail (true);
+                Game.getInstance().getActivePlayer().move (10);
+                Game.getInstance().getActivePlayer().setInJail (true);
                 break;
             case cardFieldE:
-                ecCards.getEventcard(player);
+                ecCards.getEventcard(Game.getInstance().getActivePlayer());
                 break;
             case cardFieldG:
-                ecCards.getCommunitycard(player);
+                ecCards.getCommunitycard(Game.getInstance().getActivePlayer());
                 break;
             case freeParking:
                 break;
             case prison:
                 break;
             case taxField:
-                player.removeMoney(200);
+                Game.getInstance().getActivePlayer().removeMoney(200);
 
         }
     }
 
     public void wuerfeln()
     {
-        rollButton();
-        if(rollButton() == 0)
+        int result = rollButton();
+        if(result == 0)
         {
             dice.roll();
             if (!dice.isDouble())
             {
-                player.move(dice.getDiceOne() + dice.getDiceTwo());
+                Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
                 isPassedStart();
-                performAction(player.getPosition());
+                performAction(Game.getInstance().getActivePlayer().getPosition());
                 //TODO:ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
             }
             if (dice.isDouble())
             {
-                player.move(dice.getDiceOne() + dice.getDiceTwo());
+                Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
                 isPassedStart();
-                performAction(player.getPosition());
-                rollButton();
-                if(rollButton() == 0)
+                performAction(Game.getInstance().getActivePlayer().getPosition());
+                result = rollButton();
+                if(result == 0)
                 {
                     dice.roll();
                     if (!dice.isDouble())
                     {
-                        player.move(dice.getDiceOne() + dice.getDiceTwo());
+                        Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
                         isPassedStart();
-                        performAction(player.getPosition());
+                        performAction(Game.getInstance().getActivePlayer().getPosition());
                         //TODO: ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
                     }
                     if (dice.isDouble())
                     {
-                        player.move(dice.getDiceOne() + dice.getDiceTwo());
+                        Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
                         isPassedStart();
-                        performAction(player.getPosition());
-                        rollButton();
-                        if(rollButton() == 0)
+                        performAction(Game.getInstance().getActivePlayer().getPosition());
+                        result = rollButton();
+                        if(result == 0)
                         {
                             dice.roll();
                             if (!dice.isDouble())
                             {
-                                player.move(dice.getDiceOne() + dice.getDiceTwo());
+                                Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
                                 isPassedStart();
-                                performAction(player.getPosition());
+                                performAction(Game.getInstance().getActivePlayer().getPosition());
                                 //TODO:ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
                             }
                             if (dice.isDouble())
                             {
-                                player.setInJail(true);
-                                player.move(10);
+                                Game.getInstance().getActivePlayer().setInJail(true);
+                                Game.getInstance().getActivePlayer().setPosition(10);
                                 //TODO: ZUG BEENDEN, NÄCHSTER SPIELER IST DRAN
                             }
                         }
@@ -278,19 +270,18 @@ public class Turn
 
     public int rollButton()
     {
-        Object[] wuerfeln = {"Würfeln"};
-        return JOptionPane.showOptionDialog(null, player.getColor().getName() + " ist am Zug!", "",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, wuerfeln, null);
+        return JOptionPane.showOptionDialog(null, Game.getInstance().getActivePlayer().getColor().getName() + " ist am Zug!", "",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Würfeln"}, null);
     }
 
     public void ifPaschTrue(){
         if (dice.isDouble())
         {
             JOptionPane.showMessageDialog(null, "Du hast einen Pasch gewürfelt und kommst aus dem Gefängnis.");
-            player.setInJail(false);
-            player.move(dice.getDiceOne() + dice.getDiceTwo());
+            Game.getInstance().getActivePlayer().setInJail(false);
+            Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
             isPassedStart();
-            performAction(player.getPosition());
+            performAction(Game.getInstance().getActivePlayer().getPosition());
             //TODO: ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
         }
     }
