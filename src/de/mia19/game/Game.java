@@ -1,7 +1,5 @@
 package de.mia19.game;
 
-import com.sun.jmx.remote.security.JMXPluggableAuthenticator;
-import com.sun.xml.internal.bind.v2.TODO;
 import de.mia19.gui.GameScreen;
 import de.mia19.gui.Theme;
 
@@ -9,17 +7,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Game {
 
     private static final String NAME = "Monopoly";
     private static Game instance;
-    public ArrayList<Field> fields;
-
 
     public static List<Player> players;
     private static ArrayList<JTextField> alleTextFelder = new ArrayList<>();
@@ -255,109 +251,20 @@ public class Game {
         return count;
     }
 
-    /**
-     * zum Testen ob der zu überprüfende Spieler alle Lila Straßen hat.
-     *
-     * @param player Übergibt Spieler zur abfrage ob er alle Lila Straßen hat.
-     * @return Gibt zurück ob der Spieler alle Lila straßen hat damit er häuser drauf kaufen kann.
-     */
-    public boolean hasPlayerAllPurpleStreets(Player player) {
-        if (list.get(1).getFieldOwner() == player && list.get(3).getFieldOwner() == player) {
-            return true;
-        }
-        return false;
+    public ArrayList<Field> getOwnedFieldsByPlayer(Player player)
+    {
+        ArrayList<Field> temp = list.stream().filter(field -> field.getFieldOwner().equals(player)).collect(Collectors.toCollection(ArrayList::new));
+        return temp;
     }
 
-    /**
-     * zum Testen ob der zu überprüfende Spieler alle Blauen Straßen hat.
-     *
-     * @param player Übergibt Spieler zur abfrage ob er alle Blauen Straßen hat.
-     * @return Gibt zurück ob der Spieler alle Blauen straßen hat damit er häuser drauf kaufen kann.
-     */
-    public boolean hasPlayerAllBlueStreets(Player player) {
-        if (list.get(6).getFieldOwner() == player && list.get(8).getFieldOwner() == player && list.get(9).getFieldOwner() == player) {
-            return true;
+    public int getCountOfMaxStreetColor(FieldState fieldState)
+    {
+        int i = 0;
+        for(Field field : list)
+        {
+            if(field.getFieldState().equals(fieldState))
+                i++;
         }
-        return false;
+        return i;
     }
-
-    /**
-     * zum Testen ob der zu überprüfende Spieler alle Pinken Straßen hat.
-     *
-     * @param player Übergibt Spieler zur abfrage ob er alle Pinken Straßen hat.
-     * @return Gibt zurück ob der Spieler alle Pinken straßen hat damit er häuser drauf kaufen kann.
-     */
-    public boolean hasPlayerAllPinkStreets(Player player) {
-        if (list.get(11).getFieldOwner() == player && list.get(13).getFieldOwner() == player && list.get(14).getFieldOwner() == player) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * zum Testen ob der zu überprüfende Spieler alle Orangen Straßen hat.
-     *
-     * @param player Übergibt Spieler zur abfrage ob er alle Orangen Straßen hat.
-     * @return Gibt zurück ob der Spieler alle Orangen straßen hat damit er häuser drauf kaufen kann.
-     */
-    public boolean hasPlayerAllOrangeStreets(Player player) {
-        if (list.get(16).getFieldOwner() == player && list.get(18).getFieldOwner() == player && list.get(19).getFieldOwner() == player) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * zum Testen ob der zu überprüfende Spieler alle Roten Straßen hat.
-     *
-     * @param player Übergibt Spieler zur abfrage ob er alle Roten Straßen hat.
-     * @return Gibt zurück ob der Spieler alle Roten straßen hat damit er häuser drauf kaufen kann.
-     */
-    public boolean hasPlayerAllRedStreets(Player player) {
-        if (list.get(21).getFieldOwner() == player && list.get(23).getFieldOwner() == player && list.get(24).getFieldOwner() == player) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * zum Testen ob der zu überprüfende Spieler alle Gelben Straßen hat.
-     *
-     * @param player Übergibt Spieler zur abfrage ob er alle Gelben Straßen hat.
-     * @return Gibt zurück ob der Spieler alle Gelben straßen hat damit er häuser drauf kaufen kann.
-     */
-    public boolean hasPlayerAllYellowStreets(Player player) {
-        if (list.get(26).getFieldOwner() == player && list.get(27).getFieldOwner() == player && list.get(29).getFieldOwner() == player) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * zum Testen ob der zu überprüfende Spieler alle Roten Straßen hat.
-     *
-     * @param player Übergibt Spieler zur abfrage ob er alle Roten Straßen hat.
-     * @return Gibt zurück ob der Spieler alle Roten straßen hat damit er häuser drauf kaufen kann.
-     */
-    public boolean hasPlayerAllGreenStreets(Player player) {
-        if (list.get(31).getFieldOwner() == player && list.get(32).getFieldOwner() == player && list.get(35).getFieldOwner() == player) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * zum Testen ob der zu überprüfende Spieler alle Roten Straßen hat.
-     *
-     * @param player Übergibt Spieler zur abfrage ob er alle Roten Straßen hat.
-     * @return Gibt zurück ob der Spieler alle Roten straßen hat damit er häuser drauf kaufen kann.
-     */
-    public boolean hasPlayerAllDarkBlueStreets(Player player) {
-        if (list.get(38).getFieldOwner() == player && list.get(40).getFieldOwner() == player) {
-            return true;
-        }
-        return false;
-    }
-
-
 }

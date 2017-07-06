@@ -88,4 +88,20 @@ public class Player
         }
     }
 
+    public int getCountOfOwnedColorStreets(FieldState fieldState)
+    {
+        int i = 0;
+        for(Field field : Game.getInstance().getOwnedFieldsByPlayer(this))
+        {
+            if(field.getFieldState().equals(fieldState))
+                i++;
+        }
+        return i;
+    }
+
+    public boolean hasAllStreetsOfColor(FieldState fieldState)
+    {
+        return getCountOfOwnedColorStreets(fieldState) == Game.getInstance().getCountOfMaxStreetColor(fieldState);
+    }
+
 }
