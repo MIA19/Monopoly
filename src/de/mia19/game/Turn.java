@@ -145,6 +145,9 @@ public class Turn
             case trainStation:
                 if(!field.hasFieldOwner()){
                     Game.getInstance().buyButton.setEnabled(true);
+                    if(Game.getInstance().getActivePlayer().getMoney() >= field.getPrice()){
+
+                    }
                 }
                 if (Game.getInstance().getActivePlayer() != field.getFieldOwner() && !field.getFieldOwner().isInJail()) {
                     if (Game.getInstance().getTrainstationCount(field.getFieldOwner()) == 1) {
