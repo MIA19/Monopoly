@@ -111,8 +111,10 @@ public class Game {
                     //SETTING GAME SETTINGS
                     players.get(i).setMoney(START_MONEY);
                 }
-                GameScreen gameScreen = new GameScreen("spielfeld-beta");
-
+                if(theme == Theme.original) {
+                    GameScreen gameScreen = new GameScreen("originaltheme");
+                }
+                GameScreen gameScreen = new GameScreen("lettetheme");
                 activePlayer = players.get(0);
             }
         });

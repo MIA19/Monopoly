@@ -11,7 +11,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-     // new GameScreen("originaltheme");
+     new GameScreen("originaltheme");
         new StartScreen(Game.getInstance());
       //Stats.increaseStarted();
     }
