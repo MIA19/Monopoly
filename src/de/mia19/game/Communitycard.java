@@ -14,8 +14,8 @@ public class Communitycard
 
     /**
      +     * @param position die neue Position die der Spieler einnehmen soll.
-     +     * @param money
-     +     * @param event
+     +     * @param money Die im Event genannte Summe. Bei einem Abzug ist dieser Wert negativ.
+     +     * @param event Die Umschreibung des Ereignisses.
      */
     public Communitycard(int position, long money, String event)
     {
