@@ -86,10 +86,6 @@ public class Stats {
                     statv.add(propertiesbought);
             }
 
-
-            //  System.out.println("Ueber los gezogen: " + ueberlos);
-            // System.out.println("Auf Start geklickt: " + started);
-
         } catch (ParserConfigurationException pce) {
             System.out.println(pce.getMessage());
 

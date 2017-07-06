@@ -6,6 +6,7 @@ import de.mia19.game.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ public class GameScreen extends JFrame {
     private Dice dice;
     public ArrayList<JLabel> moneyLabel = new ArrayList<>();
     public static JButton buybtn;
+    private static JButton closebtn;
     public GameScreen(String theme)
 
     {
@@ -23,7 +25,8 @@ public class GameScreen extends JFrame {
 
         createRightSide();
         //  this.setUndecorated(true);
-        this.setSize(1200, 830);
+        this.setSize(1200, 806);
+        this.setUndecorated(true);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Monopoly");
@@ -43,7 +46,7 @@ public class GameScreen extends JFrame {
             JLabel jl = new JLabel(Game.getAlleTextFelder().get(i).getText(), SwingConstants.CENTER);
             jl.setSize(96, 17);
             jl.setBackground(Color.WHITE);
-            jl.setLocation(1005, 6 + (30 * i));
+            jl.setLocation(1005, 16 + (30 * i));
             jl.setOpaque(true);
             this.add(jl);
 
@@ -63,40 +66,40 @@ public class GameScreen extends JFrame {
         jlc1.setBackground(Color.pink);
         jlc1.setOpaque(true);
         jlc1.setSize(69, 21);
-        jlc1.setLocation(825, 17);
+        jlc1.setLocation(825, 16);
         this.add(jlc1);
 
         JLabel jlc2 = new JLabel("Color",SwingConstants.CENTER);
         jlc2.setSize(69, 21);
-        jlc2.setLocation(825, 45);
+        jlc2.setLocation(825, 44);
         jlc2.setOpaque(true);
         this.add(jlc2);
 
         JLabel jlc3 = new JLabel("Color", SwingConstants.CENTER);
         jlc3.setSize(69, 21);
         jlc3.setBackground(Color.WHITE);
-        jlc3.setLocation(825, 73);
+        jlc3.setLocation(825, 72);
         jlc3.setOpaque(true);
         this.add(jlc3);
 
         JLabel jlc4 = new JLabel("Color", SwingConstants.CENTER);
         jlc4.setSize(69, 21);
         jlc4.setBackground(Color.WHITE);
-        jlc4.setLocation(825, 101);
+        jlc4.setLocation(825, 100);
         jlc4.setOpaque(true);
         this.add(jlc4);
 
         JLabel jlc5 = new JLabel("Color", SwingConstants.CENTER);
         jlc5.setSize(69, 21);
         jlc5.setBackground(Color.WHITE);
-        jlc5.setLocation(825, 129);
+        jlc5.setLocation(825, 128);
         jlc5.setOpaque(true);
         this.add(jlc5);
 
         JLabel jlc6 = new JLabel("Color", SwingConstants.CENTER);
         jlc6.setSize(69, 21);
         jlc6.setBackground(Color.WHITE);
-        jlc6.setLocation(825, 157);
+        jlc6.setLocation(825, 156);
         jlc6.setOpaque(true);
         this.add(jlc6);
 
@@ -108,6 +111,22 @@ public class GameScreen extends JFrame {
         cardbox.setLocation(901, 413);
         cardbox.setOpaque(true);
         cardbox.setVisible(true);
+
+        closebtn = new JButton();
+        closebtn.setText("X");
+        closebtn.setLocation(1160,0);
+        closebtn.setSize(10,10);
+        closebtn.setFont(new Font("Arial", Font.BOLD, 10));
+        closebtn.setSize(closebtn.getPreferredSize());
+        closebtn.setBackground(Color.RED);
+        ActionListener closelistener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        };
+        closebtn.addActionListener(closelistener);
+        this.add(closebtn);
 
 
         buybtn = new JButton("Kaufen");
