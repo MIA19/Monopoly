@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class GameScreen extends JFrame {
     private Dice dice;
     public ArrayList<JLabel> moneyLabel = new ArrayList<>();
-    public JButton buybtn;
+    public static JButton buybtn;
     public GameScreen(String theme)
 
     {

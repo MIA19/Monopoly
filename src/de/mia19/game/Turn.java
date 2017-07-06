@@ -1,5 +1,7 @@
 package de.mia19.game;
 
+import de.mia19.gui.GameScreen;
+
 import javax.swing.*;
 import java.lang.reflect.Array;
 
@@ -113,7 +115,9 @@ public class Turn
     {
         ECCards ecCards = new ECCards();
         Field field = Field.getFromNumber(number);
-        Game.getInstance().buyButton.setEnabled(false);
+
+        GameScreen.buybtn.setEnabled(false);
+
         switch (field.getFieldState())
         {
             case startField:
@@ -125,7 +129,8 @@ public class Turn
                     Game.getInstance().getActivePlayer().addMoney(200);
                 }
                 break;
-            /**case normalStreets:
+            case normalStreetsBlue:
+            case normalStreetsDarkBlue:
                 if (!field.hasFieldOwner ())
                 {
                     Game.getInstance().buyButton.setEnabled (true);
@@ -136,7 +141,7 @@ public class Turn
                     field.getFieldOwner().addMoney(field.getPrice());
                     Game.getInstance().getActivePlayer().removeMoney(field.getPrice());
                 }
-                break;*/
+                break;
             case trainStation:
                 if(!field.hasFieldOwner()){
                     Game.getInstance().buyButton.setEnabled(true);
