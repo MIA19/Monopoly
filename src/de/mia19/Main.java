@@ -12,7 +12,7 @@ public class Main
     public static void main(String[] args)
     {
       new GameScreen("originaltheme");
-     // new StartScreen(game);
+        //new StartScreen(game);
       //Stats.increaseStarted();
     }
 

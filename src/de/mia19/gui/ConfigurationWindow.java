@@ -26,7 +26,7 @@ public class ConfigurationWindow extends JFrame
         themaText.setFont(new Font("Arial", Font.BOLD, 20));
 
         final JPanel themePanel = new JPanel();
-        themePanel.setBackground(Game.getInstance().theme.getFarbeHintergrund());
+        themePanel.setBackground(Game.getInstance ().theme.getFarbeHintergrund());
         themePanel.setForeground(Game.getInstance().theme.getFarbeText());
         themePanel.setLayout(new GridLayout(4, 1, 2, 2));
         themePanel.add(themaText);
@@ -42,8 +42,8 @@ public class ConfigurationWindow extends JFrame
         final JPanel configurePanel = new JPanel();
         this.add(configurePanel);
         configurePanel.setLayout(new GridLayout(2, 1, 2, 2));
-        configurePanel.setBackground(Game.getInstance().theme.getFarbeHintergrund());
-        configurePanel.setForeground(Game.getInstance().theme.getFarbeText());
+        configurePanel.setBackground(Game.getInstance ().theme.getFarbeHintergrund());
+        configurePanel.setForeground(Game.getInstance ().theme.getFarbeText());
         configurePanel.add(configureText);
         configurePanel.add(themePanel);
         configurePanel.setBorder(BorderFactory.createBevelBorder(3));
@@ -68,7 +68,7 @@ public class ConfigurationWindow extends JFrame
             {
                 if (btn.isSelected())
                 {
-                    Game.getInstance().theme = btn.getTheme();
+                    Game.getInstance ().theme = btn.getTheme();
                     break;
                 }
 
