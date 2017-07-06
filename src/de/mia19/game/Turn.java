@@ -125,7 +125,7 @@ public class Turn
                     Game.getInstance().getActivePlayer().addMoney(200);
                 }
                 break;
-            case normalStreets:
+            /**case normalStreets:
                 if (!field.hasFieldOwner ())
                 {
                     Game.getInstance().buyButton.setEnabled (true);
@@ -136,7 +136,7 @@ public class Turn
                     field.getFieldOwner().addMoney(field.getPrice());
                     Game.getInstance().getActivePlayer().removeMoney(field.getPrice());
                 }
-                break;
+                break;*/
             case trainStation:
                 if(!field.hasFieldOwner()){
                     Game.getInstance().buyButton.setEnabled(true);
