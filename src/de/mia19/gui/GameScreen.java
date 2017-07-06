@@ -52,8 +52,7 @@ public class GameScreen extends JFrame {
             jlm1.setLocation(1127, 6 +(30 * i));
             jlm1.setOpaque(true);
             moneyLabel.add(jlm1);
-
-
+            this.add(moneyLabel.get(i));
         }
 
         ImageIcon card;
