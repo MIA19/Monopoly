@@ -68,7 +68,6 @@ public class Game {
         JOptionPane.showConfirmDialog (null, inputs, "Game Settings", JOptionPane.OK_CANCEL_OPTION);
         int playerCount = (int) spielerAuswahl.getSelectedItem ();
 
-
         //TODO: JButton und actionListener die Farben reinmachen dies das du weißt amina flikflak!
         JFrame playerFrame = new JFrame ("Monopoly");
         playerFrame.setSize (500, 50 + 50 * playerCount);
