@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!ELEMENT stats (ueberlos,started,moneyspent,moneyearned)>
+        <!ELEMENT stats (ueberlos,started,moneyspent,moneyearned,propertiesbought)>
         <!ELEMENT ueberlos (#PCDATA)>
         <!ELEMENT started (#PCDATA)>
         <!ELEMENT moneyspent (#PCDATA)>
         <!ELEMENT moneyearned (#PCDATA)>
-
+        <!ELEMENT propertiesbought (#PCDATA)>

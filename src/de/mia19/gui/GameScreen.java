@@ -37,7 +37,7 @@ public class GameScreen extends JFrame {
 
     private void createRightSide() {
 
-
+// Money- und Namensfelder
         for (int i = 0; i < Game.getAlleTextFelder().size(); i++) {
 
             JLabel jl = new JLabel(Game.getAlleTextFelder().get(i).getText(), SwingConstants.CENTER);
@@ -56,6 +56,49 @@ public class GameScreen extends JFrame {
 
             this.add (moneyLabel.get (i));
         }
+
+        // Farbfelder
+
+        JLabel jlc1 = new JLabel("Color", SwingConstants.CENTER);
+        jlc1.setBackground(Color.pink);
+        jlc1.setOpaque(true);
+        jlc1.setSize(69, 21);
+        jlc1.setLocation(825, 17);
+        this.add(jlc1);
+
+        JLabel jlc2 = new JLabel("Color",SwingConstants.CENTER);
+        jlc2.setSize(69, 21);
+        jlc2.setLocation(825, 45);
+        jlc2.setOpaque(true);
+        this.add(jlc2);
+
+        JLabel jlc3 = new JLabel("Color", SwingConstants.CENTER);
+        jlc3.setSize(69, 21);
+        jlc3.setBackground(Color.WHITE);
+        jlc3.setLocation(825, 73);
+        jlc3.setOpaque(true);
+        this.add(jlc3);
+
+        JLabel jlc4 = new JLabel("Color", SwingConstants.CENTER);
+        jlc4.setSize(69, 21);
+        jlc4.setBackground(Color.WHITE);
+        jlc4.setLocation(825, 101);
+        jlc4.setOpaque(true);
+        this.add(jlc4);
+
+        JLabel jlc5 = new JLabel("Color", SwingConstants.CENTER);
+        jlc5.setSize(69, 21);
+        jlc5.setBackground(Color.WHITE);
+        jlc5.setLocation(825, 129);
+        jlc5.setOpaque(true);
+        this.add(jlc5);
+
+        JLabel jlc6 = new JLabel("Color", SwingConstants.CENTER);
+        jlc6.setSize(69, 21);
+        jlc6.setBackground(Color.WHITE);
+        jlc6.setLocation(825, 157);
+        jlc6.setOpaque(true);
+        this.add(jlc6);
 
         ImageIcon card;
         // card = new ImageIcon(RessourceLoader.getImage("specimen.png"));

@@ -114,7 +114,7 @@ public class Game {
                 if(theme == Theme.original) {
                     GameScreen gameScreen = new GameScreen("originaltheme");
                 }
-                GameScreen gameScreen = new GameScreen("lettetheme");
+                GameScreen gameScreen = new GameScreen("lette");
                 activePlayer = players.get(0);
             }
         });
