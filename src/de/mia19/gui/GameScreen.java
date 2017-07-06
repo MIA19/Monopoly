@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class GameScreen extends JFrame {
     private Dice dice;
     public ArrayList<JLabel> moneyLabel = new ArrayList<>();
+    public JButton buybtn;
     public GameScreen(String theme)
 
     {
@@ -66,7 +67,7 @@ public class GameScreen extends JFrame {
         cardbox.setVisible(true);
 
 
-        JButton buybtn = new JButton("Kaufen");
+        buybtn = new JButton("Kaufen");
         buybtn.setLocation(938, 760);
         buybtn.setSize(150, 30);
         buybtn.setOpaque(true);
