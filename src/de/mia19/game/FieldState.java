@@ -17,7 +17,14 @@ public enum FieldState
     cardFieldG(false),
     taxField(false),
     freeParking(false),
-    normalStreets(true);
+    normalStreetsPurple(true),
+    normalStreetsBlue(true),
+    normalStreetsPink(true),
+    normalStreetsOrange(true),
+    normalStreetsRed(true),
+    normalStreetsYellow(true),
+    normalStreetsGreen(true),
+    normalStreetsDarkBlue(true);
 
     private boolean buyAble;
 
