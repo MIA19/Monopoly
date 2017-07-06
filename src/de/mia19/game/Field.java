@@ -145,7 +145,7 @@ public class Field extends JButton
 
     public static Field getFromNumber(int fieldNumber)
     {
-        for (Field field : Game.instance.fields)
+        for (Field field : Game.getInstance().fields)
         {
             if (field.getFieldNumber() == fieldNumber)
                 return field;

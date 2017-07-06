@@ -1,7 +1,5 @@
 package de.mia19.game;
 
-import com.sun.jmx.remote.security.JMXPluggableAuthenticator;
-import com.sun.xml.internal.bind.v2.TODO;
 import de.mia19.gui.GameScreen;
 import de.mia19.gui.Theme;
 
@@ -9,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +15,7 @@ public class Game
 {
 
     private static final String NAME = "Monopoly";
-    public static Game instance;
+    private static Game instance;
     public ArrayList<Field> fields;
 
 
@@ -36,12 +33,15 @@ public class Game
     private Thread thread;
     public Theme theme = Theme.original;
 
-    public Game()
+    public static Game getInstance()
     {
-        instance = this;
-        createFieldList(theme);
+        return (instance == null) ? (instance = new Game()) : instance;
     }
 
+    private Game()
+    {
+        createFieldList(theme);
+    }
 
     public synchronized void start()
     {

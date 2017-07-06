@@ -44,43 +44,43 @@ public class GameScreen extends JFrame {
        jln1.setBackground(Color.WHITE);
        jln1.setLocation(1005,6);
        jln1.setOpaque(true);
+            this.add(jln1);
 
        JLabel jln2 = new JLabel(Game.getAlleTextFelder().get(1).getText(), SwingConstants.CENTER);
        jln2.setSize(96,17);
        jln2.setBackground(Color.WHITE);
        jln2.setLocation(1005,36);
        jln2.setOpaque(true);
+            this.add(jln2);
 
        JLabel jln3 = new JLabel(Game.getAlleTextFelder().get(2).getText(), SwingConstants.CENTER);
        jln3.setSize(96,17);
        jln3.setBackground(Color.WHITE);
        jln3.setLocation(1005,63);
        jln3.setOpaque(true);
+            this.add(jln3);
 
        JLabel jln4 = new JLabel(Game.getAlleTextFelder().get(3).getText(), SwingConstants.CENTER);
        jln4.setSize(96,17);
        jln4.setBackground(Color.WHITE);
        jln4.setLocation(1005,93);
        jln4.setOpaque(true);
+            this.add(jln4);
 
        JLabel jln5 = new JLabel(Game.getAlleTextFelder().get(4).getText(), SwingConstants.CENTER);
        jln5.setSize(96,17);
        jln5.setBackground(Color.WHITE);
        jln5.setLocation(1005,123);
        jln5.setOpaque(true);
+            this.add(jln5);
 
        JLabel jln6 = new JLabel(Game.getAlleTextFelder().get(5).getText(), SwingConstants.CENTER);
        jln6.setSize(96,17);
        jln6.setBackground(Color.WHITE);
        jln6.setLocation(1005,153);
        jln6.setOpaque(true);
-
-            this.add(jln1);
-            this.add(jln2);
-            this.add(jln3);
-            this.add(jln4);
-            this.add(jln5);
             this.add(jln6);
+
         }
 
 
