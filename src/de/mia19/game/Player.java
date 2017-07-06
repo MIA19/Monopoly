@@ -60,6 +60,7 @@ public class Player
     public void setInJail(boolean inJail)
     {
         this.inJail = inJail;
+     //   this.position = 10;
     }
 
     public boolean isInJail()

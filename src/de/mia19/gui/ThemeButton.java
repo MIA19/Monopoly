@@ -12,7 +12,7 @@ public class ThemeButton extends JRadioButton
     {
         this.setText(text);
         this.theme = theme;
-        if (Game.instance.theme == theme)
+        if (Game.getInstance().theme == theme)
             this.setSelected(true);
     }
 
