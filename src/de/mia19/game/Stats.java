@@ -19,18 +19,18 @@ public class Stats {
 
     private static String ueberlos = null;
     private static String moneyspent = null;
-    private static String themechanged = null;
+    private static String moneyearned = null;
     private static String started = null;
 
     private static int intstarted;
     private static int intueberlos;
-    private static int intthemechanged;
+    private static double doublemoneyearned;
     private static double doublemoneyspent;
 
-    private static boolean startalreadypressed = false;
-    private static boolean ueberlosalready = false;
-    private static boolean themealready = false;
-    private static boolean creditsalreadyviewed = false;
+    private static boolean startpressedexists = false;
+    private static boolean ueberlosexists = false;
+    private static boolean moneyearnedalreadyexists = false;
+    private static boolean moneyspentalready = false;
     // private static int test2 = 1;
 
     private static ArrayList<String> statv;
@@ -65,10 +65,10 @@ public class Stats {
                     statv.add(moneyspent);
             }
 
-            themechanged = getTextValue(themechanged, doc, "themechanged");
-            if (themechanged != null) {
+            moneyearned = getTextValue(moneyearned, doc, "moneyearned");
+            if (moneyearned != null) {
                 if (!statv.isEmpty())
-                    statv.add(themechanged);
+                    statv.add(moneyearned);
             }
 
 
@@ -98,39 +98,39 @@ public class Stats {
     //Increase Methods (Count user actions)
 
     public static void increaseStarted() {
-        startalreadypressed = true;
+        startpressedexists = true;
         readXML();
         intstarted = Integer.parseInt(started);
         intstarted++;
         saveToXML();
-        startalreadypressed = false;
+        startpressedexists = false;
 
     }
 
     public static void increaseUeberlos() {
-        ueberlosalready = true;
+        ueberlosexists = true;
         readXML();
         intueberlos = Integer.parseInt(ueberlos);
         intueberlos++;
         saveToXML();
-        ueberlosalready = false;
+        ueberlosexists = false;
     }
 
     public static void increaseMoneyspent(){
-        creditsalreadyviewed = true;
+        moneyspentalready = true;
         readXML();
         doublemoneyspent = Double.parseDouble(moneyspent);
 
         saveToXML();
-        creditsalreadyviewed = false;
+        moneyspentalready = false;
     }
 
     public static void increaseThemechanged(){
-        themealready = true;
+        moneyearnedalreadyexists = true;
         readXML();
-        intthemechanged = Integer.parseInt(themechanged);
+        doublemoneyearned = Integer.parseInt(moneyearned);
         saveToXML();
-        themealready = false;
+        moneyearnedalreadyexists = false;
     }
 
     //Save everything
@@ -147,7 +147,7 @@ public class Stats {
 
 
             //Ueberlos
-            if (startalreadypressed || creditsalreadyviewed || themealready) {
+            if (startpressedexists || moneyspentalready || moneyearnedalreadyexists) {
                 e = dom.createElement("ueberlos");
                 e.appendChild(dom.createTextNode((ueberlos)));
                 rootEle.appendChild(e);
@@ -157,7 +157,7 @@ public class Stats {
                 rootEle.appendChild(e);
             }
             //Started
-            if (ueberlosalready || creditsalreadyviewed || themealready) {
+            if (ueberlosexists || moneyspentalready || moneyearnedalreadyexists) {
                 e = dom.createElement("started");
                 e.appendChild(dom.createTextNode(started));
                 rootEle.appendChild(e);
@@ -167,7 +167,7 @@ public class Stats {
                 rootEle.appendChild(e);
             }
             //Credits viewed
-            if(ueberlosalready || themealready || startalreadypressed) {
+            if(ueberlosexists || moneyearnedalreadyexists || startpressedexists) {
                 e = dom.createElement("moneyspent");
                 e.appendChild(dom.createTextNode(moneyspent));
                 rootEle.appendChild(e);
@@ -176,8 +176,8 @@ public class Stats {
                 e.appendChild(dom.createTextNode(Double.toString(doublemoneyspent)));
                 rootEle.appendChild(e);
             }
-            if(ueberlosalready || creditsalreadyviewed || startalreadypressed) {
-                e = dom.createElement("themechanged");
+            if(ueberlosexists || moneyspentalready || startpressedexists) {
+                e = dom.createElement("moneyearned");
                 e.appendChild(dom.createTextNode("0"));
                 rootEle.appendChild(e);
             }
@@ -221,8 +221,8 @@ public class Stats {
         return moneyspent;
     }
 
-    public static String getThemechanged() {
+    public static String getMoneyearned() {
         readXML();
-        return themechanged;
+        return moneyearned;
     }
 }

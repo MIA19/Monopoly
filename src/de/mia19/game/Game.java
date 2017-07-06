@@ -90,6 +90,7 @@ public class Game {
         playerPanel.add(readyButton);
         playerFrame.add(playerPanel);
         playerFrame.setVisible(true);
+        playerFrame.setLocationRelativeTo(null);
 
 
         readyButton.addActionListener(new ActionListener() {
