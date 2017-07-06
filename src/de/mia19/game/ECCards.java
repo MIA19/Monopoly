@@ -23,7 +23,7 @@ public class ECCards
     /**
      * Erstellung einer ArrayList "deck" mit 15 verschiedenen Gemeinschaftskarten.
      */
-    public void createCommunitycards()
+    private void createCommunitycards()
     {
         communitycards = new ArrayList<>();
         communitycards.add(new Communitycard(-1,100, "Du erhälst 100."));
@@ -46,7 +46,7 @@ public class ECCards
     /**
      * Erstellung einer ArrayList deck mit 16 verschiedenen Ereigbiskarten.
      */
-    public void createEventcards()
+    private void createEventcards()
     {
         eventcards= new ArrayList<>();
         eventcards.add(new Eventcard(-1,0, "Gehe 3 Felder zurück."));
@@ -86,8 +86,8 @@ public class ECCards
 
     /**
      * sucht eine zufallgenerierte Communitycard, addiert genannte Summe und
-     * ändert die position des Spielers wie im Event genannt
-     * @param player erfordert aktiven Spieler
+     * ändert die position des Spielers wie im Event genannt. Ein Dialog mit der Umschreibun des Events.
+     * @param player erfordert aktiven Spieler.
      */
     public void getCommunitycard(Player player){
         Communitycard card = communitycards.get(new Random().nextInt(14));
@@ -100,8 +100,8 @@ public class ECCards
 
     /**
      * sucht eine zufallgenerierte Eventcard, addiert genannte Summe und
-     *  ändert die position des Spielers wie im Event genannt
-     * @param player
+     *  ändert die position des Spielers wie im Event genannt. Ein Dialog mit der Umschreibung des Events
+     * @param player erfordert aktiven Spieler.
      */
     public void getEventcard(Player player){
         Eventcard card = eventcards.get(new Random().nextInt(15));
