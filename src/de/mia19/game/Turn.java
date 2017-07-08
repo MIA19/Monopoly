@@ -16,7 +16,10 @@ public class Turn
 
     public Turn()
     {
-
+        spielerzug();
+        if(Game.getInstance().nextPlayer() == ++){
+            spielerzug();
+        }
     }
 
     private boolean isPassedStart()
@@ -36,9 +39,9 @@ public class Turn
     }
 
 
-    //
     public void spielerzug()
     {
+
         if (Game.getInstance().getActivePlayer().isInJail())
         {
             if (!isThreeRoundsInPrison())
@@ -76,8 +79,8 @@ public class Turn
                         {
                             JOptionPane.showMessageDialog(null, "Kein Pasch nach 3 versuchen, du bleibst im Gefängnis.");
                             Game.getInstance().getActivePlayer().setInJail(true);
-
-                            //TODO: END TURN UND NÄCHSTER SPIELER IST DRAN
+                            Game.getInstance().nextPlayer();
+                            //TODO: END TURN
                         }
 
                     }
@@ -228,7 +231,8 @@ public class Turn
                 Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
                 isPassedStart();
                 performAction(Game.getInstance().getActivePlayer().getPosition());
-                //TODO:ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                Game.getInstance().nextPlayer();
+                //TODO:ZUG BEENDEN
             }
             if (dice.isDouble())
             {
@@ -244,7 +248,8 @@ public class Turn
                         Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
                         isPassedStart();
                         performAction(Game.getInstance().getActivePlayer().getPosition());
-                        //TODO: ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                        Game.getInstance().nextPlayer();
+                        //TODO: ZUG BEENDEN
                     }
                     if (dice.isDouble())
                     {
@@ -260,13 +265,15 @@ public class Turn
                                 Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
                                 isPassedStart();
                                 performAction(Game.getInstance().getActivePlayer().getPosition());
-                                //TODO:ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                                Game.getInstance().nextPlayer();
+                                //TODO:ZUG BEENDEN
                             }
                             if (dice.isDouble())
                             {
                                 Game.getInstance().getActivePlayer().setInJail(true);
                                 Game.getInstance().getActivePlayer().setPosition(10);
-                                //TODO: ZUG BEENDEN, NÄCHSTER SPIELER IST DRAN
+                                Game.getInstance().nextPlayer();
+                                //TODO: ZUG BEENDEN
                             }
                         }
                     }
@@ -290,7 +297,8 @@ public class Turn
             Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
             isPassedStart();
             performAction(Game.getInstance().getActivePlayer().getPosition());
-            //TODO: ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+            Game.getInstance().nextPlayer();
+            //TODO: ZUG BEENDEN
         }
     }
 
