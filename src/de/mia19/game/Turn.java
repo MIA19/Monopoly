@@ -17,9 +17,6 @@ public class Turn
     public Turn()
     {
         spielerzug();
-        if(Game.getInstance().nextPlayer() == ++){
-            spielerzug();
-        }
     }
 
     private boolean isPassedStart()
@@ -37,6 +34,7 @@ public class Turn
         return threeRoundsInPrison;
 
     }
+
 
 
     public void spielerzug()

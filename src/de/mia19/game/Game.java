@@ -165,6 +165,7 @@ public class Game
                 }
             }
         }
+        new Turn();
     }
 
     public ArrayList createFieldList(Theme gameTheme)
