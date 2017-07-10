@@ -25,8 +25,8 @@ public class GameScreen extends JFrame {
 
         createRightSide();
         //  this.setUndecorated(true);
-        this.setSize(1200, 806);
-        this.setUndecorated(true);
+        this.setSize(1200, 823);
+        this.setUndecorated(false);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Monopoly");
@@ -53,7 +53,7 @@ public class GameScreen extends JFrame {
             JLabel jlm1 = new JLabel("Money", SwingConstants.CENTER);
             jlm1.setSize(65, 17);
             jlm1.setBackground(Color.WHITE);
-            jlm1.setLocation(1127, 6 +(30 * i));
+            jlm1.setLocation(1127, 16 +(30 * i));
             jlm1.setOpaque(true);
             moneyLabel.add(jlm1);
 
@@ -112,13 +112,13 @@ public class GameScreen extends JFrame {
         cardbox.setOpaque(true);
         cardbox.setVisible(true);
 
-        closebtn = new JButton();
+     /*   closebtn = new JButton();
         closebtn.setText("X");
         closebtn.setLocation(1160,0);
-        closebtn.setSize(10,10);
-        closebtn.setFont(new Font("Arial", Font.BOLD, 10));
+        closebtn.setSize(5,4);
+        closebtn.setFont(new Font("Arial", Font.BOLD, 5));
         closebtn.setSize(closebtn.getPreferredSize());
-        closebtn.setBackground(Color.RED);
+        closebtn.setBackground(Color.BLACK);
         ActionListener closelistener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -127,7 +127,7 @@ public class GameScreen extends JFrame {
         };
         closebtn.addActionListener(closelistener);
         this.add(closebtn);
-
+*/
 
         buybtn = new JButton("Kaufen");
         buybtn.setLocation(938, 760);

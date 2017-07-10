@@ -1,5 +1,7 @@
 package de.mia19.game;
 
+import de.mia19.RessourceLoader;
+import de.mia19.gui.CustomJLabel;
 import de.mia19.gui.GameScreen;
 import de.mia19.gui.Theme;
 
@@ -55,7 +57,7 @@ public class Game
         buyButton.setEnabled(false);
 
         /**
-         * Die Combobox für die Anzahl der Spieler!
+         * Die Combobox für die Anzahl der Spieler!a
          */
         JLabel aussage = new JLabel("Wähle die Anzahl der Spieler!");
 
@@ -74,15 +76,38 @@ public class Game
         //TODO: JButton und actionListener die Farben reinmachen dies das du weißt amina flikflak!
         JFrame playerFrame = new JFrame("Monopoly");
         playerFrame.setSize(500, 50 + 50 * playerCount);
-
+        playerFrame.setLocationRelativeTo(null);
         JPanel playerPanel = new JPanel(new GridLayout(2 + playerCount, 2));
         JButton readyButton = new JButton("Starten");
+        playerFrame.setIconImage(RessourceLoader.getImage("icon.jpg"));
         JLabel playerName = new JLabel("Geben Sie die Spielernamen ein!");
         playerPanel.add(playerName);
         playerPanel.add(new JLabel());
         String[] spielerNamen = {
                 "Spieler 1", "Spieler 2", "Spieler 3", "Spieler 4", "Spieler 5", "Spieler 6"
         };
+
+        JFrame characterchooser = new JFrame("");
+        characterchooser.setLayout(new GridLayout(2,6));
+        characterchooser.setSize(400,300);
+        characterchooser.setLocationRelativeTo(null);
+
+        CustomJLabel jl1 = new CustomJLabel("Char1");
+        CustomJLabel jl2= new CustomJLabel("Char1");
+        CustomJLabel jl3 = new CustomJLabel("Char1");
+        CustomJLabel jl4 = new CustomJLabel("Char1");
+        CustomJLabel jl5 = new CustomJLabel("Char1");
+        CustomJLabel jl6 = new CustomJLabel("Char1");
+
+
+        characterchooser.add(jl1);
+        characterchooser.add(jl2);
+        characterchooser.add(jl3);
+        characterchooser.add(jl4);
+        characterchooser.add(jl5);
+        characterchooser.add(jl6);
+
+
 
 
         for (int i = 0; i < playerCount; i++)
@@ -97,14 +122,15 @@ public class Game
         playerFrame.setVisible(true);
         playerFrame.setLocationRelativeTo(null);
 
+        characterchooser.setVisible(!true);
 
         readyButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-
-                playerFrame.setVisible(false);
+                characterchooser.setVisible(true);
+                playerFrame.dispose();
                 String[] farben = new String[6];
                 farben[0] = "blue";
                 farben[1] = "red";
@@ -123,8 +149,10 @@ public class Game
                 {
                     GameScreen gameScreen = new GameScreen("originaltheme");
                 }
+                else if (theme == Theme.lette){
                 GameScreen gameScreen = new GameScreen("lette");
                 activePlayer = players.get(0);
+            }
             }
         });
     }
