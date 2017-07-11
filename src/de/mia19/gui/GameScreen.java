@@ -30,6 +30,7 @@ public class GameScreen extends JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Monopoly");
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         final JLabel feld = new JLabel();
         ImageIcon spielFeld;
         spielFeld = new ImageIcon(RessourceLoader.getImage(theme + ".png"));

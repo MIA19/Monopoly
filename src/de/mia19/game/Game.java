@@ -79,6 +79,7 @@ public class Game
         playerFrame.setLocationRelativeTo(null);
         JPanel playerPanel = new JPanel(new GridLayout(2 + playerCount, 2));
         JButton readyButton = new JButton("Starten");
+
         playerFrame.setIconImage(RessourceLoader.getImage("icon.jpg"));
         JLabel playerName = new JLabel("Geben Sie die Spielernamen ein!");
         playerPanel.add(playerName);
@@ -88,12 +89,12 @@ public class Game
         };
 
         JFrame characterchooser = new JFrame("");
-        characterchooser.setLayout(new GridLayout(2,6));
-        characterchooser.setSize(400,300);
+        characterchooser.setLayout(new GridLayout(2, 6));
+        characterchooser.setSize(400, 300);
         characterchooser.setLocationRelativeTo(null);
 
         CustomJLabel jl1 = new CustomJLabel("Char1");
-        CustomJLabel jl2= new CustomJLabel("Char1");
+        CustomJLabel jl2 = new CustomJLabel("Char1");
         CustomJLabel jl3 = new CustomJLabel("Char1");
         CustomJLabel jl4 = new CustomJLabel("Char1");
         CustomJLabel jl5 = new CustomJLabel("Char1");
@@ -106,8 +107,6 @@ public class Game
         characterchooser.add(jl4);
         characterchooser.add(jl5);
         characterchooser.add(jl6);
-
-
 
 
         for (int i = 0; i < playerCount; i++)
@@ -148,11 +147,12 @@ public class Game
                 if (theme == Theme.original)
                 {
                     GameScreen gameScreen = new GameScreen("originaltheme");
+                } else if (theme == Theme.lette)
+                {
+                    GameScreen gameScreen = new GameScreen("lette");
                 }
-                else if (theme == Theme.lette){
-                GameScreen gameScreen = new GameScreen("lette");
                 activePlayer = players.get(0);
-            }
+                new Turn();
             }
         });
     }
@@ -162,8 +162,7 @@ public class Game
         try
         {
             thread.join();
-        }
-        catch (InterruptedException e)
+        } catch (InterruptedException e)
         {
             e.printStackTrace();
         }
@@ -185,8 +184,7 @@ public class Game
                 {
                     activePlayer = players.get(0);
                     break;
-                }
-                else
+                } else
                 {
                     activePlayer = players.get(i + 1);
                     break;
@@ -241,8 +239,7 @@ public class Game
             list.add(new Field("Park Straße", 759, 526, FieldState.normalStreetsDarkBlue, 350, 200, 175, 500, 1100, 1300, 1500));
             list.add(new Field("Zusatzsteuer", 759, 588, FieldState.taxField));
             list.add(new Field("Schloss Allee", 759, 649, FieldState.normalStreetsDarkBlue, 400, 200, 200, 600, 1400, 1700, 2000));
-        }
-        else if (gameTheme == Theme.lette)
+        } else if (gameTheme == Theme.lette)
         {
             list.add(new Field("Los", 744, 743, FieldState.startField));
             list.add(new Field("Bäcker", 650, 759, FieldState.normalStreetsPurple, 60, 50, 10, 30, 90, 160, 250));
