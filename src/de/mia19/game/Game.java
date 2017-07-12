@@ -88,25 +88,7 @@ public class Game
                 "Spieler 1", "Spieler 2", "Spieler 3", "Spieler 4", "Spieler 5", "Spieler 6"
         };
 
-        JFrame characterchooser = new JFrame("");
-        characterchooser.setLayout(new GridLayout(2, 6));
-        characterchooser.setSize(400, 300);
-        characterchooser.setLocationRelativeTo(null);
 
-        CustomJLabel jl1 = new CustomJLabel("Char1");
-        CustomJLabel jl2 = new CustomJLabel("Char1");
-        CustomJLabel jl3 = new CustomJLabel("Char1");
-        CustomJLabel jl4 = new CustomJLabel("Char1");
-        CustomJLabel jl5 = new CustomJLabel("Char1");
-        CustomJLabel jl6 = new CustomJLabel("Char1");
-
-
-        characterchooser.add(jl1);
-        characterchooser.add(jl2);
-        characterchooser.add(jl3);
-        characterchooser.add(jl4);
-        characterchooser.add(jl5);
-        characterchooser.add(jl6);
 
 
         for (int i = 0; i < playerCount; i++)
@@ -121,14 +103,13 @@ public class Game
         playerFrame.setVisible(true);
         playerFrame.setLocationRelativeTo(null);
 
-        characterchooser.setVisible(!true);
 
         readyButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                characterchooser.setVisible(true);
+
                 playerFrame.dispose();
                 String[] farben = new String[6];
                 farben[0] = "blue";
