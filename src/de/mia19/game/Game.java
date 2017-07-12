@@ -1,7 +1,6 @@
 package de.mia19.game;
 
 import de.mia19.RessourceLoader;
-import de.mia19.gui.CustomJLabel;
 import de.mia19.gui.GameScreen;
 import de.mia19.gui.Theme;
 
@@ -121,7 +120,7 @@ public class Game
                 for (int i = 0; i < playerCount; i++)
                 {
                     String name = alleTextFelder.get(i).getText();
-                    players.add(new Player(Color.parseString(farben[i]), name));
+                    players.add(new Player(GameColor.parseString(farben[i]), name));
                     //SETTING GAME SETTINGS
                     players.get(i).setMoney(START_MONEY);
                 }
