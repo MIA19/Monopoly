@@ -23,6 +23,7 @@ public class PlayerSymbol extends Ellipse2D {
     }
 
     public void movePlayer(int xPostion, int yPostion)
+
     {
         this.xPostion = xPostion;
         this.yPostion = yPostion;
