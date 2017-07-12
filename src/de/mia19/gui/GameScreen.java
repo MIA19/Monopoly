@@ -4,13 +4,15 @@ import de.mia19.RessourceLoader;
 import de.mia19.game.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GameScreen extends JFrame {
     private Dice dice;
     public ArrayList<JLabel> moneyLabel = new ArrayList<>();
-    public ArrayList<JLabel> colorLabel = new ArrayList<>();
     public static JButton buybtn;
     private static JButton closebtn;
     public GameScreen(String theme)
@@ -57,72 +59,54 @@ public class GameScreen extends JFrame {
             moneyLabel.add(jlm1);
 
             this.add (moneyLabel.get (i));
-
-
-            JLabel jlc1 = new JLabel();
-            jlc1.setSize(69, 21);
-            if (i == 0){
-                jlc1.setBackground(Color.BLUE);
-            }
-            else if (i == 1){
-                jlc1.setBackground(Color.cyan);
-            }
-            else {
-                jlc1.setBackground(Color.BLACK);
-            }
-            jlc1.setOpaque(true);
-            jlc1.setLocation(825, 16 + (30 * i));
-            colorLabel.add(jlc1);
-
-            this.add (colorLabel.get (i));
-
         }
 
         // Farbfelder
-/*
-        JLabel jlc1 = new JLabel("ColorPlayer", SwingConstants.CENTER);
-        jlc1.setBackground(ColorPlayer.pink);
+
+        JLabel jlc1 = new JLabel("GameColor", SwingConstants.CENTER);
+        jlc1.setBackground(Color.pink);
         jlc1.setOpaque(true);
+        jlc1.setSize(69, 21);
         jlc1.setLocation(825, 16);
         this.add(jlc1);
 
-        JLabel jlc2 = new JLabel("ColorPlayer",SwingConstants.CENTER);
+        JLabel jlc2 = new JLabel("GameColor",SwingConstants.CENTER);
         jlc2.setSize(69, 21);
         jlc2.setLocation(825, 44);
         jlc2.setOpaque(true);
         this.add(jlc2);
 
-        JLabel jlc3 = new JLabel("ColorPlayer", SwingConstants.CENTER);
+        JLabel jlc3 = new JLabel("GameColor", SwingConstants.CENTER);
         jlc3.setSize(69, 21);
-        jlc3.setBackground(ColorPlayer.WHITE);
+        jlc3.setBackground(Color.WHITE);
         jlc3.setLocation(825, 72);
         jlc3.setOpaque(true);
         this.add(jlc3);
 
-        JLabel jlc4 = new JLabel("ColorPlayer", SwingConstants.CENTER);
+        JLabel jlc4 = new JLabel("GameColor", SwingConstants.CENTER);
         jlc4.setSize(69, 21);
-        jlc4.setBackground(ColorPlayer.WHITE);
+        jlc4.setBackground(Color.WHITE);
         jlc4.setLocation(825, 100);
         jlc4.setOpaque(true);
         this.add(jlc4);
 
-        JLabel jlc5 = new JLabel("ColorPlayer", SwingConstants.CENTER);
+        JLabel jlc5 = new JLabel("GameColor", SwingConstants.CENTER);
         jlc5.setSize(69, 21);
-        jlc5.setBackground(ColorPlayer.WHITE);
+        jlc5.setBackground(Color.WHITE);
         jlc5.setLocation(825, 128);
         jlc5.setOpaque(true);
         this.add(jlc5);
 
-        JLabel jlc6 = new JLabel("ColorPlayer", SwingConstants.CENTER);
+        JLabel jlc6 = new JLabel("GameColor", SwingConstants.CENTER);
         jlc6.setSize(69, 21);
-        jlc6.setBackground(ColorPlayer.WHITE);
+        jlc6.setBackground(Color.WHITE);
         jlc6.setLocation(825, 156);
         jlc6.setOpaque(true);
         this.add(jlc6);
-*/
+
         ImageIcon card;
         // card = new ImageIcon(RessourceLoader.getImage("specimen.png"));
-        JLabel cardbox = new JLabel("PLACEHOLDER", SwingConstants.CENTER);
+        JLabel cardbox = new JLabel("SPECIMEN|PLACEHOLDER", SwingConstants.CENTER);
         cardbox.setSize(226, 340);
         cardbox.setBackground(Color.RED);
         cardbox.setLocation(901, 413);
@@ -135,7 +119,7 @@ public class GameScreen extends JFrame {
         closebtn.setSize(5,4);
         closebtn.setFont(new Font("Arial", Font.BOLD, 5));
         closebtn.setSize(closebtn.getPreferredSize());
-        closebtn.setBackground(ColorPlayer.BLACK);
+        closebtn.setBackground(GameColor.BLACK);
         ActionListener closelistener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
