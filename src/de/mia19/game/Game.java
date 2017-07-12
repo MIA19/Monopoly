@@ -125,22 +125,19 @@ public class Game
                     farben[3] = "yellow";
                     farben[4] = "black";
                     farben[5] = "white";
+
                     for (int i = 0; i < playerCount; i++)
                     {
                         players.add(new Player(GameColor.parseString(farben[i]), alleTextFelder.get(i).getText()));
                         //SETTING GAME SETTINGS
                         players.get(i).setMoney(START_MONEY);
+
                     }
-                    if (theme == Theme.original)
-                    {
-                        GameScreen gameScreen = new GameScreen("originaltheme");
-                    }
-                    else if (theme == Theme.lette)
-                    {
-                        GameScreen gameScreen = new GameScreen("lette");
-                    }
+                    GameScreen.getInstance(theme.getName());
+
                     activePlayer = players.get(0);
                     new Turn();
+
                 }
 
             });
@@ -184,6 +181,16 @@ public class Game
             }
         }
         new Turn();
+    }
+
+    public Player getPlayerFromString(String player)
+    {
+        for (Player p : players)
+        {
+            if(p.getName().equalsIgnoreCase(player))
+                return p;
+        }
+        return null;
     }
 
     public ArrayList createFieldList(Theme gameTheme)

@@ -6,15 +6,30 @@ import de.mia19.game.*;
 import javax.swing.*;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class GameScreen extends JFrame {
+public class GameScreen extends JFrame
+{
     private Dice dice;
-    public ArrayList<JLabel> moneyLabel = new ArrayList<>();
     public ArrayList<JLabel> colorLabel = new ArrayList<>();
     public static JButton buybtn;
     private static JButton closebtn;
-    public GameScreen(String theme)
 
+    private HashMap<Player, JLabel> moneyMap = new HashMap<>();
+
+    private static GameScreen instance;
+
+    public static GameScreen getInstance(String theme)
+    {
+        return (instance == null) ? (instance = new GameScreen(theme)) : instance;
+    }
+
+    public static GameScreen getInstance()
+    {
+        return instance;
+    }
+
+    private GameScreen(String theme)
     {
 
         // this.game = game;
@@ -30,17 +45,23 @@ public class GameScreen extends JFrame {
         this.setTitle("Monopoly");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         final JLabel feld = new JLabel();
-        ImageIcon spielFeld;
-        spielFeld = new ImageIcon(RessourceLoader.getImage(theme + ".png"));
+        ImageIcon spielFeld = new ImageIcon(RessourceLoader.getImage(theme.toLowerCase() + ".png"));
         feld.setIcon(spielFeld);
         this.add(feld);
         this.setVisible(true);
     }
 
-    private void createRightSide() {
+    public void updateMoney(Player player)
+    {
+        moneyMap.get(player).setText(String.valueOf(player.getMoney()));
+    }
 
-// Money- und Namensfelder
-        for (int i = 0; i < Game.getAlleTextFelder().size(); i++) {
+    private void createRightSide()
+    {
+
+        // Money- und Namensfelder
+        for (int i = 0; i < Game.getAlleTextFelder().size(); i++)
+        {
 
             JLabel jl = new JLabel(Game.getAlleTextFelder().get(i).getText(), SwingConstants.CENTER);
             jl.setSize(96, 17);
@@ -49,41 +70,47 @@ public class GameScreen extends JFrame {
             jl.setOpaque(true);
             this.add(jl);
 
-            JLabel jlm1 = new JLabel("Money", SwingConstants.CENTER);
+            JLabel jlm1 = new JLabel(String.valueOf(Game.getInstance().getPlayerFromString(Game.getAlleTextFelder().get(i).getText()).getMoney()), SwingConstants.CENTER);
             jlm1.setSize(65, 17);
             jlm1.setBackground(Color.WHITE);
-            jlm1.setLocation(1100, 16 +(30 * i));
+            jlm1.setLocation(1100, 16 + (30 * i));
             jlm1.setOpaque(true);
-            moneyLabel.add(jlm1);
+            moneyMap.put(Game.getInstance().getPlayerFromString(Game.getAlleTextFelder().get(i).getText()), jlm1);
 
-            this.add (moneyLabel.get (i));
+            this.add(jlm1);
 
 
             JLabel jlc1 = new JLabel();
             jlc1.setSize(69, 21);
-            if (i == 0){
+            if (i == 0)
+            {
                 jlc1.setBackground(Color.BLUE);
             }
-            else if (i == 1){
+            else if (i == 1)
+            {
                 jlc1.setBackground(Color.red);
             }
-            else if (i == 2){
+            else if (i == 2)
+            {
                 jlc1.setBackground(Color.green);
             }
-            else if (i == 3){
+            else if (i == 3)
+            {
                 jlc1.setBackground(Color.yellow);
             }
-            else if (i == 4){
+            else if (i == 4)
+            {
                 jlc1.setBackground(Color.black);
             }
-            else if (i == 5){
+            else if (i == 5)
+            {
                 jlc1.setBackground(Color.white);
             }
             jlc1.setOpaque(true);
             jlc1.setLocation(825, 16 + (30 * i));
             colorLabel.add(jlc1);
 
-            this.add (colorLabel.get (i));
+            this.add(colorLabel.get(i));
 
         }
 
@@ -159,14 +186,15 @@ public class GameScreen extends JFrame {
         buybtn.setLocation(938, 760);
         buybtn.setSize(150, 30);
         buybtn.setOpaque(true);
-        if (!cardbox.isVisible()) {
+        if (!cardbox.isVisible())
+        {
             buybtn.setEnabled(false);
         }
         /**
-        JButton wuerfelbtn = new JButton("Wuerfeln");
-        wuerfelbtn.setLocation(938, 340);
-        wuerfelbtn.setSize(150, 30);
-        wuerfelbtn.setOpaque(true);*/
+         JButton wuerfelbtn = new JButton("Wuerfeln");
+         wuerfelbtn.setLocation(938, 340);
+         wuerfelbtn.setSize(150, 30);
+         wuerfelbtn.setOpaque(true);*/
 
         //wuerfelbtn.addActionListener(e ->
 
@@ -176,5 +204,6 @@ public class GameScreen extends JFrame {
         this.add(cardbox);
 
     }
+
 
 }
