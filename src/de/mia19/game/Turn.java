@@ -21,13 +21,16 @@ public class Turn
         spielerzug();
     }
 
-    private boolean isPassedStart()
+    private void isPassedStart()
     {
-        if(isPassedStart())
 
-        Game.getInstance().getActivePlayer().addMoney(200);
+
+        if(Game.getInstance().getActivePlayer().getPosition() > 40) {
+            Game.getInstance().getActivePlayer().addMoney(200);
             Stats.increaseUeberlos();
-        return true;
+        }
+
+
 
     }
 
