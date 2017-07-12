@@ -120,7 +120,7 @@ public class Game
                 for (int i = 0; i < playerCount; i++)
                 {
                     String name = alleTextFelder.get(i).getText();
-                    players.add(new Player(ColorPlayer.parseString(farben[i]), name));
+                    players.add(new Player(GameColor.parseString(farben[i]), name));
                     //SETTING GAME SETTINGS
                     players.get(i).setMoney(START_MONEY);
                 }
