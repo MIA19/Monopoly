@@ -88,8 +88,6 @@ public class Game
         };
 
 
-
-
         for (int i = 0; i < playerCount; i++)
         {
 
@@ -104,53 +102,59 @@ public class Game
         playerFrame.setLocationRelativeTo(null);
 
 
-            if(getAlleTextFelder().isEmpty()){
+        if (getAlleTextFelder().isEmpty())
+        {
             System.out.println("EMPTY");
             readyButton.setEnabled(false);
         }
-        else {
-            readyButton.addActionListener(new ActionListener() {
-
-
-            @Override
-            public void actionPerformed(ActionEvent e)
+        else
+        {
+            readyButton.addActionListener(new ActionListener()
             {
 
 
-                String[] farben = new String[6];
-                farben[0] = "blue";
-                farben[1] = "red";
-                farben[2] = "green";
-                farben[3] = "yellow";
-                farben[4] = "black";
-                farben[5] = "white";
-                for (int i = 0; i < playerCount; i++)
+                @Override
+                public void actionPerformed(ActionEvent e)
                 {
-                    String name = alleTextFelder.get(i).getText();
-                    players.add(new Player(GameColor.parseString(farben[i]), name));
-                    //SETTING GAME SETTINGS
-                    players.get(i).setMoney(START_MONEY);
-                }
-                if (theme == Theme.original)
-                {
-                    GameScreen gameScreen = new GameScreen("originaltheme");
-                } else if (theme == Theme.lette)
-                {
-                    GameScreen gameScreen = new GameScreen("lette");
-                }
-                activePlayer = players.get(0);
-                new Turn();
-            }
 
-    });
-            }
+                    playerFrame.dispose();
+                    String[] farben = new String[6];
+                    farben[0] = "blue";
+                    farben[1] = "red";
+                    farben[2] = "green";
+                    farben[3] = "yellow";
+                    farben[4] = "black";
+                    farben[5] = "white";
+                    for (int i = 0; i < playerCount; i++)
+                    {
+                        String name = alleTextFelder.get(i).getText();
+                        players.add(new Player(GameColor.parseString(farben[i]), name));
+                        //SETTING GAME SETTINGS
+                        players.get(i).setMoney(START_MONEY);
+                    }
+                    if (theme == Theme.original)
+                    {
+                        GameScreen gameScreen = new GameScreen("originaltheme");
+                    }
+                    else if (theme == Theme.lette)
+                    {
+                        GameScreen gameScreen = new GameScreen("lette");
+                    }
+                    activePlayer = players.get(0);
+                    new Turn();
+                }
+
+            });
+        }
     }
+
     public synchronized void stop()
     {
         try
         {
             thread.join();
-        } catch (InterruptedException e)
+        }
+        catch (InterruptedException e)
         {
             e.printStackTrace();
         }
@@ -172,7 +176,8 @@ public class Game
                 {
                     activePlayer = players.get(0);
                     break;
-                } else
+                }
+                else
                 {
                     activePlayer = players.get(i + 1);
                     break;
@@ -227,7 +232,8 @@ public class Game
             list.add(new Field("Park Straße", 759, 526, FieldState.normalStreetsDarkBlue, 350, 200, 175, 500, 1100, 1300, 1500));
             list.add(new Field("Zusatzsteuer", 759, 588, FieldState.taxField));
             list.add(new Field("Schloss Allee", 759, 649, FieldState.normalStreetsDarkBlue, 400, 200, 200, 600, 1400, 1700, 2000));
-        } else if (gameTheme == Theme.lette)
+        }
+        else if (gameTheme == Theme.lette)
         {
             list.add(new Field("Los", 744, 743, FieldState.startField));
             list.add(new Field("Bäcker", 650, 759, FieldState.normalStreetsPurple, 60, 50, 10, 30, 90, 160, 250));
@@ -284,7 +290,7 @@ public class Game
         return alleTextFelder;
     }
 
-   //public static ArrayList<>
+    //public static ArrayList<>
 
     public int getTrainstationCount(Player player)
     {

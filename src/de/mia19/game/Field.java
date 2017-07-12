@@ -5,8 +5,8 @@ import javax.swing.*;
 
 public class Field extends JButton
 {
-    private static String name;
-    private static int fieldCount;
+    private String name;
+    public static int fieldCount = 0;
     private int fieldNumber; //Nummer des Feldes
     private FieldState fieldState;
     private int xCoord;
@@ -36,8 +36,9 @@ public class Field extends JButton
      */
     public Field(String name, int xCoord, int yCoord, FieldState fieldState, int fieldPrice, int houseCost, int withOneHouse, int withTwoHouses, int withThreeHouses, int withFourHouses, int withVilla)
     {
-        Field.name = name;
-        this.fieldNumber = Field.fieldCount + 1;
+        this.name = name;
+        fieldCount++;
+        this.fieldNumber = fieldCount;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
         this.fieldState = fieldState;
@@ -63,8 +64,9 @@ public class Field extends JButton
      */
     public Field(String name, int xCoord, int yCoord, FieldState fieldState)
     {
-        Field.name = name;
-        this.fieldNumber = Field.fieldCount + 1;
+        this.name = name;
+        fieldCount++;
+        this.fieldNumber = fieldCount;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
         this.fieldState = fieldState;
@@ -81,8 +83,9 @@ public class Field extends JButton
      */
     public Field(String name, int xCoord, int yCoord, FieldState fieldState, int fieldPrice, int oneStation, int twoStations, int threeStations, int allStations)
     {
-        Field.name = name;
-        this.fieldNumber = Field.fieldCount + 1;
+        this.name = name;
+        fieldCount++;
+        this.fieldNumber = fieldCount;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
         this.fieldState = fieldState;

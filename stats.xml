@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE stats SYSTEM "stats.dtd">
 <stats>
-    <ueberlos>8</ueberlos>
+    <ueberlos>10</ueberlos>
     <started>71</started>
     <moneyspent>0.0</moneyspent>
     <moneyearned>0.0</moneyearned>

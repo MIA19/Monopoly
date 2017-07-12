@@ -62,7 +62,11 @@ public class Player {
     }
 
     public void move(int fields) {
-        //TODO NEU ANFANG ÜBER LOS
+        if ((position + fields) > 39)
+        {
+            fields -= (40 - position);
+            this.position = 0;
+        }
         this.position += fields;
     }
 

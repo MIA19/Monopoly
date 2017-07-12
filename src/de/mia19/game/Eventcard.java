@@ -1,5 +1,7 @@
 package de.mia19.game;
 
+import de.mia19.RessourceLoader;
+
 import javax.swing.*;
 
 /**
@@ -22,7 +24,7 @@ public class Eventcard
     {
         this.money = money;
         this.event = event;
-        this.icon = new ImageIcon(this.getClass().getResource("images/Karten_png.Karten_png/Ereigniskarte_Field.png"));
+        this.icon = new ImageIcon(RessourceLoader.getImage("karten/Ereigniskarte_Field.png"));
         this.position = position;
     }
 

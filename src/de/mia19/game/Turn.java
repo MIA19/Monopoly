@@ -123,6 +123,8 @@ public class Turn
         Field field = Field.getFromNumber(number);
 
         GameScreen.buybtn.setEnabled(false);
+        System.out.println("FieldNumber: " + number);
+        System.out.println("Art: " + field.getFieldState());
 
         switch (field.getFieldState())
         {
@@ -142,7 +144,7 @@ public class Turn
                     Game.getInstance().buyButton.setEnabled (true);
                 }
 
-                if (Game.getInstance().getActivePlayer() != field.getFieldOwner() && !field.getFieldOwner().isInJail())
+                if (field.hasFieldOwner() && Game.getInstance().getActivePlayer() != field.getFieldOwner() && !field.getFieldOwner().isInJail())
                 {
                     field.getFieldOwner().addMoney(field.getPrice());
                     Game.getInstance().getActivePlayer().removeMoney(field.getPrice());
@@ -155,7 +157,7 @@ public class Turn
 
                     }
                 }
-                if (Game.getInstance().getActivePlayer() != field.getFieldOwner() && !field.getFieldOwner().isInJail()) {
+                if (field.hasFieldOwner() && Game.getInstance().getActivePlayer() != field.getFieldOwner() && !field.getFieldOwner().isInJail()) {
                     if (Game.getInstance().getTrainstationCount(field.getFieldOwner()) == 1) {
                         field.getFieldOwner().addMoney(field.getPrice());
                         Game.getInstance().getActivePlayer().removeMoney(field.getPrice());
@@ -180,7 +182,7 @@ public class Turn
                     Game.getInstance().buyButton.setEnabled (true);
                 }
 
-                if (Game.getInstance().getActivePlayer() != field.getFieldOwner() && !field.getFieldOwner().isInJail())
+                if (field.hasFieldOwner() && Game.getInstance().getActivePlayer() != field.getFieldOwner() && !field.getFieldOwner().isInJail())
                 {
                     if(Game.getInstance().list.get(12).getFieldOwner() == Game.getInstance().list.get(28).getFieldOwner()) {
                         rollButton();
