@@ -13,8 +13,11 @@ public class Turn
     private boolean threeRoundsInPrison;
     private Dice dice;
 
+
+
     public Turn()
     {
+        this.dice = new Dice(Game.getInstance().getActivePlayer());
         spielerzug();
     }
 
