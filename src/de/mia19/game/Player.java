@@ -20,7 +20,7 @@ public class Player {
         this.playerName = name;
     }
 
-    public static String getName() {
+    public String getName() {
         return playerName;
     }
 

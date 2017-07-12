@@ -285,7 +285,7 @@ public class Turn
 
     public int rollButton()
     {
-        return JOptionPane.showOptionDialog(null, Game.getInstance().getActivePlayer().getColorPlayer().getName() + " ist am Zug!", "",
+        return JOptionPane.showOptionDialog(null, Game.getInstance().getActivePlayer().getName() + " ist am Zug!", "",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Würfeln"}, null);
     }
 
