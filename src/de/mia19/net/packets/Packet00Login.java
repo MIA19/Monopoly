@@ -1,25 +1,25 @@
 package de.mia19.net.packets;
 
-import de.mia19.game.GameColor;
+import de.mia19.game.ColorPlayer;
 import de.mia19.net.GameClient;
 import de.mia19.net.GameServer;
 
 public class Packet00Login extends Packet
 {
 
-    private GameColor gameColor;
+    private ColorPlayer colorPlayer;
 
     public Packet00Login(byte[] data)
     {
         super(00);
         String[] dataArr = readData(data).split(",");
-        this.gameColor = GameColor.parseString(dataArr[0]);
+        this.colorPlayer = ColorPlayer.parseString(dataArr[0]);
     }
 
-    public Packet00Login(GameColor gameColor)
+    public Packet00Login(ColorPlayer colorPlayer)
     {
         super(00);
-        this.gameColor = gameColor;
+        this.colorPlayer = colorPlayer;
     }
 
     @Override
@@ -37,11 +37,11 @@ public class Packet00Login extends Packet
     @Override
     public byte[] getData()
     {
-        return ("00" + this.gameColor.name().toLowerCase()).getBytes();
+        return ("00" + this.colorPlayer.name().toLowerCase()).getBytes();
     }
 
-    public GameColor getGameColor()
+    public ColorPlayer getColorPlayer()
     {
-        return gameColor;
+        return colorPlayer;
     }
 }
