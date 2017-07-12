@@ -63,41 +63,41 @@ public class GameScreen extends JFrame {
 
         // Farbfelder
 
-        JLabel jlc1 = new JLabel("Color", SwingConstants.CENTER);
+        JLabel jlc1 = new JLabel("GameColor", SwingConstants.CENTER);
         jlc1.setBackground(Color.pink);
         jlc1.setOpaque(true);
         jlc1.setSize(69, 21);
         jlc1.setLocation(825, 16);
         this.add(jlc1);
 
-        JLabel jlc2 = new JLabel("Color",SwingConstants.CENTER);
+        JLabel jlc2 = new JLabel("GameColor",SwingConstants.CENTER);
         jlc2.setSize(69, 21);
         jlc2.setLocation(825, 44);
         jlc2.setOpaque(true);
         this.add(jlc2);
 
-        JLabel jlc3 = new JLabel("Color", SwingConstants.CENTER);
+        JLabel jlc3 = new JLabel("GameColor", SwingConstants.CENTER);
         jlc3.setSize(69, 21);
         jlc3.setBackground(Color.WHITE);
         jlc3.setLocation(825, 72);
         jlc3.setOpaque(true);
         this.add(jlc3);
 
-        JLabel jlc4 = new JLabel("Color", SwingConstants.CENTER);
+        JLabel jlc4 = new JLabel("GameColor", SwingConstants.CENTER);
         jlc4.setSize(69, 21);
         jlc4.setBackground(Color.WHITE);
         jlc4.setLocation(825, 100);
         jlc4.setOpaque(true);
         this.add(jlc4);
 
-        JLabel jlc5 = new JLabel("Color", SwingConstants.CENTER);
+        JLabel jlc5 = new JLabel("GameColor", SwingConstants.CENTER);
         jlc5.setSize(69, 21);
         jlc5.setBackground(Color.WHITE);
         jlc5.setLocation(825, 128);
         jlc5.setOpaque(true);
         this.add(jlc5);
 
-        JLabel jlc6 = new JLabel("Color", SwingConstants.CENTER);
+        JLabel jlc6 = new JLabel("GameColor", SwingConstants.CENTER);
         jlc6.setSize(69, 21);
         jlc6.setBackground(Color.WHITE);
         jlc6.setLocation(825, 156);
@@ -119,7 +119,7 @@ public class GameScreen extends JFrame {
         closebtn.setSize(5,4);
         closebtn.setFont(new Font("Arial", Font.BOLD, 5));
         closebtn.setSize(closebtn.getPreferredSize());
-        closebtn.setBackground(Color.BLACK);
+        closebtn.setBackground(GameColor.BLACK);
         ActionListener closelistener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

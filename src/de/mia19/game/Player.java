@@ -6,14 +6,14 @@ package de.mia19.game;
 public class Player
 {
     private static String name;
-    private Color color;
+    private GameColor gameColor;
     private long money;
     private int position;
     private boolean inJail;
 
-    public Player(Color color, String name)
+    public Player(GameColor gameColor, String name)
     {
-        this.color = color;
+        this.gameColor = gameColor;
         this.position = 0;
         this.name = name;
     }
@@ -22,9 +22,9 @@ public class Player
         return name;
     }
 
-    public Color getColor()
+    public GameColor getGameColor()
     {
-        return color;
+        return gameColor;
     }
 
     public long getMoney()
