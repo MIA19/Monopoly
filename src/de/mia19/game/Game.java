@@ -104,7 +104,7 @@ public class Game
         playerFrame.setLocationRelativeTo(null);
 
 
-        if(getAlleTextFelder().isEmpty()){
+            if(getAlleTextFelder().isEmpty()){
             System.out.println("EMPTY");
             readyButton.setEnabled(false);
         }
@@ -142,8 +142,9 @@ public class Game
                 new Turn();
             }
 
-    }});}
-
+    });
+            }
+    }
     public synchronized void stop()
     {
         try
