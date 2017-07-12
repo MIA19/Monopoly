@@ -16,21 +16,31 @@ import org.w3c.dom.*;
 
 public class Stats {
 
-
+    public static void main(String[] args) {
+        increaseMoneyspent();
+    }
+    //attributes
     private static String ueberlos = null;
     private static String moneyspent = null;
-    private static String themechanged = null;
+    private static String moneyearned = null;
+    private static String propertiesbought = null;
     private static String started = null;
 
-    private static int intstarted;
+    //Converted attributes
     private static int intueberlos;
-    private static int intthemechanged;
     private static double doublemoneyspent;
+    private static double doublemoneyearned;
+    private static long longpropertiesbought;
+    private static int intstarted;
 
-    private static boolean startalreadypressed = false;
-    private static boolean ueberlosalready = false;
-    private static boolean themealready = false;
-    private static boolean creditsalreadyviewed = false;
+
+    // Boolean to avoid overwriting
+    private static boolean ueberlosexists = false;
+    private static boolean moneyearnedexists = false;
+    private static boolean moneyspentexists = false;
+    private static boolean propertiesboughtexists = false;
+    private static boolean startpressedexists = false;
+
     // private static int test2 = 1;
 
     private static ArrayList<String> statv;
@@ -65,15 +75,16 @@ public class Stats {
                     statv.add(moneyspent);
             }
 
-            themechanged = getTextValue(themechanged, doc, "themechanged");
-            if (themechanged != null) {
+            moneyearned = getTextValue(moneyearned, doc, "moneyearned");
+            if (moneyearned != null) {
                 if (!statv.isEmpty())
-                    statv.add(themechanged);
+                    statv.add(moneyearned);
             }
-
-
-            //  System.out.println("Ueber los gezogen: " + ueberlos);
-            // System.out.println("Auf Start geklickt: " + started);
+            propertiesbought = getTextValue(propertiesbought, doc, "propertiesbought");
+            if (propertiesbought !=null) {
+                if (!statv.isEmpty())
+                    statv.add(propertiesbought);
+            }
 
         } catch (ParserConfigurationException pce) {
             System.out.println(pce.getMessage());
@@ -98,40 +109,41 @@ public class Stats {
     //Increase Methods (Count user actions)
 
     public static void increaseStarted() {
-        startalreadypressed = true;
+        startpressedexists = true;
         readXML();
         intstarted = Integer.parseInt(started);
         intstarted++;
         saveToXML();
-        startalreadypressed = false;
+        startpressedexists = false;
 
     }
 
     public static void increaseUeberlos() {
-        ueberlosalready = true;
+        ueberlosexists = true;
         readXML();
         intueberlos = Integer.parseInt(ueberlos);
         intueberlos++;
         saveToXML();
-        ueberlosalready = false;
+        ueberlosexists = false;
     }
 
     public static void increaseMoneyspent(){
-        creditsalreadyviewed = true;
+        moneyspentexists = true;
         readXML();
         doublemoneyspent = Double.parseDouble(moneyspent);
 
         saveToXML();
-        creditsalreadyviewed = false;
+        moneyspentexists = false;
     }
 
-    public static void increaseThemechanged(){
-        themealready = true;
+    public static void increaseMoneyEearned(){
+        moneyearnedexists = true;
         readXML();
-        intthemechanged = Integer.parseInt(themechanged);
+        doublemoneyearned = Integer.parseInt(moneyearned);
         saveToXML();
-        themealready = false;
+        moneyearnedexists = false;
     }
+
 
     //Save everything
     public static void saveToXML() {
@@ -147,7 +159,7 @@ public class Stats {
 
 
             //Ueberlos
-            if (startalreadypressed || creditsalreadyviewed || themealready) {
+            if (startpressedexists || moneyspentexists || moneyearnedexists || propertiesboughtexists) {
                 e = dom.createElement("ueberlos");
                 e.appendChild(dom.createTextNode((ueberlos)));
                 rootEle.appendChild(e);
@@ -157,7 +169,7 @@ public class Stats {
                 rootEle.appendChild(e);
             }
             //Started
-            if (ueberlosalready || creditsalreadyviewed || themealready) {
+            if (ueberlosexists || moneyspentexists || moneyearnedexists || propertiesboughtexists) {
                 e = dom.createElement("started");
                 e.appendChild(dom.createTextNode(started));
                 rootEle.appendChild(e);
@@ -166,8 +178,8 @@ public class Stats {
                 e.appendChild(dom.createTextNode(Integer.toString(intstarted)));
                 rootEle.appendChild(e);
             }
-            //Credits viewed
-            if(ueberlosalready || themealready || startalreadypressed) {
+            //Moneyspent
+            if(ueberlosexists || moneyearnedexists || startpressedexists || propertiesboughtexists) {
                 e = dom.createElement("moneyspent");
                 e.appendChild(dom.createTextNode(moneyspent));
                 rootEle.appendChild(e);
@@ -176,10 +188,24 @@ public class Stats {
                 e.appendChild(dom.createTextNode(Double.toString(doublemoneyspent)));
                 rootEle.appendChild(e);
             }
-            if(ueberlosalready || creditsalreadyviewed || startalreadypressed) {
-                e = dom.createElement("themechanged");
-                e.appendChild(dom.createTextNode("0"));
+            //Money earned
+            if(ueberlosexists || moneyspentexists || startpressedexists || propertiesboughtexists) {
+                e = dom.createElement("moneyearned");
+                e.appendChild(dom.createTextNode(moneyearned));
                 rootEle.appendChild(e);
+            } else {
+                e = dom.createElement("moneyearned");
+                e.appendChild(dom.createTextNode(Double.toString(doublemoneyearned)));
+                rootEle.appendChild(e);
+            }
+            // Properties bought
+            if(ueberlosexists || moneyearnedexists || startpressedexists || moneyspentexists) {
+                e = dom.createElement("propertiesbought");
+                e.appendChild(dom.createTextNode(propertiesbought));
+                rootEle.appendChild(e);
+            } else {
+                e = dom.createElement("propertiesbought");
+                e.appendChild(dom.createTextNode(Long.toString(longpropertiesbought)));
             }
 
             dom.appendChild(rootEle);
@@ -221,8 +247,8 @@ public class Stats {
         return moneyspent;
     }
 
-    public static String getThemechanged() {
+    public static String getMoneyearned() {
         readXML();
-        return themechanged;
+        return moneyearned;
     }
 }

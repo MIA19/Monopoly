@@ -1,5 +1,7 @@
 package de.mia19.game;
 
+import de.mia19.RessourceLoader;
+import de.mia19.gui.CustomJLabel;
 import de.mia19.gui.GameScreen;
 import de.mia19.gui.Theme;
 
@@ -12,7 +14,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class Game {
+public class Game
+{
 
     private static final String NAME = "Monopoly";
     private static Game instance;
@@ -31,16 +34,19 @@ public class Game {
     private Thread thread;
     public Theme theme = Theme.original;
 
-    public static Game getInstance() {
+    public static Game getInstance()
+    {
         return (instance == null) ? (instance = new Game()) : instance;
     }
 
-    private Game() {
+    private Game()
+    {
         createFieldList(theme);
     }
 
 
-    public synchronized void start() {
+    public synchronized void start()
+    {
 
         thread = new Thread(NAME + "_main");
         thread.start();
@@ -51,7 +57,7 @@ public class Game {
         buyButton.setEnabled(false);
 
         /**
-         * Die Combobox für die Anzahl der Spieler!
+         * Die Combobox für die Anzahl der Spieler!a
          */
         JLabel aussage = new JLabel("Wähle die Anzahl der Spieler!");
 
@@ -70,9 +76,11 @@ public class Game {
         //TODO: JButton und actionListener die Farben reinmachen dies das du weißt amina flikflak!
         JFrame playerFrame = new JFrame("Monopoly");
         playerFrame.setSize(500, 50 + 50 * playerCount);
-
+        playerFrame.setLocationRelativeTo(null);
         JPanel playerPanel = new JPanel(new GridLayout(2 + playerCount, 2));
         JButton readyButton = new JButton("Starten");
+
+        playerFrame.setIconImage(RessourceLoader.getImage("icon.jpg"));
         JLabel playerName = new JLabel("Geben Sie die Spielernamen ein!");
         playerPanel.add(playerName);
         playerPanel.add(new JLabel());
@@ -81,7 +89,10 @@ public class Game {
         };
 
 
-        for (int i = 0; i < playerCount; i++) {
+
+
+        for (int i = 0; i < playerCount; i++)
+        {
             playerPanel.add(new JLabel(spielerNamen[i]));
             JTextField textfield = new JTextField();
             playerPanel.add(textfield);
@@ -90,13 +101,16 @@ public class Game {
         playerPanel.add(readyButton);
         playerFrame.add(playerPanel);
         playerFrame.setVisible(true);
+        playerFrame.setLocationRelativeTo(null);
 
 
-        readyButton.addActionListener(new ActionListener() {
+        readyButton.addActionListener(new ActionListener()
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
 
-                playerFrame.setVisible(false);
+                playerFrame.dispose();
                 String[] farben = new String[6];
                 farben[0] = "blue";
                 farben[1] = "red";
@@ -104,48 +118,68 @@ public class Game {
                 farben[3] = "yellow";
                 farben[4] = "black";
                 farben[5] = "white";
-                for (int i = 0; i < playerCount; i++) {
+                for (int i = 0; i < playerCount; i++)
+                {
                     String name = alleTextFelder.get(i).getText();
                     players.add(new Player(Color.parseString(farben[i]), name));
                     //SETTING GAME SETTINGS
                     players.get(i).setMoney(START_MONEY);
                 }
-                GameScreen gameScreen = new GameScreen("spielfeld-beta");
-
+                if (theme == Theme.original)
+                {
+                    GameScreen gameScreen = new GameScreen("originaltheme");
+                } else if (theme == Theme.lette)
+                {
+                    GameScreen gameScreen = new GameScreen("lette");
+                }
                 activePlayer = players.get(0);
+                new Turn();
             }
         });
     }
 
-    public synchronized void stop() {
-        try {
+    public synchronized void stop()
+    {
+        try
+        {
             thread.join();
-        } catch (InterruptedException e) {
+        } catch (InterruptedException e)
+        {
             e.printStackTrace();
         }
     }
 
 
-    public Player getActivePlayer() {
+    public Player getActivePlayer()
+    {
         return activePlayer;
     }
 
-    public void nextPlayer() {
-        for (int i = 0; i < players.size(); i++) {
-            if (players.get(i).equals(activePlayer)) {
+    public void nextPlayer()
+    {
+        for (int i = 0; i < players.size(); i++)
+        {
+            if (players.get(i).equals(activePlayer))
+            {
                 if (i == (players.size() - 1))
+                {
                     activePlayer = players.get(0);
-                else
-                    activePlayer = players.get(i);
-
+                    break;
+                } else
+                {
+                    activePlayer = players.get(i + 1);
+                    break;
+                }
             }
-            i++;
         }
+        new Turn();
     }
 
-    public ArrayList createFieldList(Theme gameTheme) {
+    public ArrayList createFieldList(Theme gameTheme)
+    {
         list = new ArrayList<>();
-        if (gameTheme == Theme.original) {
+        if (gameTheme == Theme.original)
+        {
             list.add(new Field("Los", 744, 743, FieldState.startField));
             list.add(new Field("Bad Straße", 650, 759, FieldState.normalStreetsPurple, 60, 50, 10, 30, 90, 160, 250));
             list.add(new Field("Gemeinschaftsfeld", 589, 758, FieldState.cardFieldG));
@@ -186,7 +220,8 @@ public class Game {
             list.add(new Field("Park Straße", 759, 526, FieldState.normalStreetsDarkBlue, 350, 200, 175, 500, 1100, 1300, 1500));
             list.add(new Field("Zusatzsteuer", 759, 588, FieldState.taxField));
             list.add(new Field("Schloss Allee", 759, 649, FieldState.normalStreetsDarkBlue, 400, 200, 200, 600, 1400, 1700, 2000));
-        } else if (gameTheme == Theme.lette) {
+        } else if (gameTheme == Theme.lette)
+        {
             list.add(new Field("Los", 744, 743, FieldState.startField));
             list.add(new Field("Bäcker", 650, 759, FieldState.normalStreetsPurple, 60, 50, 10, 30, 90, 160, 250));
             list.add(new Field("Gemeinschaftsfeld", 589, 758, FieldState.cardFieldG));
@@ -232,18 +267,23 @@ public class Game {
         return list;
     }
 
-    public static List<Player> getPlayers() {
+    public static List<Player> getPlayers()
+    {
         return players;
     }
 
-    public static ArrayList<JTextField> getAlleTextFelder() {
+    public static ArrayList<JTextField> getAlleTextFelder()
+    {
         return alleTextFelder;
     }
 
-    public int getTrainstationCount(Player player) {
+    public int getTrainstationCount(Player player)
+    {
         int count = 0;
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getFieldOwner() == player && list.get(i).getFieldState() == FieldState.trainStation) {
+        for (int i = 0; i < list.size(); i++)
+        {
+            if (list.get(i).getFieldOwner() == player && list.get(i).getFieldState() == FieldState.trainStation)
+            {
                 count += 1;
             }
         }
@@ -260,9 +300,9 @@ public class Game {
     public int getCountOfMaxStreetColor(FieldState fieldState)
     {
         int i = 0;
-        for(Field field : list)
+        for (Field field : list)
         {
-            if(field.getFieldState().equals(fieldState))
+            if (field.getFieldState().equals(fieldState))
                 i++;
         }
         return i;

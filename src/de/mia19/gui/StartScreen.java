@@ -7,6 +7,8 @@ import de.mia19.game.Stats;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class StartScreen extends JFrame
 {
@@ -14,6 +16,7 @@ public class StartScreen extends JFrame
     private Button configuration;
     private Button credits;
     private Button stats;
+    private Button exit;
 
     public StartScreen(Game game)
     {
@@ -30,6 +33,37 @@ public class StartScreen extends JFrame
         this.setIconImage(RessourceLoader.getImage("icon.jpg"));
         //Text
         final JLabel launchScreen = new JLabel("MONOPOLY");
+        MouseListener ml = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+
+                launchScreen.setText("By players, for players");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+
+                launchScreen.setText("MONOPOLY");
+
+            }
+        };
+        launchScreen.addMouseListener(ml);
         launchScreen.setBackground(game.theme.getFarbeHintergrund());
         launchScreen.setOpaque(true);
         launchScreen.setFont(new Font("Arial", Font.BOLD, 30));
@@ -60,16 +94,21 @@ public class StartScreen extends JFrame
         this.credits.setOpaque(true);
 
         this.stats = new Button("Stats", game.theme);
-      this.stats.addActionListener(e -> JOptionPane.showMessageDialog(this, "Stats: \nSpiel gestartet: "+Stats.getStarted()+" x\nUeber Los gezogen: "+Stats.getUeberlos()+" x\nAusgegebenes Geld: " + Stats.getMoneyspent() + " $\n", "Stats", JOptionPane.INFORMATION_MESSAGE));
+        this.stats.addActionListener(e -> JOptionPane.showMessageDialog(this, "Stats: \nSpiel gestartet: "+Stats.getStarted()+" x\nUeber Los gezogen: "+Stats.getUeberlos()+" x\nAusgegebenes Geld: " + Stats.getMoneyspent() + " $\nVerdientes Geld: " + Stats.getMoneyearned() + " $\n", "Stats", JOptionPane.INFORMATION_MESSAGE));
         this.stats.setOpaque(true);
 
+       /* this.exit = new Button("Spiel Verlassen", game.theme);
+       // GameScreen gs = new GameScreen("spielfeld-beta");
+        this.exit.addActionListener(e -> this.dispose());
+        this.exit.setOpaque(true);
+*/
         //Fenster hinzufügen
         this.add(launchScreen);
         this.add(startBtn);
         this.add(this.configuration);
         this.add(credits);
         this.add(stats);
-
+        //this.add(exit);
         this.setVisible(true);
     }
 

@@ -1,5 +1,7 @@
 package de.mia19.game;
 
+import de.mia19.gui.GameScreen;
+
 import javax.swing.*;
 import java.lang.reflect.Array;
 
@@ -14,7 +16,7 @@ public class Turn
 
     public Turn()
     {
-
+        spielerzug();
     }
 
     private boolean isPassedStart()
@@ -34,9 +36,10 @@ public class Turn
     }
 
 
-    //
+
     public void spielerzug()
     {
+
         if (Game.getInstance().getActivePlayer().isInJail())
         {
             if (!isThreeRoundsInPrison())
@@ -74,8 +77,8 @@ public class Turn
                         {
                             JOptionPane.showMessageDialog(null, "Kein Pasch nach 3 versuchen, du bleibst im Gefängnis.");
                             Game.getInstance().getActivePlayer().setInJail(true);
-
-                            //TODO: END TURN UND NÄCHSTER SPIELER IST DRAN
+                            Game.getInstance().nextPlayer();
+                            //TODO: END TURN
                         }
 
                     }
@@ -113,7 +116,9 @@ public class Turn
     {
         ECCards ecCards = new ECCards();
         Field field = Field.getFromNumber(number);
-        Game.getInstance().buyButton.setEnabled(false);
+
+        GameScreen.buybtn.setEnabled(false);
+
         switch (field.getFieldState())
         {
             case startField:
@@ -125,7 +130,8 @@ public class Turn
                     Game.getInstance().getActivePlayer().addMoney(200);
                 }
                 break;
-            /**case normalStreets:
+            case normalStreetsBlue:
+            case normalStreetsDarkBlue:
                 if (!field.hasFieldOwner ())
                 {
                     Game.getInstance().buyButton.setEnabled (true);
@@ -136,10 +142,13 @@ public class Turn
                     field.getFieldOwner().addMoney(field.getPrice());
                     Game.getInstance().getActivePlayer().removeMoney(field.getPrice());
                 }
-                break;*/
+                break;
             case trainStation:
                 if(!field.hasFieldOwner()){
                     Game.getInstance().buyButton.setEnabled(true);
+                    if(Game.getInstance().getActivePlayer().getMoney() >= field.getPrice()){
+
+                    }
                 }
                 if (Game.getInstance().getActivePlayer() != field.getFieldOwner() && !field.getFieldOwner().isInJail()) {
                     if (Game.getInstance().getTrainstationCount(field.getFieldOwner()) == 1) {
@@ -220,7 +229,8 @@ public class Turn
                 Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
                 isPassedStart();
                 performAction(Game.getInstance().getActivePlayer().getPosition());
-                //TODO:ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                Game.getInstance().nextPlayer();
+                //TODO:ZUG BEENDEN
             }
             if (dice.isDouble())
             {
@@ -236,7 +246,8 @@ public class Turn
                         Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
                         isPassedStart();
                         performAction(Game.getInstance().getActivePlayer().getPosition());
-                        //TODO: ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                        Game.getInstance().nextPlayer();
+                        //TODO: ZUG BEENDEN
                     }
                     if (dice.isDouble())
                     {
@@ -252,13 +263,15 @@ public class Turn
                                 Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
                                 isPassedStart();
                                 performAction(Game.getInstance().getActivePlayer().getPosition());
-                                //TODO:ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+                                Game.getInstance().nextPlayer();
+                                //TODO:ZUG BEENDEN
                             }
                             if (dice.isDouble())
                             {
                                 Game.getInstance().getActivePlayer().setInJail(true);
                                 Game.getInstance().getActivePlayer().setPosition(10);
-                                //TODO: ZUG BEENDEN, NÄCHSTER SPIELER IST DRAN
+                                Game.getInstance().nextPlayer();
+                                //TODO: ZUG BEENDEN
                             }
                         }
                     }
@@ -282,7 +295,8 @@ public class Turn
             Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
             isPassedStart();
             performAction(Game.getInstance().getActivePlayer().getPosition());
-            //TODO: ZUG BEENDEN UND NÄCHSTER SPIELER IST DRAN
+            Game.getInstance().nextPlayer();
+            //TODO: ZUG BEENDEN
         }
     }
 
