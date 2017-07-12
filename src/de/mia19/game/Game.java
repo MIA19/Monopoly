@@ -125,10 +125,8 @@ public class Game
                     farben[3] = "yellow";
                     farben[4] = "black";
                     farben[5] = "white";
-                    System.out.println(playerCount);
                     for (int i = 0; i < playerCount; i++)
                     {
-
                         players.add(new Player(GameColor.parseString(farben[i]), alleTextFelder.get(i).getText()));
                         //SETTING GAME SETTINGS
                         players.get(i).setMoney(START_MONEY);

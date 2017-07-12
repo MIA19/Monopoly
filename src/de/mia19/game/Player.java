@@ -65,7 +65,7 @@ public class Player {
         if ((position + fields) > 40)
         {
             fields -= (40 - position);
-            this.position = 1;
+            this.position = 0;
         }
         this.position += fields;
     }
