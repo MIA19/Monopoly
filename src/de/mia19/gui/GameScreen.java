@@ -65,10 +65,19 @@ public class GameScreen extends JFrame {
                 jlc1.setBackground(Color.BLUE);
             }
             else if (i == 1){
-                jlc1.setBackground(Color.cyan);
+                jlc1.setBackground(Color.red);
             }
-            else {
-                jlc1.setBackground(Color.BLACK);
+            else if (i == 2){
+                jlc1.setBackground(Color.green);
+            }
+            else if (i == 3){
+                jlc1.setBackground(Color.yellow);
+            }
+            else if (i == 4){
+                jlc1.setBackground(Color.black);
+            }
+            else if (i == 5){
+                jlc1.setBackground(Color.white);
             }
             jlc1.setOpaque(true);
             jlc1.setLocation(825, 16 + (30 * i));

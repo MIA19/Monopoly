@@ -92,6 +92,7 @@ public class Game
 
         for (int i = 0; i < playerCount; i++)
         {
+
             playerPanel.add(new JLabel(spielerNamen[i]));
             JTextField textfield = new JTextField();
             playerPanel.add(textfield);
@@ -103,13 +104,19 @@ public class Game
         playerFrame.setLocationRelativeTo(null);
 
 
-        readyButton.addActionListener(new ActionListener()
-        {
+        if(getAlleTextFelder().isEmpty()){
+            System.out.println("EMPTY");
+            readyButton.setEnabled(false);
+        }
+        else {
+            readyButton.addActionListener(new ActionListener() {
+
+
             @Override
             public void actionPerformed(ActionEvent e)
             {
 
-                playerFrame.dispose();
+
                 String[] farben = new String[6];
                 farben[0] = "blue";
                 farben[1] = "red";
@@ -134,8 +141,8 @@ public class Game
                 activePlayer = players.get(0);
                 new Turn();
             }
-        });
-    }
+
+    }});}
 
     public synchronized void stop()
     {
