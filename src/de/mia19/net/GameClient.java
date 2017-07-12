@@ -66,7 +66,7 @@ public class GameClient extends Thread
                 break;
             case DISCONNECT:
                 packet = new Packet01Disconnect(data);
-                System.out.println("[" + address.getHostAddress() + ":" + port + "] " + ((Packet01Disconnect) packet).getGameColor() + " left.");
+                System.out.println("[" + address.getHostAddress() + ":" + port + "] " + ((Packet01Disconnect) packet).getColorPlayer() + " left.");
                 break;
             case SETTINGS:
                 packet = new Packet02Settings(data);
@@ -91,9 +91,9 @@ public class GameClient extends Thread
 
     private void handleLogin(Packet00Login packet, InetAddress address, int port)
     {
-        System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getGameColor() + " joined.");
+        System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getColorPlayer() + " joined.");
         //TODO Add player to mia19.lette.game
-        PlayerMP player = new PlayerMP(packet.getGameColor(), address, port);
+        PlayerMP player = new PlayerMP(packet.getColorPlayer(), address, port);
     }
 
 }
