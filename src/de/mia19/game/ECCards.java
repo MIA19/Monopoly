@@ -4,10 +4,6 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * Created by e6_schneider on 14.06.2017.
- */
-
 public class ECCards
 {
     private ArrayList<Communitycard> communitycards;

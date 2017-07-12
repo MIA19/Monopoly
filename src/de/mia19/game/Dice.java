@@ -31,8 +31,6 @@ public class Dice
         this.diceOne = random.nextInt(6) + 1;
         this.diceTwo = random.nextInt(6) + 1;
 
-
-        System.out.println("Würfel: " + (diceOne + diceTwo));
         return diceOne + diceTwo;
     }
 

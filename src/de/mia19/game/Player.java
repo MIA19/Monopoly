@@ -8,7 +8,7 @@ import javax.swing.*;
  * Spieler Klasse
  */
 public class Player {
-    private static String playerName;
+    private String playerName;
     private GameColor gameColor;
     private long money;
     private int position;
@@ -16,7 +16,7 @@ public class Player {
 
     public Player(GameColor gameColor, String name) {
         this.gameColor = gameColor;
-        this.position = 0;
+        this.position = 1;
         this.playerName = name;
     }
 
@@ -62,10 +62,10 @@ public class Player {
     }
 
     public void move(int fields) {
-        if ((position + fields) > 39)
+        if ((position + fields) > 40)
         {
             fields -= (40 - position);
-            this.position = 0;
+            this.position = 1;
         }
         this.position += fields;
     }

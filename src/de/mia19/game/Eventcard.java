@@ -4,9 +4,6 @@ import de.mia19.RessourceLoader;
 
 import javax.swing.*;
 
-/**
- * Created by e6_schneider on 14.06.2017.
- */
 public class Eventcard
 {
 

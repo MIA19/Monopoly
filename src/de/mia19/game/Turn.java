@@ -123,8 +123,6 @@ public class Turn
         Field field = Field.getFromNumber(number);
 
         GameScreen.buybtn.setEnabled(false);
-        System.out.println("FieldNumber: " + number);
-        System.out.println("Art: " + field.getFieldState());
 
         switch (field.getFieldState())
         {
@@ -233,7 +231,14 @@ public class Turn
             dice.roll();
             if (!dice.isDouble())
             {
+                System.out.println("------------------" + Game.getInstance().getActivePlayer().getName() + "------------------");
+                System.out.println("Würfel: " + dice.getDiceOne() + " + " + dice.getDiceTwo());
+                System.out.println("[Vorher] Spielerposition: " + Game.getInstance().getActivePlayer().getPosition());
+                System.out.println("[Vorher] Spielerfeld: " + Field.getFromNumber(Game.getInstance().getActivePlayer().getPosition()).getFieldName());
                 Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
+                System.out.println("[Nachher] Spielerposition: " + Game.getInstance().getActivePlayer().getPosition());
+                System.out.println("[Nachher] Spielerfeld: " + Field.getFromNumber(Game.getInstance().getActivePlayer().getPosition()).getFieldName());
+
                 isPassedStart();
                 performAction(Game.getInstance().getActivePlayer().getPosition());
                 Game.getInstance().nextPlayer();
@@ -241,6 +246,13 @@ public class Turn
             }
             if (dice.isDouble())
             {
+                System.out.println("Würfel: " + dice.getDiceOne() + " + " + dice.getDiceTwo());
+                System.out.println("[Vorher] Spielerposition: " + Game.getInstance().getActivePlayer().getPosition());
+                System.out.println("[Vorher] Spielerfeld: " + Field.getFromNumber(Game.getInstance().getActivePlayer().getPosition()).getFieldName());
+                Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
+                System.out.println("[Nachher] Spielerposition: " + Game.getInstance().getActivePlayer().getPosition());
+                System.out.println("[Nachher] Spielerfeld: " + Field.getFromNumber(Game.getInstance().getActivePlayer().getPosition()).getFieldName());
+
                 Game.getInstance().getActivePlayer().move(dice.getDiceOne() + dice.getDiceTwo());
                 isPassedStart();
                 performAction(Game.getInstance().getActivePlayer().getPosition());
