@@ -1,6 +1,7 @@
 package de.mia19.game;
 
 import de.mia19.RessourceLoader;
+import de.mia19.gui.GameScreen;
 
 import javax.swing.*;
 
@@ -66,8 +67,10 @@ public class Player {
         {
             fields -= (40 - position);
             this.position = 0;
+
         }
         this.position += fields;
+        GameScreen.getInstance().updatePosition(this);
     }
 
     public void pay(Player to, long amount) {

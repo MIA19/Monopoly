@@ -134,6 +134,10 @@ public class Game
 
                     }
                     GameScreen.getInstance(theme.getName());
+                    for (int i = 0; i < playerCount; i++)
+                    {
+                        GameScreen.getInstance().addFigure(players.get(i));
+                    }
 
                     activePlayer = players.get(0);
                     new Turn();
@@ -149,8 +153,7 @@ public class Game
         try
         {
             thread.join();
-        }
-        catch (InterruptedException e)
+        } catch (InterruptedException e)
         {
             e.printStackTrace();
         }
@@ -164,6 +167,7 @@ public class Game
 
     public void nextPlayer()
     {
+        GameScreen.getInstance().updateMoney(Game.getInstance().getActivePlayer());
         for (int i = 0; i < players.size(); i++)
         {
             if (players.get(i).equals(activePlayer))
@@ -187,7 +191,7 @@ public class Game
     {
         for (Player p : players)
         {
-            if(p.getName().equalsIgnoreCase(player))
+            if (p.getName().equalsIgnoreCase(player))
                 return p;
         }
         return null;
@@ -198,7 +202,7 @@ public class Game
         list = new ArrayList<>();
         if (gameTheme == Theme.original)
         {
-            list.add(new Field("Los", 744, 743, FieldState.startField));
+            list.add(new Field("Los", 744, 741, FieldState.startField));
             list.add(new Field("Bad Straße", 650, 759, FieldState.normalStreetsPurple, 60, 50, 10, 30, 90, 160, 250));
             list.add(new Field("Gemeinschaftsfeld", 589, 758, FieldState.cardFieldG));
             list.add(new Field("Turm Straße", 527, 759, FieldState.normalStreetsPurple, 60, 50, 20, 60, 180, 320, 450));
@@ -209,7 +213,7 @@ public class Game
             list.add(new Field("Elisen Straße", 217, 759, FieldState.normalStreetsBlue, 100, 50, 30, 90, 270, 400, 550));
             list.add(new Field("Post Straße", 155, 759, FieldState.normalStreetsBlue, 120, 50, 40, 100, 300, 450, 600));
             list.add(new Field("Gefängnis", 81, 724, FieldState.prison));
-            list.add(new Field("See Straße", 47, 651, FieldState.normalStreetsPink, 140, 100, 50, 150, 450, 625, 750));
+            list.add(new Field("See Straße", 51, 645, FieldState.normalStreetsPink, 140, 100, 50, 150, 450, 625, 750));
             list.add(new Field("Elektrizitätswerk", 47, 589, FieldState.workField));
             list.add(new Field("Hafen Straße", 47, 527, FieldState.normalStreetsPink, 140, 100, 50, 150, 450, 625, 750));
             list.add(new Field("Neue Straße", 47, 464, FieldState.normalStreetsPink, 160, 100, 60, 180, 500, 700, 900));

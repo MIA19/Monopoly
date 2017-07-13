@@ -5,17 +5,52 @@ import de.mia19.game.*;
 
 import javax.swing.*;
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class GameScreen extends JFrame
+public class GameScreen extends JFrame implements MouseListener
 {
+    @Override
+    public void mouseClicked(MouseEvent e)
+    {
+        System.out.println("X: " + e.getX());
+        System.out.println("Y: " + e.getY());
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e)
+    {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e)
+    {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e)
+    {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e)
+    {
+
+    }
+
     private Dice dice;
     public ArrayList<JLabel> colorLabel = new ArrayList<>();
     public static JButton buybtn;
     private static JButton closebtn;
 
+    private JPanel glassPanel;
     private HashMap<Player, JLabel> moneyMap = new HashMap<>();
+    private HashMap<Player, JLabel> figureMap = new HashMap<>();
 
     private static GameScreen instance;
 
@@ -35,9 +70,12 @@ public class GameScreen extends JFrame
         // this.game = game;
         //Game.instance.createFieldList(gameTheme);
         //this.setLayout(new GridBagLayout());
-
         createRightSide();
         //  this.setUndecorated(true);
+        this.glassPanel = (JPanel) this.getGlassPane();
+        this.glassPanel.setLayout(null);
+        this.glassPanel.setVisible(true);
+        this.glassPanel.addMouseListener(this);
         this.setSize(1200, 823);
         this.setUndecorated(false);
         this.setResizable(false);
@@ -51,9 +89,24 @@ public class GameScreen extends JFrame
         this.setVisible(true);
     }
 
+    public void addFigure(Player player)
+    {
+        JLabel figure = new JLabel();
+        figure.setIcon(player.getIcon());
+        figure.setBounds(Field.getFromNumber(1).getxCoord() - 15, Field.getFromNumber(1).getyCoord() - 23, 30, 46);
+
+        this.glassPanel.add(figure);
+        this.figureMap.put(player, figure);
+    }
+
     public void updateMoney(Player player)
     {
         moneyMap.get(player).setText(String.valueOf(player.getMoney()));
+    }
+
+    public void updatePosition(Player player)
+    {
+        figureMap.get(player).setBounds(Field.getFromNumber(player.getPosition()).getxCoord() - 15, Field.getFromNumber(player.getPosition()).getyCoord() -23,50, 50);
     }
 
     private void createRightSide()
